@@ -1,4 +1,3 @@
-import { $createCodeNode, $isCodeNode, CODE_LANGUAGE_FRIENDLY_NAME_MAP, CODE_LANGUAGE_MAP, getLanguageFriendlyName } from '@lexical/code';
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
 import { $isListNode, INSERT_CHECK_LIST_COMMAND, INSERT_ORDERED_LIST_COMMAND, INSERT_UNORDERED_LIST_COMMAND, ListNode, REMOVE_LIST_COMMAND } from '@lexical/list';
 import { INSERT_EMBED_COMMAND } from '@lexical/react/LexicalAutoEmbedPlugin';
@@ -20,13 +19,8 @@ import DropdownColorPicker from '../../../CardTextEditor/ui/DropdownColorPicker'
 import { getSelectedNode } from '../../../CardTextEditor/utils/getSelectedNode';
 import { sanitizeUrl } from '../../../CardTextEditor/utils/url';
 import { EmbedConfigs } from '../AutoEmbedPlugin';
-import { INSERT_COLLAPSIBLE_COMMAND } from '../CollapsiblePlugin';
-import { INSERT_EXCALIDRAW_COMMAND } from '../ExcalidrawPlugin';
 import { INSERT_IMAGE_COMMAND, InsertImageDialog, InsertImagePayload } from '../ImagesPlugin';
-import { InsertInlineImageDialog } from '../InlineImagePlugin';
 import InsertLayoutDialog from '../LayoutPlugin/InsertLayoutDialog';
-import { INSERT_PAGE_BREAK } from '../PageBreakPlugin';
-import { InsertPollDialog } from '../PollPlugin';
 import { InsertNewTableDialog, InsertTableDialog } from '../TablePlugin';
 
 import {
@@ -537,14 +531,6 @@ export default function ToolbarPlugin({
           if (type in blockTypeToBlockName) {
             setBlockType(type as keyof typeof blockTypeToBlockName);
           }
-          if ($isCodeNode(element)) {
-            const language =
-              element.getLanguage() as keyof typeof CODE_LANGUAGE_MAP;
-            setCodeLanguage(
-              language ? CODE_LANGUAGE_MAP[language] || language : '',
-            );
-            return;
-          }
         }
       }
       // Handle buttons
@@ -715,19 +701,16 @@ export default function ToolbarPlugin({
     }
   }, [editor, isLink]);
 
-  const onCodeLanguageSelect = useCallback(
-    (value: string) => {
-      activeEditor.update(() => {
-        if (selectedElementKey !== null) {
-          const node = $getNodeByKey(selectedElementKey);
-          if ($isCodeNode(node)) {
-            node.setLanguage(value);
-          }
-        }
-      });
-    },
-    [activeEditor, selectedElementKey],
-  );
+  // const onCodeLanguageSelect = useCallback(
+  //   (value: string) => {
+  //     activeEditor.update(() => {
+  //       if (selectedElementKey !== null) {
+  //         const node = $getNodeByKey(selectedElementKey);
+  //       }
+  //     });
+  //   },
+  //   [activeEditor, selectedElementKey],
+  // );
   // const insertGifOnClick = (payload: InsertImagePayload) => {
   //   activeEditor.dispatchCommand(INSERT_IMAGE_COMMAND, payload);
   // };
