@@ -16,8 +16,6 @@ import { TabIndentationPlugin } from '@lexical/react/LexicalTabIndentationPlugin
 // import useLexicalEditable from '@lexical/react/useLexicalEditable';
 import { ClearEditorPlugin } from '@lexical/react/LexicalClearEditorPlugin';
 
-import TableCellNodes from './nodes/TableCellNodes';
-
 // import ActionsPlugin from './plugins/ActionsPlugin';
 // import AutoEmbedPlugin from './plugins/AutoEmbedPlugin';
 import AutoLinkPlugin from './plugins/AutoLinkPlugin';
@@ -25,10 +23,7 @@ import AutoLinkPlugin from './plugins/AutoLinkPlugin';
 // import CollapsiblePlugin from './plugins/CollapsiblePlugin';
 // import ComponentPickerPlugin from './plugins/ComponentPickerPlugin';
 // import ContextMenuPlugin from './plugins/ContextMenuPlugin';
-// import DragDropPaste from './plugins/DragDropPastePlugin';
 // import DraggableBlockPlugin from './plugins/DraggableBlockPlugin';
-// import EmojiPickerPlugin from './plugins/EmojiPickerPlugin';
-// import EmojisPlugin from './plugins/EmojisPlugin';
 // import ExcalidrawPlugin from './plugins/ExcalidrawPlugin';
 // import FigmaPlugin from './plugins/FigmaPlugin';
 import FloatingLinkEditorPlugin from './plugins/FloatingLinkEditorPlugin';
@@ -53,34 +48,18 @@ import ToolbarPlugin from './plugins/ToolbarPlugin';
 // import TreeViewPlugin from './plugins/TreeViewPlugin';
 // import TwitterPlugin from './plugins/TwitterPlugin';
 // import YouTubePlugin from './plugins/YouTubePlugin';
-import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
-import ContentEditable from './ui/ContentEditable';
-
-import './CardTextEditor.css';
-
 import LocalStoragePlugin from './plugins/LocalStoragePlugin';
 import StickyPlugin from './plugins/StickyPlugin';
 
+import PlaygroundEditorTheme from './themes/PlaygroundEditorTheme';
+import ContentEditable from './ui/ContentEditable';
 
+import TableCellNodes from './nodes/TableCellNodes';
 
-
-
-
-
-
+import './CardTextEditor.css';
 
 
 const Editor = () => {
-  // const [active_card, addContentToCard] = useCardStore((state) => [state.active_card, state.addContentToCard]);
-  // const cards = useCardStore((state) => state.cards);
-  // const card = cards.find((c) => c.id === active_card);
-  // const showTreeView = false;
-  // const showTableOfContents = false;
-  // const shouldUseLexicalContextMenu = false;
-  // const tableCellMerge = false;
-  // const tableCellBackgroundColor = false;
-  // const isEditable = true;
-
   const [floatingAnchorElem, setFloatingAnchorElem] = useState<HTMLDivElement | null>(null);
   const [isSmallWidthViewport, setIsSmallWidthViewport] = useState<boolean>(false);
   const [isLinkEditMode, setIsLinkEditMode] = useState<boolean>(false);
@@ -127,31 +106,17 @@ const Editor = () => {
       <div
         className={`editor-container`}>
 
-        {/* <MaxLengthPlugin maxLength={30} /> */}
-        {/* <DragDropPaste /> */}
         {/* <AutoFocusPlugin /> */}
         {/* <ClearEditorPlugin /> */}
         {/* <ComponentPickerPlugin /> */}
-        {/* <EmojiPickerPlugin /> */}
         {/* <AutoEmbedPlugin /> */}
         {/* <MentionsPlugin /> */}
-        {/* <EmojisPlugin /> */}
-        <HashtagPlugin />
         {/* <KeywordsPlugin /> */}
-        {/* <SpeechToTextPlugin /> */}
         {/* <MarkdownShortcutPlugin /> */}
-        {/* <CodeHighlightPlugin /> */}
         {/* <ListMaxIndentLevelPlugin maxDepth={7} /> */}
-        {/* <PollPlugin /> */}
-        {/* <TwitterPlugin /> */}
         {/* <YouTubePlugin /> */}
-        {/* <FigmaPlugin /> */}
         {/* <ExcalidrawPlugin /> */}
         {/* <TabFocusPlugin /> */}
-        {/* <CollapsiblePlugin /> */}
-        {/* <PageBreakPlugin /> */}
-        <LayoutPlugin />
-        <StickyPlugin />
 
         {/* <TablePlugin hasCellMerge={tableCellMerge} hasCellBackgroundColor={tableCellBackgroundColor} /> */}
         {/* <TableCellResizer /> */}
@@ -171,7 +136,6 @@ const Editor = () => {
           <LexicalClickableLinkPlugin />
           <FloatingTextFormatToolbarPlugin />
         </NewTablePlugin> */}
-
 
         <RichTextPlugin
           contentEditable={
@@ -194,20 +158,18 @@ const Editor = () => {
         <CheckListPlugin />
         <HorizontalRulePlugin />
         <TabIndentationPlugin />
+        <LayoutPlugin />
+        <StickyPlugin />
 
         <AutoLinkPlugin />
         <LinkPlugin />
         <LexicalClickableLinkPlugin />
 
+        <HashtagPlugin />
 
         {floatingAnchorElem && !isSmallWidthViewport && (
           <>
-            {/* <DraggableBlockPlugin anchorElem={floatingAnchorElem} /> */}
-            <FloatingLinkEditorPlugin
-              // anchorElem={floatingAnchorElem}
-              isLinkEditMode={isLinkEditMode}
-              setIsLinkEditMode={setIsLinkEditMode}
-            />
+            <FloatingLinkEditorPlugin isLinkEditMode={isLinkEditMode} setIsLinkEditMode={setIsLinkEditMode} />
             {/* <TableCellActionMenuPlugin
               anchorElem={floatingAnchorElem}
               cellMerge={true}
@@ -222,7 +184,6 @@ const Editor = () => {
         {/* <ActionsPlugin isRichText={isRichText} /> */}
 
       </div>
-      {/* {showTreeView && <TreeViewPlugin />} */}
     </LexicalComposer>
   );
 };

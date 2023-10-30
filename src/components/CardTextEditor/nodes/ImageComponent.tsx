@@ -379,7 +379,6 @@ export default function ImageComponent({
               <AutoFocusPlugin />
               <MentionsPlugin />
               <LinkPlugin />
-              <EmojisPlugin />
               <HashtagPlugin />
               <KeywordsPlugin />
               <RichTextPlugin
