@@ -1,0 +1,90 @@
+{
+  "Placeholder.css": {
+    "file": "assets/Placeholder-b22db80c.css",
+    "src": "Placeholder.css"
+  },
+  "_Placeholder-ab593eb9.js": {
+    "css": [
+      "assets/Placeholder-b22db80c.css"
+    ],
+    "file": "assets/Placeholder-ab593eb9.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "index.css": {
+    "file": "assets/index-7070a6cd.css",
+    "src": "index.css"
+  },
+  "index.html": {
+    "assets": [
+      "assets/mask-b4237e61.png",
+      "assets/background_texture-270de03c.png",
+      "assets/ui_border_top-3acfd135.png",
+      "assets/ui_border_top-right-2c8a0407.png",
+      "assets/ui_border_right-4e4ca690.png"
+    ],
+    "css": [
+      "assets/index-7070a6cd.css"
+    ],
+    "dynamicImports": [
+      "src/components/CardTextEditor/nodes/ImageComponent.tsx",
+      "src/components/CardTextEditor/nodes/StickyComponent.tsx"
+    ],
+    "file": "assets/index-221db7d6.js",
+    "isEntry": true,
+    "src": "index.html"
+  },
+  "src/assets/img/background_texture.png": {
+    "file": "assets/background_texture-270de03c.png",
+    "src": "src/assets/img/background_texture.png"
+  },
+  "src/assets/img/mask.png": {
+    "file": "assets/mask-b4237e61.png",
+    "src": "src/assets/img/mask.png"
+  },
+  "src/assets/img/ui_border_right.png": {
+    "file": "assets/ui_border_right-4e4ca690.png",
+    "src": "src/assets/img/ui_border_right.png"
+  },
+  "src/assets/img/ui_border_top-right.png": {
+    "file": "assets/ui_border_top-right-2c8a0407.png",
+    "src": "src/assets/img/ui_border_top-right.png"
+  },
+  "src/assets/img/ui_border_top.png": {
+    "file": "assets/ui_border_top-3acfd135.png",
+    "src": "src/assets/img/ui_border_top.png"
+  },
+  "src/components/CardTextEditor/nodes/ImageComponent.css": {
+    "file": "assets/ImageComponent-4ec196fb.css",
+    "src": "src/components/CardTextEditor/nodes/ImageComponent.css"
+  },
+  "src/components/CardTextEditor/nodes/ImageComponent.tsx": {
+    "css": [
+      "assets/ImageComponent-4ec196fb.css"
+    ],
+    "file": "assets/ImageComponent-91a4c1fd.js",
+    "imports": [
+      "index.html",
+      "_Placeholder-ab593eb9.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/CardTextEditor/nodes/ImageComponent.tsx"
+  },
+  "src/components/CardTextEditor/nodes/StickyComponent.css": {
+    "file": "assets/StickyComponent-3135deb4.css",
+    "src": "src/components/CardTextEditor/nodes/StickyComponent.css"
+  },
+  "src/components/CardTextEditor/nodes/StickyComponent.tsx": {
+    "css": [
+      "assets/StickyComponent-3135deb4.css"
+    ],
+    "file": "assets/StickyComponent-ea9b4d69.js",
+    "imports": [
+      "index.html",
+      "_Placeholder-ab593eb9.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/CardTextEditor/nodes/StickyComponent.tsx"
+  }
+}
