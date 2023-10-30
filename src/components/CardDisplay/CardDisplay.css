@@ -1,0 +1,185 @@
+.CardDisplay {
+  position: fixed;
+  width: 38em;
+  height: calc(100% - 4em);
+  right: 4em;
+  bottom: 2em;
+  border-radius: 0.75em;
+  box-shadow: hsl(30deg 50% 25% / 70%) 5px 5px 20px 5px;
+  box-sizing: border-box;
+  background: linear-gradient(150deg, hsl(0deg 6% 45%) 0%, hsl(0, 0%, 20%) 100%);
+  background-position-x: center !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% auto !important;
+  background-clip: calc(100% - 4em);
+  overflow: hidden;
+  --card-bg-color: rgba(40, 40, 40, 100%);
+  --card-editor-accent: hsla(32, 20%, 50%, 0.25);
+}
+
+.CardDisplay .ugly-fix {
+  position: absolute;
+  bottom: 0;
+  height: 4em;
+  width: inherit;
+  background-color: rgba(40, 40, 40, 100%);
+  z-index: -1;
+}
+
+.CardDisplay.hidden {
+  pointer-events: none;
+}
+
+.CardDisplay:before {
+  content: '';
+  z-index: 9;
+  position: absolute;
+  box-sizing: border-box;
+  margin: 1em;
+  width: calc(100% - 2em);
+  height: calc(100% - 4.5em);
+  border: 0.2em solid var(--book-medium);
+  border-radius: 0.75em;
+  pointer-events: none;
+}
+
+.CardDisplay .card-display {
+  overflow-y: auto;
+  height: inherit;
+  width: inherit;
+  display: inline-grid;
+  grid-template-rows: 5.5em 20em min-content max-content;
+  box-shadow: 0 4em 0 var(--card-bg-color);
+}
+
+.CardDisplay .card-display::-webkit-scrollbar {
+  width: 0.30em;
+}
+
+.CardDisplay .card-display::-webkit-scrollbar-track {
+  background: hsla(0, 0%, 20%, 1);
+}
+
+.CardDisplay .card-display::-webkit-scrollbar-thumb {
+  background: hsl(45deg 40% 70% / 50%);
+}
+
+.CardDisplay .card-header {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 1.75em;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.CardDisplay .card-header button {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  padding: 0.2em;
+  background-color: hsla(0, 0%, 100%, 0.1);
+  box-shadow: hsla(0, 0%, 0%, 0.25) 0px 2px 8px;
+  border-radius: 5em;
+  border: none;
+  backdrop-filter: blur(4px);
+  font-size: 1.5em;
+  color: hsl(0, 0%, 75%);
+  cursor: pointer;
+}
+
+.CardDisplay .card-header button:hover {
+  color: hsl(0, 0%, 100%);
+  transition: all 0.25s;
+}
+
+
+
+
+
+
+
+
+.CardDisplay .card-title,
+.CardDisplay .card-content {
+  position: sticky;
+  top: 2em;
+  background: var(--card-bg-color);
+}
+
+.CardDisplay .card-title {
+  z-index: 1;
+  /* box-shadow: 0px -40px 40px 10px var(--card-bg-color); */
+  box-shadow: 0px -40px 40px 22px var(--card-bg-color)
+}
+
+.CardDisplay .card-title::after {
+  content: '';
+  position: absolute;
+  margin-left: 2em;
+  width: calc(100% - 4em);
+  border-bottom: 0.25em solid var(--card-editor-accent);
+}
+
+.CardDisplay .card-title .card-label {
+  font-family: 'IM Fell DW Pica';
+  font-size: 2em;
+  text-align: center;
+  color: hsl(40, 40%, 90%);
+  padding-bottom: 0.1em;
+  clip-path: inset(-120px 0px 0px 0px);
+}
+
+.CardDisplay .card-title .card-description {
+  font-family: 'Asul';
+  font-size: 0.85em;
+  text-align: center;
+  color: hsl(40, 60%, 75%);
+  padding-bottom: 2em;
+}
+
+.CardDisplay .card-title .card-sections {
+  font-size: 1em;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 0.25em;
+}
+
+.CardDisplay .card-title .card-sections .card-section {
+  font-family: 'IM Fell DW Pica';
+  color: var(--book-medium);
+  user-select: none;
+  cursor: pointer;
+}
+
+.CardDisplay .card-title .card-sections .card-section:hover {
+  color: var(--book-light);
+}
+
+.CardDisplay .card-content {
+  font-family: 'Asul';
+  padding: 0.75em 2em 2em 2em;
+  color: hsl(40, 40%, 90%);
+  z-index: 0;
+  box-shadow: 0em 40em 0em 40em var(--card-bg-color);
+}
+
+.CardDisplay .card-tools {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  display: flex;
+  gap: 0.5em;
+}
+
+
+
+
+.CardDisplay .card-content input {
+  background: hsla(20, 10%, 45%, 0.2);
+  color: var(--book-light);
+  height: 1.5em;
+}

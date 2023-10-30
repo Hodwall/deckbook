@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=IM+Fell+English+SC&family=IM+Fell+Great+Primer+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#root {
+  --media-breakpoint: 500px;
+  --book-disabled: hsl(30, 30%, 70%);
+  --book-light: hsl(30, 20%, 60%);
+  --book-medium: hsl(30, 20%, 50%);
+  --book-dark: hsl(30, 20%, 40%);
+}
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0px;
+  background: #f9f9f9 url(./assets/img/background_texture.png) repeat;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 67px auto 60px;
+  grid-template-rows: 2em auto;
+}
+
+.App>.border-top-left {
+  background: url(./assets/img/ui_border_top.png);
+}
+
+.App>.border-top-center {
+  background: url(./assets/img/ui_border_top.png) repeat-x;
+}
+
+.App>.border-top-right {
+  background: url(./assets/img/ui_border_top-right.png);
+}
+
+.App>.border-right {
+  background: url(./assets/img/ui_border_right.png) repeat-y;
+}

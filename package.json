@@ -1,0 +1,49 @@
+{
+  "name": "deckbook",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --base=./",
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "@lexical/hashtag": "^0.12.2",
+    "@lexical/link": "^0.12.2",
+    "@lexical/list": "^0.12.2",
+    "@lexical/markdown": "^0.12.2",
+    "@lexical/react": "^0.12.2",
+    "@lexical/rich-text": "^0.12.2",
+    "@lexical/selection": "^0.12.2",
+    "@lexical/table": "^0.12.2",
+    "@lexical/utils": "^0.12.2",
+    "lexical": "^0.12.2",
+    "react": "18.2.0",
+    "react-color": "2.19.3",
+    "react-dom": "18.2.0",
+    "react-icons": "4.8.0",
+    "react-spring": "9.7.1",
+    "react-tiny-popover": "^7.2.4",
+    "react-tooltip": "^5.21.5",
+    "zustand": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "@vitejs/plugin-react": "3.1.0",
+    "gh-pages": "^3.2.3",
+    "typescript": "4.9.3",
+    "vite": "4.2.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "fast-xml-parser@<4.2.4": ">=4.2.4",
+      "vite@>=4.2.0 <4.2.3": ">=4.2.3",
+      "semver@<5.7.2": ">=5.7.2",
+      "semver@>=6.0.0 <6.3.1": ">=6.3.1",
+      "postcss@<8.4.31": ">=8.4.31"
+    }
+  }
+}

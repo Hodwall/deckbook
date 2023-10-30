@@ -1,0 +1,6 @@
+.CardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em;
+  padding-bottom: 0.5em;
+}

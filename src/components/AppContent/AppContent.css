@@ -1,0 +1,35 @@
+.AppContent {
+  display: grid;
+  grid-template-rows: 2em auto;
+  padding-left: 1em;
+  padding-bottom: 2em;
+  font-size: 1rem;
+  overflow: hidden;
+}
+
+.AppContent>.header {
+  display: flex;
+  flex-direction: row;
+  font-family: 'IM Fell DW Pica';
+  color: var(--book-medium);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.AppContent>.header>* {
+  flex: 1;
+}
+
+.AppContent>.header>*:last-child {
+  text-align: end;
+}
+
+.AppContent>.content {
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.AppContent>.content>* {
+  flex-basis: 100%;
+}
