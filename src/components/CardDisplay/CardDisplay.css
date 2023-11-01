@@ -187,7 +187,8 @@
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 800px),
+(max-height: 500px) {
   .CardDisplay {
     width: 100vw;
     /* height: calc(100% - 4em); */

@@ -24,13 +24,14 @@
 }
 
 .Collections>.title {
-  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
   font-family: 'IM Fell DW Pica';
-  font-size: 2.5em;
+  font-size: 3em;
   font-weight: bold;
   color: var(--book-dark);
   text-shadow: 1px 1px 14px hsla(40, 42%, 75%, 0.80);
   text-align: center;
+  line-height: 1em;
   user-select: none;
   overflow: hidden;
 }
