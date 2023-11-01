@@ -1,5 +1,6 @@
 div.editor {
   border-bottom: 0.2em dashed var(--card-editor-accent);
+  overflow-x: hidden;
 }
 
 
@@ -40,7 +41,7 @@ div.editor {
 
 
 .editor hr {
-  border: 0.1em solid var(--book-dark);
+  border: 1px solid hsl(42, 100%, 34%);
 }
 
 
@@ -865,6 +866,8 @@ i.page-break,
 }
 
 .PlaygroundEditorTheme__quote {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
   border-left-color: hsl(30, 10%, 25%);
   padding-left: 10px;
   color: var(--book-light);
@@ -1640,11 +1643,12 @@ button.action-button:disabled {
 
 .toolbar {
   display: flex;
-  flex-wrap: nowrap;
+  /* flex-wrap: nowrap; */
+  flex-wrap: wrap;
   gap: 0.2em;
   margin-bottom: 1px;
   vertical-align: middle;
-  height: 2em;
+  /* height: 2em; */
   position: sticky;
   top: 9.6em;
   z-index: 2;

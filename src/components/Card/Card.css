@@ -21,7 +21,8 @@
 
 .Card:before {
   content: '';
-  border: 0.15em solid hsl(45deg 40% 70% / 50%);
+  /* border: 0.15em solid hsl(45deg 40% 70% / 50%); */
+  border: 2px solid hsl(45deg 40% 70% / 50%);
   position: absolute;
   flex: 1;
   width: 92%;
@@ -46,14 +47,14 @@
   text-align: center;
   font-family: 'IM Fell DW Pica';
   text-shadow: 1px 1px 10px black;
-  line-height: 1em;
+  line-height: 0.75em;
 }
 
 .Card .label div:first-child {
   font-family: 'IM Fell DW Pica';
   font-size: 1.2em;
   color: hsl(30, 30%, 95%);
-  padding-bottom: 0.1em;
+  padding-bottom: 0.3em;
 }
 
 .Card .label div:last-child {

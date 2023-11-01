@@ -3,8 +3,8 @@
   display: grid;
   grid-template-rows: 2em auto;
   padding: 0.75em;
-  width: 9em;
-  height: 22em;
+  width: 8em;
+  height: 20em;
   background-color: linear-gradient(150deg, hsl(0deg 6% 45%) 0%, hsl(0, 0%, 20%) 100%);
   background-size: cover !important;
   background-position: center !important;
@@ -60,4 +60,5 @@
   color: hsl(30, 30%, 95%);
   text-shadow: 1px 1px 10px black;
   line-height: 1em;
+  overflow: hidden;
 }

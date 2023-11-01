@@ -35,17 +35,18 @@
   z-index: 9;
   position: absolute;
   box-sizing: border-box;
-  margin: 1em;
-  width: calc(100% - 2em);
-  height: calc(100% - 4.5em);
-  border: 0.2em solid var(--book-medium);
+  margin: 0.75em;
+  width: calc(100% - 1.5em);
+  height: calc(100% - 4em);
+  border: 2px solid var(--book-medium);
   border-radius: 0.75em;
   pointer-events: none;
 }
 
 .CardDisplay .card-display {
   overflow-y: auto;
-  height: inherit;
+  height: calc(100% - 4em);
+  /* height: inherit; */
   width: inherit;
   display: inline-grid;
   grid-template-rows: 5.5em 20em min-content max-content;
@@ -112,16 +113,15 @@
 
 .CardDisplay .card-title {
   z-index: 1;
-  /* box-shadow: 0px -40px 40px 10px var(--card-bg-color); */
   box-shadow: 0px -40px 40px 22px var(--card-bg-color)
 }
 
 .CardDisplay .card-title::after {
   content: '';
   position: absolute;
-  margin-left: 2em;
-  width: calc(100% - 4em);
-  border-bottom: 0.25em solid var(--card-editor-accent);
+  margin-left: 1.5em;
+  width: calc(100% - 3em);
+  border-bottom: 3px solid hsl(40, 15%, 25%);
 }
 
 .CardDisplay .card-title .card-label {
@@ -150,18 +150,20 @@
 
 .CardDisplay .card-title .card-sections .card-section {
   font-family: 'IM Fell DW Pica';
-  color: var(--book-medium);
+  color: hsl(40, 15%, 35%);
   user-select: none;
   cursor: pointer;
 }
 
 .CardDisplay .card-title .card-sections .card-section:hover {
   color: var(--book-light);
+  color: hsl(40, 15%, 45%);
+  transition: all 0.25s;
 }
 
 .CardDisplay .card-content {
   font-family: 'Asul';
-  padding: 0.75em 2em 2em 2em;
+  padding: 0.75em 1.5em 2em 1.5em;
   color: hsl(40, 40%, 90%);
   z-index: 0;
   box-shadow: 0em 40em 0em 40em var(--card-bg-color);
@@ -170,7 +172,7 @@
 .CardDisplay .card-tools {
   position: absolute;
   bottom: 1em;
-  left: 1em;
+  left: 0.75em;
   display: flex;
   gap: 0.5em;
 }
@@ -182,4 +184,24 @@
   background: hsla(20, 10%, 45%, 0.2);
   color: var(--book-light);
   height: 1.5em;
+}
+
+
+@media (max-width: 800px) {
+  .CardDisplay {
+    width: 100vw;
+    /* height: calc(100% - 4em); */
+    height: 100%;
+    right: 0;
+    bottom: 0;
+  }
+
+  .CardDisplay .card-content {
+    width: 89vw;
+  }
+
+  .CardDisplay .card-display {
+    grid-template-rows: 5.5em 20em min-content max-content;
+    height: calc(100% - 4em);
+  }
 }
