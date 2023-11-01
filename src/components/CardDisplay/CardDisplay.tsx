@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 import CardTags from '../CardTags/CardTags';
 import { MdClose } from 'react-icons/md';
 import './CardDisplay.css';
-import TagSearch from '../../sections/TagSearch';
+import TagSearch from '../../sections/TagSearch/TagSearch';
 import CardTextEditor from '../CardTextEditor/CardTextEditor';
 import UpdateCardDialog from '../UpdateCardDialog/UpdateCardDialog';
 

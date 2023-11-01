@@ -31,6 +31,7 @@ interface ICardStore {
   removeTagFromAllCards: (tag: number) => void,
   addContentToCard: (id: number, content: any) => void,
   updateCard: (id: number, label: string, description: string, background: string) => void,
+  updateCards: (cards: ICard[]) => void,
 }
 
 const useCardStore = create<ICardStore>((set) => ({
@@ -103,6 +104,19 @@ const useCardStore = create<ICardStore>((set) => ({
     }
     localStorage.setItem('deckbook-cards', JSON.stringify([...cards_]));
     return { cards: [...cards_] };
+  }),
+  updateCards: (cards) => set((state) => {
+    let stored_cards = [...state.cards];
+    cards.forEach((card) => {
+      const index = stored_cards.findIndex((c) => c.id === card.id);
+      if (index === -1) {
+        stored_cards.push(card);
+      } else {
+        stored_cards[index] = card;
+      }
+    });
+    localStorage.setItem('deckbook-cards', JSON.stringify([...stored_cards]));
+    return { cards: [...stored_cards] };
   })
 }));
 

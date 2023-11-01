@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
-import useTagStore, { ITag } from "../store/useTagStore";
-import useCollectionStore from "../store/useCollectionStore";
-import Tag from "../components/Tag/Tag";
+import useTagStore, { ITag } from "../../store/useTagStore";
+import useCollectionStore from "../../store/useCollectionStore";
+import Tag from "../../components/Tag/Tag";
 import './TagSearch.css';
 
 

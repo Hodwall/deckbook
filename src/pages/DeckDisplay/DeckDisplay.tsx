@@ -5,7 +5,7 @@ import useCollectionStore from '../../store/useCollectionStore';
 import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
 import DeckTags from '../../components/DeckTags/DeckTags';
-import TagSearch from '../../sections/TagSearch';
+import TagSearch from '../../sections/TagSearch/TagSearch';
 import Toolbar from '../../components/Toolbar/Toolbar';
 import './DeckDisplay.css';
 

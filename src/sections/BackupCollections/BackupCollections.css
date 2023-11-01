@@ -1,0 +1,34 @@
+.backup-collections {
+  font-size: 1rem;
+  display: flex;
+  gap: 0.2em;
+}
+
+.backup-collections button {
+  background-color: hsl(30, 20%, 30%);
+  color: hsl(30, 30%, 88%);
+  font-size: 0.95em;
+  font-family: 'IM Fell DW Pica';
+  border: 0.15em solid hsl(30, 20%, 35%);
+  border-radius: 0.5em;
+  height: 3em;
+  padding: 0 2em;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.backup-collections button:hover {
+  background-color: hsl(30, 20%, 34%);
+  transition: all 0.25s;
+}
+
+.backup-collections button:active {
+  transform: translateY(2px);
+}
+
+.backup-collections button:disabled {
+  background-color: transparent;
+  color: hsl(30, 15%, 50%);
+  border-color: hsl(30, 15%, 60%);
+}

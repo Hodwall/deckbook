@@ -26,6 +26,7 @@ interface IDeckStore {
   addTagToDeck: (id: number, tag: IDeckTag) => void,
   removeTagFromDeck: (id: number, tag: number) => void,
   removeTagFromAllDecks: (tag: number) => void,
+  updateDecks: (decks: IDeck[]) => void,
 }
 
 const useDeckStore = create<IDeckStore>((set) => ({
@@ -83,8 +84,20 @@ const useDeckStore = create<IDeckStore>((set) => ({
     decks_.forEach((deck) => deck.tags = deck.tags.filter((t) => t.id !== tag));
     localStorage.setItem('deckbook-decks', JSON.stringify([...decks_]));
     return { decks: [...decks_] };
+  }),
+  updateDecks: (decks) => set((state) => {
+    let stored_decks = [...state.decks];
+    decks.forEach((deck) => {
+      const index = stored_decks.findIndex((c) => c.id === deck.id);
+      if (index === -1) {
+        stored_decks.push(deck);
+      } else {
+        stored_decks[index] = deck;
+      }
+    });
+    localStorage.setItem('deckbook-decks', JSON.stringify([...stored_decks]));
+    return { decks: [...stored_decks] };
   })
-
 }));
 
 export default useDeckStore;

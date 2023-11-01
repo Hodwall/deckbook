@@ -20,6 +20,7 @@ interface ITagStore {
   removeCardFromTag: (id: number, card_id: number) => void,
   addDeckToTag: (id: number, deck_id: number) => void,
   removeDeckFromTag: (id: number, card_id: number) => void,
+  updateTags: (tags: ITag[]) => void,
 }
 
 
@@ -102,6 +103,19 @@ const useTagStore = create<ITagStore>((set) => ({
       }
     }
     return { tags_ };
+  }),
+  updateTags: (tags) => set((state) => {
+    let stored_tags = [...state.tags];
+    tags.forEach((tag) => {
+      const index = stored_tags.findIndex((c) => c.id === tag.id);
+      if (index === -1) {
+        stored_tags.push(tag);
+      } else {
+        stored_tags[index] = tag;
+      }
+    });
+    localStorage.setItem('deckbook-tags', JSON.stringify(stored_tags));
+    return { tags: stored_tags };
   })
 }));
 

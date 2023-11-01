@@ -23,6 +23,7 @@
 
 .Collection .tools {
   display: flex;
+  gap: 0.5em;
   justify-content: end;
 }
 
@@ -46,6 +47,10 @@
 .Collection .tools button:hover {
   color: hsl(9, 60%, 60%);
   transition: all 0.25s;
+}
+
+.Collection .tools button.active {
+  color: hsl(50, 40%, 70%);
 }
 
 .Collection .label {

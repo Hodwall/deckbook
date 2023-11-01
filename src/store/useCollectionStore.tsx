@@ -8,19 +8,21 @@ interface ICollection {
   background: string,
   decks: number[],
   cards: number[],
-  // tags: string[],
 }
 
 interface ICollectionStore {
   collections: ICollection[],
   active_collection: number | null,
+  export_queue: number[],
   addCollection: (collection: ICollection) => void,
   deleteCollection: (id: number) => void,
   setActiveCollection: (id: number) => void,
   addDeckToCollection: (collection_id: number, deck_id: number) => void,
   addCardToCollection: (collection_id: number, card_id: number) => void,
-  // addTagToCollection: (tag: string) => void,
-  // removeTagFromCollection: (tag: string) => void,
+  addToExportQueue: (collection_id: number) => void,
+  removeFromExportQueue: (collection_id: number) => void,
+  emptyExportQueue: () => void,
+  updateCollections: (collections: ICollection[]) => void,
 }
 
 const useCollectionStore = create<ICollectionStore>((set) => ({
@@ -30,6 +32,7 @@ const useCollectionStore = create<ICollectionStore>((set) => ({
     if (stored_value) return +stored_value * 1;
     else return null;
   })(),
+  export_queue: [],
   addCollection: (collection) => set((state) => {
     let collections = [...state.collections, collection];
     localStorage.setItem('deckbook-collections', JSON.stringify(collections));
@@ -70,31 +73,31 @@ const useCollectionStore = create<ICollectionStore>((set) => ({
     localStorage.setItem('deckbook-collections', JSON.stringify(collections));
     return { collections: collections };
   }),
-  /**/
-  // addTagToCollection: (tag) => set((state) => {
-  //   let collections_ = [...state.collections];
-  //   if (state.active_collection) {
-  //     const collection_index = collections_.findIndex((c) => c.id === state.active_collection);
-  //     if (collection_index !== -1) {
-  //       if (collections_[collection_index].tags.findIndex((t) => t === tag) === -1) {
-  //         collections_[collection_index].tags.push(tag);
-  //       }
-  //     }
-  //   }
-  //   localStorage.setItem('deckbook-collections', JSON.stringify(collections_));
-  //   return { collections: collections_ };
-  // }),
-  // removeTagFromCollection: (tag) => set((state) => {
-  //   let collections_ = [...state.collections];
-  //   if (state.active_collection) {
-  //     const collection_index = collections_.findIndex((c) => c.id === state.active_collection);
-  //     if (collection_index !== -1) {
-  //       collections_[collection_index].tags = collections_[collection_index].tags.filter((t) => t !== tag);
-  //     }
-  //   }
-  //   localStorage.setItem('deckbook-collections', JSON.stringify(collections_));
-  //   return { collections: collections_ };
-  // }),
+  addToExportQueue: (collection_id) => set((state) => {
+    if (!state.export_queue.includes(collection_id)) {
+      return { export_queue: [...state.export_queue, collection_id] };
+    }
+    return state;
+  }),
+  removeFromExportQueue: (collection_id) => set((state) => {
+    return { export_queue: [...state.export_queue.filter((c) => c != collection_id)] };
+  }),
+  emptyExportQueue: () => set(() => {
+    return { export_queue: [] };
+  }),
+  updateCollections: (collections) => set((state) => {
+    let stored_collections = [...state.collections];
+    collections.forEach((collection) => {
+      const index = stored_collections.findIndex((c) => c.id === collection.id);
+      if (index === -1) {
+        stored_collections.push(collection);
+      } else {
+        stored_collections[index] = collection;
+      }
+    });
+    localStorage.setItem('deckbook-collections', JSON.stringify(stored_collections));
+    return { collections: stored_collections };
+  })
 }));
 
 export default useCollectionStore;
