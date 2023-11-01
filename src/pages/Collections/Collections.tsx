@@ -29,7 +29,7 @@ const Collections = () => {
       </CustomSection>
       <Toolbar>
         <CreateCollectionDialog />
-        <Button onClick={() => setSection(section ? null : 'backup-collection')} >LOAD / SAVE COLLECTIONS</Button>
+        <button onClick={() => setSection(section ? null : 'backup-collection')} className={`${section === 'backup-collection' ? 'active' : ''}`} >LOAD / SAVE COLLECTIONS</button>
       </Toolbar>
       <div className="results">
         {

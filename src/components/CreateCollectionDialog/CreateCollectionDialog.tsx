@@ -29,7 +29,7 @@ const CreateCollectionDialog = () => {
 
   return (
     <>
-      <Button onClick={() => setShowDialog(true)}>CREATE COLLECTION</Button>
+      <button onClick={() => setShowDialog(true)}>CREATE COLLECTION</button>
       <Dialog
         className={'CreateCollectionDialog'}
         label={'NEW COLLECTION'}

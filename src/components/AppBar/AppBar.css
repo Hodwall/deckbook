@@ -3,11 +3,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-  padding: 0.5em;
-  border-right: 0.15em solid var(--book-light);
-  color: var(--book-light);
-  text-align: center;
-  font-weight: bold;
+  padding: 0em 0.5em 1em 0.5em;
+  border-right: 2px solid hsl(35, 25%, 70%);
 }
 
 .AppBarButton {
@@ -15,11 +12,10 @@
   justify-content: center;
   align-items: center;
   height: 1.5em;
-  border: 0.15em solid var(--book-light);
-  border-radius: 0.25em;
-  background: transparent;
+  border: none;
+  border-radius: 0.20em;
+  background: hsl(35, 30%, 72%);
   font-size: 1.5em;
-  font-family: 'IM Fell DW Pica';
   font-weight: bold;
   color: var(--book-light);
   cursor: pointer;
@@ -28,16 +24,19 @@
 .AppBarButton:hover {
   border-color: var(--book-medium);
   color: var(--book-medium);
+  transition: all 0.25s;
 }
 
 .AppBarButton.active {
-  border-color: var(--book-dark);
-  color: var(--book-dark);
+  background-color: hsl(30, 18%, 42%);
+  color: white;
+  transition: all 0.25s;
 }
 
 .AppBarButton.disabled {
-  border-color: var(--book-disabled);
-  color: var(--book-disabled);
+  border: 2px solid hsl(35, 30%, 70%);
+  background-color: transparent;
+  color: hsl(35, 30%, 70%);
   pointer-events: none;
 }
 
@@ -51,4 +50,11 @@
   font-weight: normal;
   color: var(--book-medium);
   text-transform: capitalize;
+}
+
+.AppBar-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-top: auto;
 }

@@ -15,7 +15,7 @@ const Cards = () => {
   return (
     <div className="Cards">
       <img className="background" src={collection?.background} />
-      <div className="title">CARDS IN <span>{collection?.label}</span> COLLECTION</div>
+      <div className="title">CARDS IN <span>{collection?.label}</span></div>
       <div className="sections"></div>
       <Toolbar>
         <CreateCardDialog />

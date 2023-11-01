@@ -1,13 +1,33 @@
 .Toolbar {
   display: flex;
   justify-content: center;
-  gap: 1em;
-  padding-bottom: 1.5em;
+  gap: 0.5em;
+  padding-bottom: 1em;
 }
 
 .Toolbar .separator {
-  height: 0.2em;
+  height: 3px;
   align-self: center;
-  background-color: var(--book-dark);
+  background-color: hsl(30, 18%, 42%);
   flex: 1;
+}
+
+.Toolbar button {
+  background-color: hsl(30, 18%, 42%);
+  color: hsl(30, 25%, 90%);
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.25em 0.5em;
+  font-family: 'IM Fell DW Pica';
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.Toolbar button:active {
+  transform: translateY(2px);
+}
+
+.Toolbar button.active {
+  background-color: hsl(40, 25%, 55%);
 }

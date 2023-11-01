@@ -6,6 +6,7 @@ import { Tooltip } from 'react-tooltip';
 const AppBarButton = (props: {
   section: string,
   children: any,
+  disabled?: boolean,
 }) => {
   const [section, setSection] = useNavigationStore((state) => [state.section, state.setSection]);
   const active_collection = useCollectionStore((state) => state.active_collection);
@@ -14,7 +15,7 @@ const AppBarButton = (props: {
       className={`
                 AppBarButton 
                 ${section === props.section ? 'active' : ''} 
-                ${!active_collection && (props.section === 'decks' || props.section === 'cards') ? 'disabled' : ''}
+                ${(props.disabled || (!active_collection && (props.section === 'decks' || props.section === 'cards'))) ? 'disabled' : ''}
             `}
       onClick={() => setSection(props.section)}
       data-tooltip-id="appbarbutton-tooltip"
