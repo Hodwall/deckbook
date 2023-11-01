@@ -873,6 +873,29 @@ i.page-break,
   color: var(--book-light);
 }
 
+.PlaygroundEditorTheme__ul,
+.PlaygroundEditorTheme__ol1 {
+  margin-left: 20px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.PlaygroundEditorTheme__listItem {
+  margin: 0;
+}
+
+.PlaygroundEditorTheme__listItemChecked::before {
+  height: 12px;
+  width: 12px;
+  border-color: hsl(42, 100%, 34%);
+  background-color: hsl(42, 100%, 34%);
+}
+
+.PlaygroundEditorTheme__listItemChecked::after {
+  top: 4px;
+  left: 5px;
+}
+
 
 .PlaygroundEditorTheme__layoutContaner {
   gap: 0;

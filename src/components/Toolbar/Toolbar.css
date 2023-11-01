@@ -24,10 +24,19 @@
   transition: background-color 0.25s;
 }
 
+.Toolbar button:hover {
+  background-color: hsl(30, 18%, 36%);
+  transition: background-color 0.25s;
+}
+
+.Toolbar button.active:hover {
+  background-color: hsl(38, 30%, 44%);
+}
+
 .Toolbar button:active {
   transform: translateY(2px);
 }
 
 .Toolbar button.active {
-  background-color: hsl(40, 25%, 55%);
+  background-color: hsl(38, 30%, 50%);
 }
