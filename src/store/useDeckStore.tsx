@@ -13,6 +13,7 @@ interface IDeck {
   label: string,
   background: string,
   tags: IDeckTag[],
+  isPinned?: boolean,
 }
 
 interface IDeckStore {
@@ -22,11 +23,12 @@ interface IDeckStore {
   deleteDeck: (id: number) => void,
   deleteDeckList: (list: number[]) => void,
   deleteAllDecks: () => void,
-  setActiveDeck: (id: number) => void,
+  setActiveDeck: (id: number | null) => void,
   addTagToDeck: (id: number, tag: IDeckTag) => void,
   removeTagFromDeck: (id: number, tag: number) => void,
   removeTagFromAllDecks: (tag: number) => void,
   updateDecks: (decks: IDeck[]) => void,
+  togglePinDeck: (id: number) => void,
 }
 
 const useDeckStore = create<IDeckStore>((set) => ({
@@ -95,6 +97,15 @@ const useDeckStore = create<IDeckStore>((set) => ({
         stored_decks[index] = deck;
       }
     });
+    localStorage.setItem('deckbook-decks', JSON.stringify([...stored_decks]));
+    return { decks: [...stored_decks] };
+  }),
+  togglePinDeck: (id) => set((state) => {
+    let stored_decks = [...state.decks];
+    const index = stored_decks.findIndex((d) => d.id === id);
+    if (index !== -1) {
+      stored_decks[index].isPinned = !stored_decks[index].isPinned;
+    }
     localStorage.setItem('deckbook-decks', JSON.stringify([...stored_decks]));
     return { decks: [...stored_decks] };
   })
