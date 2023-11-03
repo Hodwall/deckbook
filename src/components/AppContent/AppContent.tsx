@@ -5,6 +5,7 @@ import Collections from '../../pages/Collections/Collections';
 import Decks from '../../pages/Decks/Decks';
 import DeckDisplay from '../../pages/DeckDisplay/DeckDisplay';
 import './AppContent.css';
+import Board from '../../pages/Board/Board';
 
 
 const AppContent = () => {
@@ -16,6 +17,7 @@ const AppContent = () => {
       case 'decks': return <Decks />;
       case 'cards': return <Cards />;
       case 'deck-display': return <DeckDisplay />;
+      case 'board': return <Board />;
       default: return <span>{section}</span>;
     }
   };
