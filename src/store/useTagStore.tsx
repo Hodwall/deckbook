@@ -28,10 +28,12 @@ const useTagStore = create<ITagStore>((set) => ({
   tags: JSON.parse(localStorage.getItem('deckbook-tags') || '[]'),
   createTag: (tag, card_id, deck_id) => set((state) => {
     let tags_ = state.tags;
-    if (state.tags.findIndex((t) => t.label === tag) === -1) {
+    const active_collection = useCollectionStore.getState().active_collection;
+    let collection_tags = tags_.filter((t) => t.collection_id === active_collection);
+    if (collection_tags.findIndex((t) => t.label === tag) === -1) {
       const tag_: ITag = {
         id: Date.now(),
-        collection_id: useCollectionStore.getState().active_collection || -1,
+        collection_id: active_collection || -1,
         label: tag,
         decks: [],
         cards: [],
