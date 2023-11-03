@@ -62,7 +62,6 @@ const useDeckStore = create<IDeckStore>((set) => ({
     localStorage.setItem('deckbook-decks-active', JSON.stringify(id));
     return { active_deck: id };
   }),
-
   addTagToDeck: (id, tag) => set((state) => {
     let decks_ = [...state.decks];
     const deck_index = decks_.findIndex((d) => d.id === id);

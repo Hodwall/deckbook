@@ -1,0 +1,62 @@
+.CardStatsItem .value {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 1em 0;
+  gap: 1em;
+  overflow: hidden;
+}
+
+.CardStatsItem .weight {
+  text-align: right;
+}
+
+.CardStatsItem .value>div,
+.CardStatsItem .weight {
+  display: inline-flex;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.CardStatsItem input {
+  border: none;
+  appearance: textfield;
+  margin: 0;
+  font-size: 1.25rem;
+  text-align: right;
+  color: hsl(30, 10%, 90%);
+  font-family: 'Asul';
+  padding: 0 0.25em;
+  border-radius: 0.25em;
+  display: block;
+  width: 100%;
+}
+
+.CardStatsItem .value input:focus {
+  outline: none;
+  border: none;
+  color: hsl(30, 50%, 75%);
+}
+
+.CardStatsItem .value svg {
+  font-size: 1.75em;
+}
+
+.CardStatsItem .value .value-platinum svg {
+  color: gainsboro;
+}
+
+.CardStatsItem .value .value-gold svg {
+  color: goldenrod;
+}
+
+.CardStatsItem .value .value-silver svg {
+  color: silver;
+}
+
+.CardStatsItem .value .value-copper svg {
+  color: sienna;
+}
+
+.CardStatsItem .weight svg {
+  color: white;
+}

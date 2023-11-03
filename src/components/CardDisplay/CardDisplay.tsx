@@ -7,6 +7,7 @@ import { MdClose } from 'react-icons/md';
 import './CardDisplay.css';
 import TagSearch from '../../sections/TagSearch/TagSearch';
 import CardTextEditor from '../CardTextEditor/CardTextEditor';
+import CardStats from '../CardStats/CardStats';
 import UpdateCardDialog from '../UpdateCardDialog/UpdateCardDialog';
 
 
@@ -44,7 +45,7 @@ const CardDisplay = () => {
         );
       }
       case 'stats': {
-        return <div>STATS SECTION</div>;
+        return <CardStats cardId={card?.id || -1} />;
       }
     }
   };

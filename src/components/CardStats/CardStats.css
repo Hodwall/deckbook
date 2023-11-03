@@ -1,0 +1,30 @@
+.CardStats .Selector {
+  font-size: 1rem;
+  display: grid;
+  grid-template-rows: min-content min-content;
+  padding: 0.5em 0;
+}
+
+.CardStats .Selector .label {
+  font-size: 0.9em;
+  line-height: 0.5em;
+  color: hsl(40, 40%, 60%);
+}
+
+.CardStats .Selector select {
+  width: 100%;
+  background: hsl(30, 10%, 20%);
+  border: 2px solid hsl(30, 10%, 30%);
+  border-radius: 0.3em;
+  color: hsl(30, 10%, 90%);
+  font-family: 'Asul';
+  font-size: 1em;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  cursor: pointer;
+  appearance: none;
+}
+
+.CardStats .Selector option {
+  font-family: 'Asul';
+}
