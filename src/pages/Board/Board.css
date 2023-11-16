@@ -1,0 +1,152 @@
+.Board {
+  display: grid;
+  grid-template-rows: 3.5em auto;
+}
+
+.Board>img.background {
+  position: absolute;
+  z-index: -1;
+  top: 6rem;
+  right: 0;
+  width: calc(100% - 4em);
+  mask-image: url(../../aspts/img/mask.png);
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-mode: alpha;
+  -webkit-mask-image: url(../../assets/img/mask.png);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  -webkit-mask-mode: alpha;
+  filter: sepia(75%);
+  opacity: 0.35;
+}
+
+.Board .content {
+  display: grid;
+  grid-template-columns: auto 19em;
+  gap: 1em;
+}
+
+.Board .content .main,
+.Board .content .side {
+  display: grid;
+  grid-template-rows: 2em auto;
+}
+
+.Board .main-content {
+  display: grid;
+  grid-template-rows: min-content min-content;
+  padding: 1em 0;
+}
+
+.Board .side-content {
+  padding: 1em 0;
+}
+
+.Board .title {
+  font-size: 2.5rem;
+  font-family: 'IM Fell DW Pica';
+  font-weight: bold;
+  color: var(--book-dark);
+  text-shadow: 1px 1px 14px hsla(40, 42%, 75%, 0.80);
+  user-select: none;
+  overflow: hidden;
+}
+
+
+
+.SideDecks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+
+
+
+.SideDeck {
+  font-size: 1rem;
+  display: grid;
+  grid-template-rows: 2em auto;
+  padding: 0.75em;
+  width: 17em;
+  height: 4em;
+  background-color: linear-gradient(150deg, hsl(0deg 6% 45%) 0%, hsl(0, 0%, 20%) 100%);
+  background-size: cover !important;
+  background-position: center !important;
+  box-shadow: hsl(30deg 50% 15% / 50%) 2px 2px 5px 0px, inset 1px -75px 75px hsla(0, 0%, 0%, 0.5);
+  filter: sepia(70%);
+  border-radius: 0.75em;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.SideDeck.active {
+  transform: translateX(-10px);
+  filter: sepia(0%);
+  transition: all 0.25s;
+}
+
+.SideDeck:hover {
+  filter: sepia(0%);
+  transition: all 0.25s;
+}
+
+.SideDeck .tools {
+  display: flex;
+  justify-content: end;
+}
+
+.SideDeck .tools button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  padding: 0.2em;
+  background-color: hsla(0, 0%, 100%, 0.25);
+  box-shadow: hsla(0, 0%, 0%, 0.25) 0px 2px 8px;
+  border-radius: 5em;
+  border: none;
+  backdrop-filter: blur(4px);
+  font-size: 1.5em;
+  color: hsl(0, 0%, 35%);
+  cursor: pointer;
+}
+
+.SideDeck .tools button:hover {
+  color: hsl(9, 60%, 60%);
+  transition: all 0.25s;
+}
+
+.SideDeck .label {
+  align-self: end;
+  font-family: 'IM Fell DW Pica';
+  font-size: 1.3em;
+  color: hsl(30, 30%, 95%);
+  text-shadow: 1px 1px 10px black;
+  line-height: 1em;
+}
+
+
+.Board .main-content .separator {
+  padding: 0.5em 0;
+  border-top: 3px solid hsl(35, 10%, 40%);
+}
+
+
+.Stats {
+  display: grid;
+  grid-template-rows: min-content auto;
+}
+
+.Stats .base {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+}
+
+.Stats .skills {
+  padding: 0.5em 0;
+}

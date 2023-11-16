@@ -24,6 +24,7 @@
 .Deck .tools {
   display: flex;
   justify-content: end;
+  gap: 0.25em;
 }
 
 .Deck .tools button {
@@ -46,6 +47,10 @@
 .Deck .tools button:hover {
   color: hsl(9, 60%, 60%);
   transition: all 0.25s;
+}
+
+.Deck .tools button.active {
+  color: hsl(35, 60%, 60%);
 }
 
 .Deck .label {

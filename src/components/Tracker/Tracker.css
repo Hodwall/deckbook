@@ -1,0 +1,38 @@
+.Tracker {
+  background: #7d695aa8;
+  border-radius: 0.3em;
+  position: relative;
+}
+
+.Tracker .text {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  padding: 0.4em;
+  font-family: 'Asul';
+  font-weight: bold;
+  color: white;
+  z-index: 9;
+  position: relative;
+}
+
+.Tracker .text .value {
+  display: inline-flex;
+  gap: 0.2em;
+}
+
+.Tracker .progress {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.Tracker .progress .bar {
+  position: absolute;
+  height: 100%;
+  background-color: tomato;
+  border-top-left-radius: 0.3em;
+  border-bottom-left-radius: 0.3em;
+}

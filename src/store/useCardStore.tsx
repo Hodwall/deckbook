@@ -15,6 +15,8 @@ interface ICard {
   background: string,
   decks: number[],
   tags: ICardTag[],
+  type?: number,
+  type_data?: { [key: string]: number; } | null,
   content?: any;
 }
 
@@ -32,6 +34,8 @@ interface ICardStore {
   addContentToCard: (id: number, content: any) => void,
   updateCard: (id: number, label: string, description: string, background: string) => void,
   updateCards: (cards: ICard[]) => void,
+  setCardType: (card_id: number, type: number) => void,
+  setCardTypeData: (card_id: number, data: { [key: string]: number; } | null) => void,
 }
 
 const useCardStore = create<ICardStore>((set) => ({
@@ -117,6 +121,28 @@ const useCardStore = create<ICardStore>((set) => ({
     });
     localStorage.setItem('deckbook-cards', JSON.stringify([...stored_cards]));
     return { cards: [...stored_cards] };
+  }),
+  setCardType: (card_id, type) => set((state) => {
+    let cards_ = [...state.cards];
+    let card_index = cards_.findIndex((c) => c.id === card_id);
+    if (card_index !== -1) {
+      cards_[card_index].type = type;
+    }
+    localStorage.setItem('deckbook-cards', JSON.stringify([...cards_]));
+    return { cards: [...cards_] };
+  }),
+  setCardTypeData: (card_id, type_data) => set((state) => {
+    let cards_ = [...state.cards];
+    let card_index = cards_.findIndex((c) => c.id === card_id);
+    if (card_index !== -1) {
+      if (type_data) {
+        cards_[card_index].type_data = { ...type_data };
+      } else {
+        cards_[card_index].type_data = null;
+      }
+    }
+    localStorage.setItem('deckbook-cards', JSON.stringify([...cards_]));
+    return { cards: [...cards_] };
   })
 }));
 
