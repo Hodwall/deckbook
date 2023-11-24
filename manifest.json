@@ -3,35 +3,37 @@
     "file": "assets/Placeholder-b22db80c.css",
     "src": "Placeholder.css"
   },
-  "_Placeholder-6a212595.js": {
+  "_Placeholder-22c4f8df.js": {
     "css": [
       "assets/Placeholder-b22db80c.css"
     ],
-    "file": "assets/Placeholder-6a212595.js",
+    "file": "assets/Placeholder-22c4f8df.js",
     "imports": [
       "index.html"
     ]
   },
   "index.css": {
-    "file": "assets/index-60342025.css",
+    "file": "assets/index-0d862000.css",
     "src": "index.css"
   },
   "index.html": {
     "assets": [
       "assets/mask-b4237e61.png",
+      "assets/parchment-6ecc0b71.jpg",
+      "assets/parchment-white-darker-2181c363.png",
       "assets/background_texture-270de03c.png",
       "assets/ui_border_top-3acfd135.png",
       "assets/ui_border_top-right-2f1f97ff.png",
       "assets/ui_border_right-4e4ca690.png"
     ],
     "css": [
-      "assets/index-60342025.css"
+      "assets/index-0d862000.css"
     ],
     "dynamicImports": [
       "src/components/CardTextEditor/nodes/ImageComponent.tsx",
       "src/components/CardTextEditor/nodes/StickyComponent.tsx"
     ],
-    "file": "assets/index-3a0bae59.js",
+    "file": "assets/index-2451f55e.js",
     "isEntry": true,
     "src": "index.html"
   },
@@ -42,6 +44,14 @@
   "src/assets/img/mask.png": {
     "file": "assets/mask-b4237e61.png",
     "src": "src/assets/img/mask.png"
+  },
+  "src/assets/img/parchment-white-darker.png": {
+    "file": "assets/parchment-white-darker-2181c363.png",
+    "src": "src/assets/img/parchment-white-darker.png"
+  },
+  "src/assets/img/parchment.jpg": {
+    "file": "assets/parchment-6ecc0b71.jpg",
+    "src": "src/assets/img/parchment.jpg"
   },
   "src/assets/img/ui_border_right.png": {
     "file": "assets/ui_border_right-4e4ca690.png",
@@ -63,10 +73,10 @@
     "css": [
       "assets/ImageComponent-4ec196fb.css"
     ],
-    "file": "assets/ImageComponent-92c1e2d5.js",
+    "file": "assets/ImageComponent-7c49cdcf.js",
     "imports": [
       "index.html",
-      "_Placeholder-6a212595.js"
+      "_Placeholder-22c4f8df.js"
     ],
     "isDynamicEntry": true,
     "src": "src/components/CardTextEditor/nodes/ImageComponent.tsx"
@@ -79,10 +89,10 @@
     "css": [
       "assets/StickyComponent-3135deb4.css"
     ],
-    "file": "assets/StickyComponent-e8bcb081.js",
+    "file": "assets/StickyComponent-ab7a4019.js",
     "imports": [
       "index.html",
-      "_Placeholder-6a212595.js"
+      "_Placeholder-22c4f8df.js"
     ],
     "isDynamicEntry": true,
     "src": "src/components/CardTextEditor/nodes/StickyComponent.tsx"
