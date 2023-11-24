@@ -1,46 +1,13 @@
 .Collections {
   display: grid;
   grid-template-rows: min-content min-content min-content;
-  /* overflow: hidden; */
-  font-size: 1rem;
-}
-
-.Collections>img.background {
-  position: absolute;
-  z-index: 0;
-  top: 6rem;
-  right: 0;
-  width: 100%;
-  mask-image: url(../../assets/img/mask.png);
-  mask-repeat: no-repeat;
-  mask-size: cover;
-  mask-mode: alpha;
-  -webkit-mask-image: url(../../assets/img/mask.png);
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: cover;
-  -webkit-mask-mode: alpha;
-  filter: sepia(70%);
-  opacity: 0.35;
-}
-
-.Collections>.title {
-  margin-bottom: 0.5em;
-  font-family: 'IM Fell DW Pica';
-  font-size: 3em;
-  font-weight: bold;
-  color: var(--book-dark);
-  text-shadow: 1px 1px 14px hsla(40, 42%, 75%, 0.80);
-  text-align: center;
-  line-height: 1em;
-  user-select: none;
-  overflow: hidden;
 }
 
 .Collections>.results {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  gap: 0.75em;
+  gap: 0.5em;
   padding-top: 0.5em;
   overflow-y: auto;
 }

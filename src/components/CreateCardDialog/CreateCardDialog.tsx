@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import useCardStore from '../../store/useCardStore';
 import useDeckStore from '../../store/useDeckStore';
 import useCollectionStore from '../../store/useCollectionStore';
-import Button from "../Button/Button";
 import Dialog from "../Dialog/Dialog";
 import { MdWebStories } from 'react-icons/md';
 import './CreateCardDialog.css';
@@ -15,7 +14,6 @@ const CreateCardDialog = () => {
   const [background, setBackground] = useState('');
 
   const active_collection = useCollectionStore((state) => state.active_collection);
-  const active_deck = useDeckStore((state) => state.active_deck);
   const addCard = useCardStore((state) => state.addCard);
 
   const handleCreate = () => {
@@ -26,7 +24,6 @@ const CreateCardDialog = () => {
         label: label,
         description: description,
         background: background,
-        decks: active_deck ? [active_deck] : [],
         tags: [],
         content: null,
       });
@@ -42,7 +39,7 @@ const CreateCardDialog = () => {
 
   return (
     <>
-      <Button onClick={() => setShowDialog(true)}>CREATE CARD</Button>
+      <button onClick={() => setShowDialog(true)}>CREATE CARD</button>
       <Dialog
         className={'CreateCardDialog'}
         label={'NEW CARD'}
@@ -50,9 +47,9 @@ const CreateCardDialog = () => {
         display={showDialog}
         setDisplay={setShowDialog}
         tools={
-          <Button onClick={handleCreate} disabled={label === '' || background === ''}>
+          <button onClick={handleCreate} disabled={label === '' || background === ''}>
             CREATE
-          </Button>
+          </button>
         }
       >
         <input value={label} onChange={(e: any) => setLabel(e.target.value)} />

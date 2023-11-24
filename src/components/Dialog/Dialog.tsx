@@ -1,4 +1,5 @@
 import { useSpring, animated } from 'react-spring';
+import { createPortal } from 'react-dom';
 import { MdClose } from 'react-icons/md';
 import './Dialog.css';
 
@@ -17,17 +18,22 @@ const Dialog = (props: {
     opacity: props.display ? 1 : 0,
     config: { mass: 15, friction: 220, tension: 6000 }
   });
+  const root: any = document.getElementById('root');
+
   if (props.display) {
-    return (
+    return createPortal(
       <animated.div
         className={`Dialog ${props.display ? '' : 'hidden'} ${props.className ? props.className : ''}`}
         style={{ ...animation }}
+        onClick={(e: any) => e.stopPropagation()}
       >
         <div className="dialog-header">
           <div className="icon">{props.icon}</div>
           <div className="label">{props.label}</div>
           <div className="controls">
-            <button onClick={() => props.setDisplay(false)}><MdClose /></button>
+            <button onClick={() => props.setDisplay(false)}>
+              <MdClose />
+            </button>
           </div>
         </div>
         <div className="dialog-content">{props.children}</div>
@@ -38,7 +44,7 @@ const Dialog = (props: {
           </div>
         }
       </animated.div>
-    );
+      , root);
   } else {
     return null;
   }

@@ -1,55 +1,56 @@
 import { useState, useEffect, useMemo } from "react";
-import useTagStore, { ITag } from "../../store/useTagStore";
-import useCollectionStore from "../../store/useCollectionStore";
+import useCardStore from "../../store/useCardStore";
 import Tag from "../../components/Tag/Tag";
 import './TagSearch.css';
 
 
 const TagSearch = (props: {
-  type: 'card' | 'deck',
-  taggableElement: any,
+  activeTags: string[],
   addHandler: Function,
+  canCreate?: boolean,
 }) => {
-  const [tags, createTag] = useTagStore((state) => [state.tags, state.createTag]);
-  const active_collection = useCollectionStore((state) => state.active_collection);
+  const cards = useCardStore((state) => state.cards);
 
-  const collection_tags = tags.filter((tag) => tag.collection_id === active_collection);
+  const tags = useMemo(() => {
+    return cards.reduce((results: string[], card: any) => {
+      card.tags.forEach((tag: string) => {
+        if (!results.includes(tag)) {
+          results.push(tag);
+        }
+      });
+      return results;
+    }, []);
+  }, [cards]);
 
-  const filteredTags = collection_tags.reduce((results: any[], item: any) => {
-    let tag_found = false;
-    props.taggableElement?.tags.forEach((t: any) => {
-      if (t.id === item.id) {
-        tag_found = true;
+  const filtered_tags = useMemo(() => {
+    return tags.reduce((results: string[], tag: string) => {
+      if (!props.activeTags.includes(tag)) {
+        results.push(tag);
       }
-    });
-    if (!tag_found) {
-      results.push(item);
-    }
-    return results;
-  }, []);
+      return results;
+    }, []);
+  }, [props.activeTags]);
 
   const [searchString, setSearchString] = useState('');
-  const [searchTagResults, setSearchTagResults] = useState(filteredTags);
+  const [searchTagResults, setSearchTagResults] = useState(filtered_tags);
 
   useEffect(() => {
     if (!searchString || searchString === '') {
-      setSearchTagResults(filteredTags);
+      setSearchTagResults(filtered_tags);
     } else {
-      setSearchTagResults(searchTagResults.reduce((results: ITag[], item: ITag) => {
-        if (item.label.search(searchString) !== -1) results.push(item);
+      setSearchTagResults(searchTagResults.reduce((results: string[], tag: string) => {
+        if (tag.search(searchString) !== -1) results.push(tag);
         return results;
       }, []));
     }
-  }, [searchString, props.taggableElement?.tags]);
+  }, [searchString, props.activeTags]);
 
   const handleSearchKeyDown = (e: any) => {
-    if ((e.key === 'Enter') && (searchString.length > 0) && (searchString !== '')) {
-      if (props.type === 'card') {
-        createTag(searchString, props.taggableElement.id);
-      } else {
-        createTag(searchString, undefined, props.taggableElement.id);
+    if (props.canCreate) {
+      if ((e.key === 'Enter') && (searchString.length > 0) && (searchString !== '')) {
+        if (props.addHandler) props.addHandler(searchString);
+        setSearchString('');
       }
-      setSearchString('');
     }
   };
 
@@ -59,12 +60,10 @@ const TagSearch = (props: {
         {
           searchTagResults.map((tag) => (
             <Tag
-              id={tag.id}
-              label={tag.label}
               className={'tag-result'}
+              label={tag}
               onClick={() => {
-                setSearchTagResults(searchTagResults.filter((t) => t.label != tag.label));
-                props.addHandler(props.taggableElement.id, { id: tag.id, label: tag.label });
+                if (props.addHandler) props.addHandler(tag);
                 setSearchString('');
               }}
               canDelete

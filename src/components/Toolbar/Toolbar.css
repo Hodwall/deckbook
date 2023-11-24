@@ -2,13 +2,14 @@
   display: flex;
   justify-content: center;
   gap: 0.5em;
-  padding-bottom: 1em;
+  padding: 1em 0;
+  z-index: 1;
 }
 
 .Toolbar .separator {
   height: 3px;
   align-self: center;
-  background-color: hsl(30, 18%, 42%);
+  background-color: hsl(30, 18%, 48%);
   flex: 1;
 }
 
@@ -17,9 +18,10 @@
   color: hsl(30, 25%, 90%);
   border: none;
   border-radius: 0.5em;
-  padding: 0.25em 0.5em;
-  font-family: 'IM Fell DW Pica';
-  font-size: 1em;
+  padding: 0 0.75em;
+  line-height: 1.7em;
+  font-family: 'Asul';
+  font-size: 0.9em;
   cursor: pointer;
   transition: background-color 0.25s;
 }
@@ -39,4 +41,14 @@
 
 .Toolbar button.active {
   background-color: hsl(38, 30%, 50%);
+  transition: background-color 0.25s;
+
+}
+
+.Toolbar button:disabled {
+  background-color: hsl(38, 10%, 40%);
+  color: hsl(38, 10%, 65%);
+  cursor: none;
+  pointer-events: none;
+  transition: all 0.25s;
 }

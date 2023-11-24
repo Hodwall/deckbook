@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import useDeckStore from '../../store/useDeckStore';
-import Button from '../../components/Button/Button';
 import DeckTags from '../../components/DeckTags/DeckTags';
 import DeckCards from '../../components/DeckCards/DeckCards';
 import TagSearch from '../../sections/TagSearch/TagSearch';
@@ -20,20 +19,24 @@ const DeckDisplay = () => {
     else setSection('');
   };
 
+  const handleAddTag = (tag: string) => {
+    if (deck) addTagToDeck(deck.id, tag);
+  };
+
   return (
     <div className="DeckDisplay">
-      <img className="background" src={deck?.background} />
-      <div className="title">{deck?.label}</div>
+      <img className="content-background" src={deck?.background} />
+      <div className="content-title">{deck?.label}</div>
       <DeckTags isEditMode={section === 'tags'} />
       <div className="CustomSection">
         {
           section === 'tags' &&
-          <TagSearch type='deck' taggableElement={deck} addHandler={addTagToDeck} />
+          <TagSearch activeTags={[...deck?.tags || []]} addHandler={handleAddTag} />
         }
       </div>
       <Toolbar>
         {/* <CreateCardDialog /> */}
-        <Button onClick={() => handleSection('tags')}>EDIT TAGS</Button>
+        <button onClick={() => handleSection('tags')}>EDIT TAGS</button>
       </Toolbar>
       <DeckCards />
     </div >

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import useDeckStore from '../../store/useDeckStore';
-import useCollectionStore from '../../store/useCollectionStore';
-import Button from "../Button/Button";
+import useLibraryStore from '../../store/useLibraryStore';
 import Dialog from "../Dialog/Dialog";
 import { MdLayers } from 'react-icons/md';
 import './CreateDeckDialog.css';
@@ -12,13 +11,13 @@ const CreateDeckDialog = () => {
   const [label, setLabel] = useState('');
   const [background, setBackground] = useState('');
   const addDeck = useDeckStore((state) => state.addDeck);
-  const active_collection = useCollectionStore((state) => state.active_collection);
+  const active_library = useLibraryStore((state) => state.active_library);
 
   const handleCreate = () => {
     if (label !== '' && background !== '') {
       addDeck({
         id: Date.now(),
-        collection_id: active_collection || 0,
+        library_id: active_library || 0,
         label: label,
         background: background,
         tags: [],
@@ -31,7 +30,7 @@ const CreateDeckDialog = () => {
 
   return (
     <>
-      <Button onClick={() => setShowDialog(true)}>CREATE DECK</Button>
+      <button onClick={() => setShowDialog(true)}>CREATE DECK</button>
       <Dialog
         className={'CreateDeckDialog'}
         label={'NEW DECK'}
@@ -39,9 +38,9 @@ const CreateDeckDialog = () => {
         display={showDialog}
         setDisplay={setShowDialog}
         tools={
-          <Button onClick={handleCreate} disabled={label === '' || background === ''}>
+          <button onClick={handleCreate} disabled={label === '' || background === ''}>
             CREATE
-          </Button>
+          </button>
         }
       >
         <input value={label} onChange={(e: any) => setLabel(e.target.value)} />

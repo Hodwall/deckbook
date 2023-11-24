@@ -1,18 +1,25 @@
-import { MdWebStories, MdAutoStories, MdLayers, MdSettings, MdHelp, MdDashboard } from 'react-icons/md'; import AppBarButton from './AppBarButton';
+import { MdWebStories, MdAutoStories, MdLayers, MdSettings, MdHelp, MdDashboard, MdCollectionsBookmark } from 'react-icons/md';
+import { SiBuymeacoffee } from "react-icons/si";
+import { FaMap } from "react-icons/fa";
+import AppBarButton from './AppBarButton';
 import './AppBar.css';
 
 
 const AppBar = () => {
   return (
     <div className="AppBar">
-      <AppBarButton section={'collections'}><MdAutoStories /></AppBarButton>
-      <AppBarButton section={'decks'}><MdLayers /></AppBarButton>
-      <AppBarButton section={'cards'}><MdWebStories /></AppBarButton>
+      <AppBarButton section={'libraries'}><MdAutoStories /></AppBarButton>
       <AppBarButton section={'board'}><MdDashboard /></AppBarButton>
-      <div className="AppBar-bottom">
+      <AppBarButton section={'decks'}><MdLayers /></AppBarButton>
+      <hr />
+      <AppBarButton section={'collections'}><MdCollectionsBookmark /></AppBarButton>
+      <AppBarButton section={'cards'}><MdWebStories /></AppBarButton>
+      <hr />
+      <AppBarButton section={'maps'}><FaMap /></AppBarButton>
+      <div className="bottom-buttons">
         <AppBarButton section={'settings'} disabled><MdSettings /></AppBarButton>
         <AppBarButton section={'help'} disabled><MdHelp /></AppBarButton>
-        <AppBarButton section={'about'} disabled>A</AppBarButton>
+        <AppBarButton section={'about'} disabled><SiBuymeacoffee /></AppBarButton>
       </div>
     </div>
   );

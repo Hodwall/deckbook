@@ -1,10 +1,10 @@
 import { useState, useRef } from 'react';
-import './BackupCollections.css';
+import useCardStore from '../../store/useCardStore';
 import useCollectionStore from '../../store/useCollectionStore';
 import useDeckStore from '../../store/useDeckStore';
-import useCardStore from '../../store/useCardStore';
 import useTagStore from '../../store/useTagStore';
 import { MdInsertDriveFile, MdOutlineInsertDriveFile } from 'react-icons/md';
+import './BackupCollections.css';
 
 
 const BackupCollections = () => {
@@ -12,12 +12,10 @@ const BackupCollections = () => {
   const emptyExportQueue = useCollectionStore((state) => state.emptyExportQueue);
 
   const updateCollections = useCollectionStore((state) => state.updateCollections);
-  const updateDecks = useDeckStore((state) => state.updateDecks);
   const updateCards = useCardStore((state) => state.updateCards);
   const updateTags = useTagStore((state) => state.updateTags);
 
   const collections = useCollectionStore((state) => state.collections);
-  const decks = useDeckStore((state) => state.decks);
   const cards = useCardStore((state) => state.cards);
   const tags = useTagStore((state) => state.tags);
 
@@ -28,18 +26,15 @@ const BackupCollections = () => {
   const exportCollections = (collection_list: number[]) => {
     const data: any = {
       collections: [],
-      decks: [],
       cards: [],
       tags: []
     };
     collection_list.forEach((collection_id) => {
       const collection = collections.find((c) => c.id === collection_id);
       if (collection) {
-        const decks_in_collection = decks.filter((d) => d.collection_id === collection.id);
         const cards_in_collection = cards.filter((c) => c.collection_id === collection.id);
         const tags_in_collection = tags.filter((t) => t.collection_id === collection.id);
         data.collections.push(collection);
-        data.decks.push(...decks_in_collection);
         data.cards.push(...cards_in_collection);
         data.tags.push(...tags_in_collection);
       }
@@ -60,7 +55,6 @@ const BackupCollections = () => {
       reader.onload = (e: any) => {
         const new_data = JSON.parse(e.target.result);
         updateCollections(new_data.collections);
-        updateDecks(new_data.decks);
         updateCards(new_data.cards);
         updateTags(new_data.tags);
         setSaveFile(null);
@@ -68,7 +62,6 @@ const BackupCollections = () => {
       };
     }
   };
-
 
   const handleExportCollections = () => {
     exportCollections(selected_collections);

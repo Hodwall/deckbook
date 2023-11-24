@@ -33,22 +33,22 @@ body {
 
 .App {
   display: grid;
-  grid-template-columns: 67px auto 60px;
+  grid-template-columns: auto 60px 50px;
   grid-template-rows: 2em auto;
 }
 
-.App>.border-top-left {
-  background: url(./assets/img/ui_border_top.png);
-}
-
-.App>.border-top-center {
+.App .border-top-main {
   background: url(./assets/img/ui_border_top.png) repeat-x;
 }
 
-.App>.border-top-right {
+.App .border-top-right {
   background: url(./assets/img/ui_border_top-right.png);
 }
 
-.App>.border-right {
+.App .border-top-appbar {
+  background-color: hsl(0, 45%, 17%);
+}
+
+.App .border-right {
   background: url(./assets/img/ui_border_right.png) repeat-y;
 }

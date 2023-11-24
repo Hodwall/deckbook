@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import useCardStore from '../../store/useCardStore';
-import Button from "../Button/Button";
 import Dialog from "../Dialog/Dialog";
 import { MdWebStories } from 'react-icons/md';
 import './UpdateCardDialog.css';
@@ -20,7 +19,7 @@ const UpdateCardDialog = (props: {
   const [background, setBackground] = useState('');
 
   const handleUpdate = () => {
-    updateCard(props.cardId, label, description, background);
+    updateCard(props.cardId, label, description, background, card?.collection_id || -1);
     setShowDialog(false);
   };
 
@@ -39,7 +38,6 @@ const UpdateCardDialog = (props: {
   }, [showDialog]);
 
   useEffect(() => {
-    console.log(card?.id);
     if (card) {
       console.log('updating');
       setLabel(card.label);
@@ -54,7 +52,7 @@ const UpdateCardDialog = (props: {
 
   return (
     <>
-      <Button onClick={() => setShowDialog(true)}>EDIT CARD</Button>
+      <button onClick={() => setShowDialog(true)}>EDIT CARD</button>
       <Dialog
         className={'CreateCardDialog'}
         label={'EDIT CARD'}
@@ -63,12 +61,12 @@ const UpdateCardDialog = (props: {
         setDisplay={setShowDialog}
         tools={
           <>
-            <Button onClick={handleUpdate} disabled={label === '' || background === ''}>
+            <button onClick={handleUpdate} disabled={label === '' || background === ''}>
               SAVE CHANGES
-            </Button>
-            <Button onClick={() => setShowDialog(false)} >
+            </button>
+            <button onClick={() => setShowDialog(false)} >
               CANCEL
-            </Button>
+            </button>
           </>
         }
       >

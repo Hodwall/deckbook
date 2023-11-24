@@ -8,19 +8,18 @@ const DeckTags = (props: {
 }) => {
   const active_deck = useDeckStore((state) => state.active_deck);
   const decks = useDeckStore((state) => state.decks);
-  const removeTagFromDeck = useDeckStore((state) => state.removeTagFromDeck);
   const deck = decks.find((d) => d.id === active_deck);
+  const removeTagFromDeck = useDeckStore((state) => state.removeTagFromDeck);
 
   return (
     <div className="DeckTags">
       {deck?.tags.map((tag) => (
         <Tag
-          id={tag.id}
-          label={tag.label}
+          label={tag}
           className={`${props.isEditMode ? 'can-remove' : ''}`}
           onClick={() => {
             if (props.isEditMode) {
-              removeTagFromDeck(deck.id, tag.id);
+              removeTagFromDeck(deck.id, tag);
             }
           }}
         />)

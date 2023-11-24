@@ -7,7 +7,7 @@ const Card = (props: {
   data: any,
 }) => {
   const setActiveCard = useCardStore((state) => state.setActiveCard);
-  const style = props.data.background ? { background: `url(${props.data.background}), linear-gradient(150deg, hsl(0deg 6% 45%) 0%, hsl(0, 0%, 20%) 100%)` } : {};
+  const style = props.data.background ? { background: `url(${props.data.background}), linear-gradient(150deg, hsl(0deg 0% 30%) 0%, hsl(0, 0%, 20%) 100%)` } : {};
 
   return (
     <div className="Card" style={style} onClick={() => setActiveCard(props.data.id)}>
@@ -17,7 +17,6 @@ const Card = (props: {
       </div>
       <div className={'stats'}>
         {(props.data.type === 1 && props.data.type_data) && <StatsItem data={props.data.type_data} />}
-        {/* <div className="card-stat">24</div> */}
       </div>
     </div>
 

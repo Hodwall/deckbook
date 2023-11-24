@@ -1,22 +1,22 @@
 .Button {
-    background-color: transparent;
-    border: 0.2em solid var(--book-dark);
-    border-radius: 0.5em;
-    font-family: 'IM Fell DW Pica';
-    font-size: 1em;
-    color: var(--book-dark);
-    cursor: pointer;
-    transition: all 0.2s;
+  background-color: transparent;
+  border: 0.2em solid var(--book-dark);
+  border-radius: 0.5em;
+  font-family: 'IM Fell DW Pica';
+  font-size: 1em;
+  color: var(--book-dark);
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.Button:hover {
+/* .Button:hover {
     border: 0.2em solid var(--book-medium);
     color: var(--book-medium);
     transition: all 0.2s;
-}
+} */
 
 .Button.disabled {
-    pointer-events: none;
-    border-color: gray;
-    color: gray;
+  pointer-events: none;
+  border-color: gray;
+  color: gray;
 }

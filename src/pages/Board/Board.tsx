@@ -1,25 +1,28 @@
 import { useState, useEffect } from 'react';
-import useCollectionStore from '../../store/useCollectionStore';
+import useLibraryStore from '../../store/useLibraryStore';
 import useDeckStore from '../../store/useDeckStore';
-import DeckCards from '../../components/DeckCards/DeckCards';
+import useCardStore from '../../store/useCardStore';
+
 import Toolbar from '../../components/Toolbar/Toolbar';
+import Card from '../../components/Card/Card';
+
 import './Board.css';
-import SideDecks from './Components/SideDecks';
-import Stats from './Components/Stats';
+import PinnedDecks from './Sections/PinnedDecks';
+
+import DeckCards from '../../components/DeckCards/DeckCards';
 
 
 const Board = () => {
   const [section, setSection] = useState<string | null>(null);
-  const [sideSection, setSideSection] = useState<string | null>(null);
 
-  const [collections, active_collection] = useCollectionStore((state) => [state.collections, state.active_collection]);
-  const collection = collections.find((c) => c.id === active_collection);
+  const [libraries, active_library] = useLibraryStore((state) => [state.libraries, state.active_library]);
+  const library = libraries.find((l) => l.id === active_library);
 
   const [decks, active_deck, setActiveDeck] = useDeckStore((state) => [state.decks, state.active_deck, state.setActiveDeck]);
   const deck = decks.find((d) => d.id === active_deck);
 
   const background = (() => {
-    if (!active_deck) return collection?.background;
+    if (!active_deck) return library?.background;
     else return deck?.background;
   })();
 
@@ -27,42 +30,44 @@ const Board = () => {
     setActiveDeck(null);
   }, []);
 
+
+
+
+
   return (
     <div className="Board">
-      <img className="background" src={background} />
-      <div className="title">{collection?.label}</div>
-      <div className="content">
-        <div className="main">
-          <div className="navigation">
+      <div className="side-section">
+        <div>
+          <div className="title">{library?.label}</div>
+          <div className="section">
             <Toolbar>
-              <button onClick={() => setSection('stats')}>Stats</button>
-              <button onClick={() => setSection(null)}>Skills</button>
-              <button onClick={() => setSection(null)}>Journal</button>
-              <button onClick={() => setSection(null)}>Map</button>
+              <button disabled>Stats</button>
+              <button disabled>Skills</button>
+              <button disabled>Inventory</button>
+              <button disabled>Spells</button>
+              <button onClick={() => setSection(null)}>Pinned Decks</button>
             </Toolbar>
-          </div>
-          <div className="main-content">
-            <div className="board-section">
+            <div className="content">
               {
-                section === 'stats' && <Stats />
+                <PinnedDecks />
               }
             </div>
-            {(section === 'stats' && active_deck) && <div className="separator" />}
-            <DeckCards />
           </div>
         </div>
-        <div className="side">
-          <div className="navigation">
-            <Toolbar>
-              <button className={'active'}>Decks</button>
-              <button disabled>Dice</button>
-
-            </Toolbar>
-          </div>
-          <div className="side-content">
-            {
-              !sideSection && <SideDecks />
-            }
+      </div>
+      <div className="main-section">
+        <img className="content-background" src={background} />
+        <div className="section">
+          {/* <Toolbar>
+            <button onClick={() => setSection('stats')}>Stats</button>
+            <button onClick={() => setSection(null)}>Skills</button>
+            <button onClick={() => setSection(null)}>Inventory</button>
+            <button onClick={() => setSection(null)}>Spells</button>
+          </Toolbar> */}
+          <div className="content">
+            <div className="results">
+              <DeckCards />
+            </div>
           </div>
         </div>
       </div>

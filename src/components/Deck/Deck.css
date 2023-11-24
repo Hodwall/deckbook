@@ -1,10 +1,9 @@
 .Deck {
   font-size: 1rem;
   display: grid;
-  grid-template-rows: 2em auto;
-  padding: 0.75em;
-  width: 18em;
-  height: 6em;
+  grid-template-rows: auto min-content;
+  width: 11em;
+  height: 12em;
   background-color: linear-gradient(150deg, hsl(0deg 6% 45%) 0%, hsl(0, 0%, 20%) 100%);
   background-size: cover !important;
   background-position: center !important;
@@ -23,8 +22,9 @@
 
 .Deck .tools {
   display: flex;
+  gap: 0.5em;
   justify-content: end;
-  gap: 0.25em;
+  padding: 0.5em;
 }
 
 .Deck .tools button {
@@ -34,13 +34,13 @@
   width: 1.2em;
   height: 1.2em;
   padding: 0.2em;
-  background-color: hsla(0, 0%, 100%, 0.25);
+  background-color: hsla(0, 0%, 100%, 0.1);
   box-shadow: hsla(0, 0%, 0%, 0.25) 0px 2px 8px;
   border-radius: 5em;
   border: none;
   backdrop-filter: blur(4px);
   font-size: 1.5em;
-  color: hsl(0, 0%, 35%);
+  color: hsl(0, 0%, 55%);
   cursor: pointer;
 }
 
@@ -53,11 +53,37 @@
   color: hsl(35, 60%, 60%);
 }
 
-.Deck .label {
+.Deck .info {
+  display: grid;
+  grid-template-rows: min-content min-content 1em;
+  background-color: hsla(0, 0%, 20%, 0.6);
+  padding: 0.5em 0.5em 0.2em 0.5em;
+  border-bottom-left-radius: 0.75em;
+  border-bottom-right-radius: 0.75em;
+}
+
+.Deck .info .label {
   align-self: end;
-  font-family: 'IM Fell DW Pica';
-  font-size: 1.4em;
   color: hsl(30, 30%, 95%);
-  text-shadow: 1px 1px 10px black;
+  font-family: 'IM Fell DW Pica';
+  font-size: 1.2em;
   line-height: 1em;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  text-shadow: 1px 1px 10px black;
+}
+
+.Deck .info .description {
+  color: hsl(30, 30%, 75%);
+  font-family: 'Asul';
+  font-size: 0.75em;
+  font-style: italic;
+  padding-bottom: 0.2em;
+}
+
+.Deck .info .stats {
+  color: hsl(30, 30%, 50%);
+  font-family: 'Asul';
+  font-size: 0.75em;
+  text-align: end;
 }

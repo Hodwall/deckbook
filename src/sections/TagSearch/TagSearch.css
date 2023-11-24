@@ -1,8 +1,8 @@
 .TagSearch {
   display: flex;
   flex-direction: column;
-  border-top: 0.2em solid var(--book-medium);
-  padding: 0.5em 0;
+  padding-top: 0.25em;
+  border-top: 2px dotted hsl(30deg, 25%, 70%);
 }
 
 .TagSearch .tag-search-results {
@@ -12,15 +12,15 @@
   gap: 0.25em;
   height: min-content;
   min-height: 1.75em;
-  padding-bottom: 0.75em;
+  padding-bottom: 0.5em;
 }
 
 .TagSearch input {
   display: flex;
   font-size: 1.5em;
-  background: hsla(20, 70%, 15%, 0.2);
+  background: hsla(20, 60%, 15%, 0.15);
   border: unset;
-  border-radius: 0.35em;
+  border-radius: 0.25em;
   font-family: 'IM Fell DW Pica';
   color: hsl(40, 30%, 25%);
   padding: 0em 0.5em;

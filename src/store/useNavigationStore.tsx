@@ -1,13 +1,18 @@
 import { create } from 'zustand';
 
 interface Store {
-    section: string,
-    setSection: (s: string) => void,
+  section: { name: string, item_id?: number | null; },
+  setSection: (section: string, id?: number) => void,
 }
 
 const useNavigationStore = create<Store>((set) => ({
-    section: 'collections',
-    setSection: (s) => set(() => ({ section: s }))
+  section: { name: 'collections' },
+  setSection: (section, id) => set((state) => ({
+    section: {
+      name: section,
+      ...id && { item_id: id },
+    }
+  }))
 }));
 
 export default useNavigationStore;

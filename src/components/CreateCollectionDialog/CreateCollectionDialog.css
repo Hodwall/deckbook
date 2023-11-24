@@ -5,9 +5,9 @@
 
 .CreateCollectionDialog .dialog-content {
   display: grid;
-  grid-template-rows: 2.5em 2.5em 2.5em 2.5em;
+  grid-template-rows: 2.3em 2.2em 2.3em 2.2em;
   gap: 0.1em;
-  padding: 1em 0;
+  padding: 0.75em 0 1em 0;
 }
 
 .CreateCollectionDialog .dialog-content input {
@@ -16,7 +16,7 @@
   box-shadow: inset 1px 1px 2px hsla(0, 0%, 0%, 0.4);
   background-color: hsla(0, 0%, 0%, 0.4);
   font-family: 'IM Fell DW Pica';
-  font-size: 1.25em;
+  font-size: 1.2em;
   height: 1.75em;
   padding: 0 0.5em;
   color: hsl(35, 40%, 85%);
@@ -28,7 +28,7 @@
 }
 
 .CreateCollectionDialog .dialog-content .input-label {
-  color: hsl(40, 30%, 55%);
+  color: hsl(40, 30%, 50%);
   font-family: 'IM Fell DW Pica';
   text-align: center;
   user-select: none;

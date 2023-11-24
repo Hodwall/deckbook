@@ -6,7 +6,6 @@ import useTagStore from '../../store/useTagStore';
 
 
 const Tag = (props: {
-  id: number,
   label: string,
   className?: string,
   onClick?: any,
@@ -26,7 +25,7 @@ const Tag = (props: {
       style={{ ...animation }}
     >
       {props.label}
-      {props.canDelete &&
+      {/* {props.canDelete &&
         <button
           onClick={(e: any) => {
             e.stopPropagation();
@@ -34,7 +33,7 @@ const Tag = (props: {
           }}>
           X
         </button>
-      }
+      } */}
     </animated.div>
   );
 };

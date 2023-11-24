@@ -1,0 +1,35 @@
+.CreateMapDialog .dialog-header .icon {
+  top: 0em;
+  left: 0.31em;
+}
+
+.CreateMapDialog .dialog-content {
+  display: grid;
+  grid-template-rows: 2.3em 2.2em 2.3em 2.2em;
+  gap: 0.1em;
+  padding: 0.75em 0 1em 0;
+}
+
+.CreateMapDialog .dialog-content input {
+  border: none;
+  border-radius: 0.4em;
+  box-shadow: inset 1px 1px 2px hsla(0, 0%, 0%, 0.4);
+  background-color: hsla(0, 0%, 0%, 0.4);
+  font-family: 'IM Fell DW Pica';
+  font-size: 1.2em;
+  height: 1.75em;
+  padding: 0 0.5em;
+  color: hsl(35, 40%, 85%);
+}
+
+.CreateMapDialog .dialog-content input:focus {
+  border: none;
+  outline: none;
+}
+
+.CreateMapDialog .dialog-content .input-label {
+  color: hsl(40, 30%, 50%);
+  font-family: 'IM Fell DW Pica';
+  text-align: center;
+  user-select: none;
+}

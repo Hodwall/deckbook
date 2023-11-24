@@ -1,0 +1,48 @@
+.MapDisplay {
+  position: fixed;
+  height: calc(100% - 4em);
+  right: 6em;
+  top: 1.5em;
+  width: calc(100% - 8em);
+  height: calc(100% - 3em);
+  z-index: 2;
+  box-shadow: 4px 4px 4px black;
+  padding: 1em;
+  border-radius: 0.75em;
+  box-shadow: hsl(30deg 50% 25% / 70%) 5px 5px 20px 5px, inset 0px 0px 70px #5b3c2173;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 4em auto;
+  overflow: scroll;
+  background: #f9f9f9 url(../../assets/img/parchment-white-darker.png) repeat;
+}
+
+.MapDisplay.hidden {
+  pointer-events: none;
+}
+
+.MapDisplay .map-toolbar {
+  display: grid;
+  grid-template-columns: auto min-content;
+}
+
+.MapDisplay .map-toolbar .label {
+  font-family: 'IM Fell DW Pica';
+  font-size: 2.5em;
+  font-weight: bold;
+  color: var(--book-dark);
+  text-shadow: 1px 1px 14px hsla(40, 42%, 75%, 0.80);
+  text-align: center;
+}
+
+.MapDisplay .map-toolbar .tools {
+  padding-top: 2em;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5em;
+}
+
+.MapDisplay .map-content {
+  height: 100%;
+  overflow: hidden;
+}

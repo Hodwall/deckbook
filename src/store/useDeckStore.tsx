@@ -1,18 +1,13 @@
 import { create } from 'zustand';
-import useCollectionStore from './useCollectionStore';
+import useLibraryStore from './useLibraryStore';
 
-
-interface IDeckTag {
-  id: number,
-  label: string,
-}
 
 interface IDeck {
   id: number,
-  collection_id: number,
+  library_id: number,
   label: string,
   background: string,
-  tags: IDeckTag[],
+  tags: string[],
   isPinned?: boolean,
 }
 
@@ -24,9 +19,9 @@ interface IDeckStore {
   deleteDeckList: (list: number[]) => void,
   deleteAllDecks: () => void,
   setActiveDeck: (id: number | null) => void,
-  addTagToDeck: (id: number, tag: IDeckTag) => void,
-  removeTagFromDeck: (id: number, tag: number) => void,
-  removeTagFromAllDecks: (tag: number) => void,
+  addTagToDeck: (id: number, tag: string) => void,
+  removeTagFromDeck: (id: number, tag: string) => void,
+  removeTagFromAllDecks: (tag: string) => void,
   updateDecks: (decks: IDeck[]) => void,
   togglePinDeck: (id: number) => void,
 }
@@ -39,8 +34,8 @@ const useDeckStore = create<IDeckStore>((set) => ({
     else return null;
   })(),
   addDeck: (deck) => set((state) => {
-    const addDeckToCollection = useCollectionStore.getState().addDeckToCollection;
-    addDeckToCollection(deck.collection_id, deck.id);
+    const addDeckToLibrary = useLibraryStore.getState().addDeckToLibrary;
+    addDeckToLibrary(deck.library_id, deck.id);
     localStorage.setItem('deckbook-decks', JSON.stringify([...state.decks, deck]));
     return { decks: [...state.decks, deck] };
   }),
@@ -65,7 +60,7 @@ const useDeckStore = create<IDeckStore>((set) => ({
   addTagToDeck: (id, tag) => set((state) => {
     let decks_ = [...state.decks];
     const deck_index = decks_.findIndex((d) => d.id === id);
-    if (deck_index !== -1 && decks_[deck_index].tags.findIndex((t) => t.id === tag.id) === -1) {
+    if (deck_index !== -1 && !decks_[deck_index].tags.includes(tag)) {
       decks_[deck_index].tags.push(tag);
     }
     localStorage.setItem('deckbook-decks', JSON.stringify([...decks_]));
@@ -75,14 +70,14 @@ const useDeckStore = create<IDeckStore>((set) => ({
     let decks_ = [...state.decks];
     const deck_index = decks_.findIndex((d) => d.id === id);
     if (deck_index !== -1) {
-      decks_[deck_index].tags = [...decks_[deck_index].tags.filter((t) => t.id !== tag)];
+      decks_[deck_index].tags = [...decks_[deck_index].tags.filter((t) => t !== tag)];
     }
     localStorage.setItem('deckbook-decks', JSON.stringify([...decks_]));
     return { decks: [...decks_] };
   }),
   removeTagFromAllDecks: (tag) => set((state) => {
     let decks_ = [...state.decks];
-    decks_.forEach((deck) => deck.tags = deck.tags.filter((t) => t.id !== tag));
+    decks_.forEach((deck) => deck.tags = deck.tags.filter((t) => t !== tag));
     localStorage.setItem('deckbook-decks', JSON.stringify([...decks_]));
     return { decks: [...decks_] };
   }),

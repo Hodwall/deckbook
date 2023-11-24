@@ -1,17 +1,17 @@
 .AppContent {
   display: grid;
-  grid-template-rows: 2em auto;
+  grid-template-rows: 1.5em auto;
   padding-left: 1em;
   padding-bottom: 2em;
-  font-size: 1rem;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .AppContent>.header {
   display: flex;
   flex-direction: row;
   font-family: 'IM Fell DW Pica';
+  font-size: 0.9em;
   color: var(--book-medium);
   text-transform: uppercase;
   user-select: none;
@@ -31,4 +31,56 @@
 
 .AppContent>.content>* {
   flex-basis: 100%;
+  z-index: 1;
+}
+
+.AppContent::-webkit-scrollbar {
+  background-color: transparent;
+  width: 4px;
+}
+
+.AppContent::-webkit-scrollbar-track {
+  background-color: hsla(40, 60%, 85%, 0.85);
+}
+
+.AppContent::-webkit-scrollbar-thumb {
+  background-color: hsla(40, 70%, 15%, 0.25);
+}
+
+/* */
+img.content-background {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  padding-right: 60px;
+  width: 100%;
+  mask-image: url(../../assets/img/mask.png);
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-mode: alpha;
+  -webkit-mask-image: url(../../assets/img/mask.png);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  -webkit-mask-mode: alpha;
+  filter: sepia(70%);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+div.content-title {
+  margin-bottom: 0.25em;
+  font-family: 'IM Fell DW Pica';
+  font-size: 2.5em;
+  font-weight: bold;
+  color: var(--book-dark);
+  text-shadow: 1px 1px 14px hsla(40, 42%, 75%, 0.80);
+  text-align: center;
+  line-height: 1em;
+  user-select: none;
+  overflow: hidden;
+}
+
+div.content-title span {
+  color: var(--book-medium);
 }

@@ -1,0 +1,96 @@
+.Map {
+  font-size: 1rem;
+  display: grid;
+  grid-template-rows: min-content auto;
+  width: 14em;
+  height: 8em;
+  background: url(../../assets/img/parchment.jpg) repeat;
+  background-color: linear-gradient(150deg, hsl(0deg 6% 45%) 0%, hsl(0, 0%, 20%) 100%);
+  background-size: cover !important;
+  background-position: center !important;
+  box-shadow: hsl(30deg 50% 15% / 50%) 2px 2px 5px 0px, inset 1px -75px 75px hsla(0, 0%, 0%, 0.5);
+  filter: sepia(70%);
+  border-radius: 0.75em;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.Map:hover {
+  filter: sepia(0%);
+  transition: all 0.25s;
+}
+
+.Map .tools {
+  display: flex;
+  gap: 0.25em;
+  justify-content: end;
+  padding: 0.5em;
+}
+
+.Map .tools button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1em;
+  height: 1.1em;
+  padding: 0.15em;
+  background-color: hsla(0, 0%, 100%, 0.1);
+  box-shadow: hsla(0, 0%, 0%, 0.25) 0px 2px 8px;
+  border-radius: 5em;
+  border: none;
+  backdrop-filter: blur(4px);
+  font-size: 1.5em;
+  color: hsl(0, 0%, 55%);
+  cursor: pointer;
+}
+
+.Map .tools button.red:hover {
+  color: hsl(9, 60%, 60%);
+  transition: all 0.25s;
+}
+
+.Map .tools button:hover {
+  color: hsl(10, 10%, 75%);
+  transition: all 0.25s;
+}
+
+.Map .tools button.active {
+  color: hsl(50, 40%, 70%);
+}
+
+.Map .info {
+  display: grid;
+  grid-template-rows: min-content min-content 1em;
+  /* background-color: hsla(0, 0%, 20%, 0.6); */
+  padding: 0.5em 0.5em 0.2em 0.5em;
+  border-bottom-left-radius: 0.75em;
+  border-bottom-right-radius: 0.75em;
+}
+
+.Map .info .label {
+  align-self: end;
+  color: hsl(30, 30%, 30%);
+  font-family: 'IM Fell DW Pica';
+  font-size: 1.75em;
+  text-align: center;
+  line-height: 1em;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+.Map .info .description {
+  color: hsl(30, 30%, 75%);
+  font-family: 'Asul';
+  font-size: 0.75em;
+  font-style: italic;
+  padding-bottom: 0.2em;
+}
+
+.Map .info .stats {
+  color: hsl(30, 30%, 50%);
+  font-family: 'Asul';
+  font-size: 0.75em;
+  text-align: end;
+}

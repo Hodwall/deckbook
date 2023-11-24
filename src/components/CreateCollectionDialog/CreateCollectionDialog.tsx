@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import useCollectionStore from '../../store/useCollectionStore';
-import Button from "../Button/Button";
 import Dialog from "../Dialog/Dialog";
 import { MdAutoStories } from 'react-icons/md';
 import './CreateCollectionDialog.css';
@@ -18,7 +17,6 @@ const CreateCollectionDialog = () => {
         id: Date.now(),
         label: label,
         background: background,
-        decks: [],
         cards: []
       });
       setLabel('');
@@ -37,9 +35,9 @@ const CreateCollectionDialog = () => {
         display={showDialog}
         setDisplay={setShowDialog}
         tools={
-          <Button onClick={handleCreate} disabled={label === '' || background === ''}>
+          <button onClick={handleCreate} disabled={label === '' || background === ''}>
             CREATE
-          </Button>
+          </button>
         }
       >
         <input value={label} onChange={(e: any) => setLabel(e.target.value)} />

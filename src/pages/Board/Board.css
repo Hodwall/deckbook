@@ -1,152 +1,55 @@
 .Board {
   display: grid;
-  grid-template-rows: 3.5em auto;
+  grid-template-columns: 30em auto;
 }
 
-.Board>img.background {
+.Board::before {
+  content: '';
   position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgb(46, 42, 29);
+  background: linear-gradient(90deg, hsla(25deg, 20%, 15%, 1) 0%, hsla(25deg, 20%, 15%, 0.5) 30%, hsla(25deg, 20%, 15%, 0%) 50%);
+  pointer-events: none;
   z-index: -1;
-  top: 6rem;
-  right: 0;
-  width: calc(100% - 4em);
-  mask-image: url(../../aspts/img/mask.png);
-  mask-repeat: no-repeat;
-  mask-size: cover;
-  mask-mode: alpha;
-  -webkit-mask-image: url(../../assets/img/mask.png);
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: cover;
-  -webkit-mask-mode: alpha;
-  filter: sepia(75%);
-  opacity: 0.35;
 }
 
-.Board .content {
-  display: grid;
-  grid-template-columns: auto 19em;
-  gap: 1em;
+.Board .side-section>div {
+  position: absolute;
+  width: inherit;
 }
 
-.Board .content .main,
-.Board .content .side {
-  display: grid;
-  grid-template-rows: 2em auto;
+.Board .side-section {
+  margin-top: -55px;
+  margin-left: -1em;
+  width: 28em;
+  height: 100%;
+  z-index: 9;
+  padding: 2em 1em 2em 1em;
+  color: hsl(30, 20%, 80%);
 }
 
-.Board .main-content {
-  display: grid;
-  grid-template-rows: min-content min-content;
-  padding: 1em 0;
-}
-
-.Board .side-content {
-  padding: 1em 0;
-}
-
-.Board .title {
+.Board .side-section .title {
+  color: hsl(30, 20%, 80%);
+  font-family: 'IM Fell DW Pica';
   font-size: 2.5rem;
-  font-family: 'IM Fell DW Pica';
-  font-weight: bold;
-  color: var(--book-dark);
-  text-shadow: 1px 1px 14px hsla(40, 42%, 75%, 0.80);
-  user-select: none;
   overflow: hidden;
-}
-
-
-
-.SideDecks {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-}
-
-
-
-
-.SideDeck {
-  font-size: 1rem;
-  display: grid;
-  grid-template-rows: 2em auto;
-  padding: 0.75em;
-  width: 17em;
-  height: 4em;
-  background-color: linear-gradient(150deg, hsl(0deg 6% 45%) 0%, hsl(0, 0%, 20%) 100%);
-  background-size: cover !important;
-  background-position: center !important;
-  box-shadow: hsl(30deg 50% 15% / 50%) 2px 2px 5px 0px, inset 1px -75px 75px hsla(0, 0%, 0%, 0.5);
-  filter: sepia(70%);
-  border-radius: 0.75em;
+  padding-bottom: 0.25em;
   user-select: none;
-  cursor: pointer;
-  transition: all 0.25s;
 }
 
-.SideDeck.active {
-  transform: translateX(-10px);
-  filter: sepia(0%);
-  transition: all 0.25s;
-}
 
-.SideDeck:hover {
-  filter: sepia(0%);
-  transition: all 0.25s;
-}
-
-.SideDeck .tools {
+.PinnedDecks {
   display: flex;
-  justify-content: end;
-}
-
-.SideDeck .tools button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.2em;
-  height: 1.2em;
-  padding: 0.2em;
-  background-color: hsla(0, 0%, 100%, 0.25);
-  box-shadow: hsla(0, 0%, 0%, 0.25) 0px 2px 8px;
-  border-radius: 5em;
-  border: none;
-  backdrop-filter: blur(4px);
-  font-size: 1.5em;
-  color: hsl(0, 0%, 35%);
-  cursor: pointer;
-}
-
-.SideDeck .tools button:hover {
-  color: hsl(9, 60%, 60%);
-  transition: all 0.25s;
-}
-
-.SideDeck .label {
-  align-self: end;
-  font-family: 'IM Fell DW Pica';
-  font-size: 1.3em;
-  color: hsl(30, 30%, 95%);
-  text-shadow: 1px 1px 10px black;
-  line-height: 1em;
-}
-
-
-.Board .main-content .separator {
-  padding: 0.5em 0;
-  border-top: 3px solid hsl(35, 10%, 40%);
-}
-
-
-.Stats {
-  display: grid;
-  grid-template-rows: min-content auto;
-}
-
-.Stats .base {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  flex-wrap: wrap;
+  flex-direction: row;
   gap: 0.5em;
 }
 
-.Stats .skills {
-  padding: 0.5em 0;
+.Deck.pinned-active {
+  transform: translateY(-5px);
+  transition: all 0.25s;
+  filter: sepia(0);
 }

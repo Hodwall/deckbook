@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import useCollectionStore from '../../store/useCollectionStore';
 import BackupCollections from '../../sections/BackupCollections/BackupCollections';
-import Button from '../../components/Button/Button';
 import Collection from '../../components/Collection/Collection';
 import CreateCollectionDialog from '../../components/CreateCollectionDialog/CreateCollectionDialog';
 import Toolbar from '../../components/Toolbar/Toolbar';
-import CustomSection from '../../components/Section/Section';
+import ToolbarDrawer from '../../components/ToolbarDrawer/ToolbarDrawer';
 import './Collections.css';
 
 
@@ -15,18 +14,13 @@ const Collections = () => {
 
   return (
     <div className="Collections">
-      <img className="background" src={'https://images.ctfassets.net/swt2dsco9mfe/1Nilq8hMUskR3Yi9U83VCK/a0880689c08bd4ec189ac2e9cb9515ab/1920x1342-oiwAqx0sa.jpg?q=70'} />
-      <div className="title">COLLECTIONS</div>
-      <CustomSection>
+      <img className="content-background" src={'https://images.ctfassets.net/swt2dsco9mfe/1Nilq8hMUskR3Yi9U83VCK/a0880689c08bd4ec189ac2e9cb9515ab/1920x1342-oiwAqx0sa.jpg?q=70'} />
+      <div className="content-title">COLLECTIONS</div>
+      <ToolbarDrawer>
         {
-          (() => {
-            switch (section) {
-              case 'backup-collection':
-                return <BackupCollections />;
-            }
-          })()
+          section === 'backup-collection' && <BackupCollections />
         }
-      </CustomSection>
+      </ToolbarDrawer>
       <Toolbar>
         <CreateCollectionDialog />
         <button onClick={() => setSection(section ? null : 'backup-collection')} className={`${section === 'backup-collection' ? 'active' : ''}`} >LOAD / SAVE COLLECTIONS</button>

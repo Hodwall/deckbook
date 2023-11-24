@@ -1,0 +1,76 @@
+.Library:first-of-type {
+  font-size: 1rem;
+  width: 7.5em;
+  height: 18.5em;
+  padding: 0.5em;
+}
+
+.Library {
+  font-size: 1rem;
+  display: grid;
+  width: 7.5em;
+  height: 18.5em;
+  padding: 0.5em;
+  grid-template-rows: 2em auto;
+  background-color: linear-gradient(150deg, hsl(0deg 6% 45%) 0%, hsl(0, 0%, 20%) 100%);
+  background-size: cover !important;
+  background-position: center !important;
+  box-shadow: hsl(30deg 50% 15% / 50%) 2px 2px 5px 0px, inset 1px -75px 75px hsla(0, 0%, 0%, 0.5);
+  filter: sepia(70%);
+  border-radius: 0.75em;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.Library:hover {
+  filter: sepia(0%);
+  transition: all 0.25s;
+}
+
+.Library .tools {
+  display: flex;
+  gap: 0.5em;
+  justify-content: end;
+}
+
+.Library .tools button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1em;
+  height: 1.1em;
+  padding: 0.15em;
+  background-color: hsla(0, 0%, 100%, 0.1);
+  box-shadow: hsla(0, 0%, 0%, 0.25) 0px 2px 8px;
+  border-radius: 5em;
+  border: none;
+  backdrop-filter: blur(4px);
+  font-size: 1.5em;
+  color: hsl(0, 0%, 55%);
+  cursor: pointer;
+}
+
+.Library .tools button.red:hover {
+  color: hsl(9, 60%, 60%);
+  transition: all 0.25s;
+}
+
+.Library .tools button:hover {
+  color: hsl(10, 10%, 75%);
+  transition: all 0.25s;
+}
+
+.Library .tools button.active {
+  color: hsl(50, 40%, 70%);
+}
+
+.Library .label {
+  align-self: end;
+  font-family: 'IM Fell DW Pica';
+  font-size: 1.2em;
+  color: hsl(30, 30%, 95%);
+  text-shadow: 1px 1px 10px black;
+  line-height: 1em;
+  overflow: hidden;
+}

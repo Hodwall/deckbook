@@ -1,19 +1,15 @@
 .Card {
-  font-size: 1rem;
+  font-size: 0.94rem;
   display: grid;
   grid-template-rows: auto 1.5em;
-  /* padding: 0.75em;
-  width: 10em;
-  height: 18em; */
-  padding: 0.4em;
+  padding: 0.5em;
   width: 10em;
   height: 18em;
-  background-color: linear-gradient(150deg, hsl(0deg 6% 45%) 0%, hsl(0, 0%, 20%) 100%);
   background-size: cover !important;
   background-position: center !important;
   box-shadow: hsl(30deg 50% 15% / 50%) 2px 2px 5px 0px, inset 1px -75px 75px hsla(0, 0%, 0%, 0.5);
   filter: sepia(70%);
-  border-radius: 0.75em;
+  border-radius: 0.7em;
   user-select: none;
   cursor: pointer;
   transition: all 0.25s;
@@ -21,11 +17,11 @@
 
 .Card:before {
   content: '';
-  /* border: 0.15em solid hsl(45deg 40% 70% / 50%); */
-  border: 2px solid hsl(45deg 40% 70% / 50%);
+  /* border: 0.15em solid hsl(25deg 40% 70% / 50%); */
+  border: 0.15em solid hsl(30deg 30% 60% / 50%);
   position: absolute;
   flex: 1;
-  width: 92%;
+  width: 91%;
   height: 88%;
   justify-self: center;
   align-self: top;
@@ -47,19 +43,19 @@
   text-align: center;
   font-family: 'IM Fell DW Pica';
   text-shadow: 1px 1px 10px black;
-  line-height: 1em;
+  line-height: 1.1em;
 }
 
 .Card .label div:first-child {
   font-family: 'IM Fell DW Pica';
-  font-size: 1.2em;
+  font-size: 1.25em;
   color: hsl(30, 30%, 95%);
-  padding-bottom: 0.3em;
+  padding-bottom: 0.25em;
 }
 
 .Card .label div:last-child {
   font-family: 'Asul';
-  font-size: 0.6em;
+  font-size: 0.65em;
   color: hsl(40, 20%, 70%);
   height: min-content;
   overflow: hidden;
@@ -70,29 +66,20 @@
   display: flex;
   justify-content: end;
   overflow: hidden;
+  padding-top: 0.6em;
 }
-
-/* .Card .stats .card-stat {
-  font-size: 0.8em;
-  font-family: 'Asul';
-  color: black;
-  background-color: hsl(45deg 40% 70% / 50%);
-  border-radius: 0.2em;
-  padding: 0.2em 0.75em;
-} */
-
 
 .Card .StatsItem {
   display: grid;
   grid-template-columns: auto min-content;
   gap: 1em;
-  color: white;
+  color: hsl(30, 30%, 95%);
   font-family: 'Asul';
   font-size: 0.75em;
   flex-direction: row;
   flex-wrap: wrap;
+  flex: 1;
   overflow: hidden;
-  width: 100%;
 }
 
 .Card .StatsItem>.value {
@@ -131,6 +118,6 @@
 }
 
 .Card .StatsItem .weight svg {
-  color: white;
+  color: hsl(30, 30%, 80%);
   font-size: 0.95em !important;
 }

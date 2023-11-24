@@ -1,29 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSpring, animated } from 'react-spring';
 import useCardStore from '../../store/useCardStore';
-import Button from '../Button/Button';
+import useCollectionStore from '../../store/useCollectionStore';
+import useNavigationStore from '../../store/useNavigationStore';
+import TagSearch from '../../sections/TagSearch/TagSearch';
+import CardStats from '../CardStats/CardStats';
 import CardTags from '../CardTags/CardTags';
+import CardTextEditor from '../CardTextEditor/CardTextEditor';
+import UpdateCardDialog from '../UpdateCardDialog/UpdateCardDialog';
 import { MdClose } from 'react-icons/md';
 import './CardDisplay.css';
-import TagSearch from '../../sections/TagSearch/TagSearch';
-import CardTextEditor from '../CardTextEditor/CardTextEditor';
-import CardStats from '../CardStats/CardStats';
-import UpdateCardDialog from '../UpdateCardDialog/UpdateCardDialog';
 
 
 const CardDisplay = () => {
   const [section, setSection] = useState('text');
-  const active_card = useCardStore((state) => state.active_card);
-
-  const [setActiveCard, addTagToCard, deleteCard] = useCardStore((state) => [
+  const app_section = useNavigationStore((state) => state.section);
+  const [active_card, setActiveCard, addTagToCard, deleteCard, updateCard] = useCardStore((state) => [
+    state.active_card,
     state.setActiveCard,
     state.addTagToCard,
-    state.deleteCard
+    state.deleteCard,
+    state.updateCard
   ]);
-
   const cards = useCardStore((state) => state.cards);
   const card = cards.find((card) => card.id === active_card);
-
+  const collections = useCollectionStore((state) => state.collections);
+  const collection = collections.find((c) => c.id === card?.collection_id);
   const style = card?.background ? { background: `url(${card?.background}), rgba(40, 40, 40, 100%)` } : {};
 
   const animation = useSpring({
@@ -32,21 +34,30 @@ const CardDisplay = () => {
     config: { mass: 15, friction: 220, tension: 4000 }
   });
 
-  const getSection = () => {
-    switch (section) {
-      case 'text':
-        return <CardTextEditor />;
-      case 'tags': {
-        return (
-          <div>
-            <CardTags isEditMode />
-            <TagSearch type="card" taggableElement={card} addHandler={addTagToCard} />
-          </div>
-        );
-      }
-      case 'stats': {
-        return <CardStats cardId={card?.id || -1} />;
-      }
+  useEffect(() => {
+    setActiveCard(null);
+  }, [app_section]);
+
+  const handleAddTag = (tag: string) => {
+    if (card) addTagToCard(card.id, tag);
+  };
+
+  const sections: { [key: string]: JSX.Element; } = useMemo(() => {
+    return {
+      'text': <CardTextEditor />,
+      'tags': (
+        <div>
+          <CardTags isEditMode />
+          <TagSearch activeTags={[...card?.tags || []]} addHandler={handleAddTag} canCreate />
+        </div>
+      ),
+      'stats': <CardStats cardId={card?.id || -1} />
+    };
+  }, [card]);
+
+  const handleChangeCollection = (e: any) => {
+    if (card) {
+      updateCard(card.id, card.label, card.description, card.background, +e.target.value);
     }
   };
 
@@ -57,7 +68,7 @@ const CardDisplay = () => {
     >
       <div className={'card-display'}>
         <div className="card-header">
-          <Button onClick={() => setActiveCard(null)}><MdClose /></Button>
+          <button onClick={() => setActiveCard(null)}><MdClose /></button>
         </div>
         <div className="card-img-space" />
         <div className="card-title">
@@ -70,11 +81,16 @@ const CardDisplay = () => {
           </div>
         </div>
         <div className="card-content">
-          {getSection()}
+          {sections[section]}
         </div>
         <div className="card-tools">
-          <Button onClick={() => deleteCard(active_card || -1)}>DELETE CARD</Button>
+          <button className="delete-collection" onClick={() => deleteCard(active_card || -1)}>DELETE CARD</button>
           <UpdateCardDialog cardId={card?.id || -1} />
+          <select className="card-collection" value={collection?.id} onChange={handleChangeCollection}>
+            {
+              collections.map((collection) => <option value={collection.id}><span>{collection.label}</span></option>)
+            }
+          </select>
         </div>
       </div>
     </animated.div>

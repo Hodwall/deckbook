@@ -1,11 +1,7 @@
 import { create } from 'zustand';
 import useCollectionStore from './useCollectionStore';
+import useDeckStore from './useDeckStore';
 
-
-interface ICardTag {
-  id: number,
-  label: string,
-}
 
 interface ICard {
   id: number,
@@ -13,8 +9,7 @@ interface ICard {
   label: string,
   description: string,
   background: string,
-  decks: number[],
-  tags: ICardTag[],
+  tags: string[],
   type?: number,
   type_data?: { [key: string]: number; } | null,
   content?: any;
@@ -26,20 +21,38 @@ interface ICardStore {
   addCard: (card: ICard) => void,
   deleteCard: (id: number) => void,
   deleteCardList: (list: number[]) => void,
+  deleteCardsInCollection: (collection_id: number) => void,
   deleteAllCards: () => void,
   setActiveCard: (id: number | null) => void,
-  addTagToCard: (id: number, tag: ICardTag) => void,
-  removeTagFromCard: (id: number, tag: number) => void,
-  removeTagFromAllCards: (tag: number) => void,
+  addTagToCard: (id: number, tag: string) => void,
+  removeTagFromCard: (id: number, tag: string) => void,
+  removeTagFromAllCards: (tag: string) => void,
   addContentToCard: (id: number, content: any) => void,
-  updateCard: (id: number, label: string, description: string, background: string) => void,
+  updateCard: (id: number, label: string, description: string, background: string, collection: number) => void,
   updateCards: (cards: ICard[]) => void,
   setCardType: (card_id: number, type: number) => void,
   setCardTypeData: (card_id: number, data: { [key: string]: number; } | null) => void,
 }
 
 const useCardStore = create<ICardStore>((set) => ({
-  cards: JSON.parse(localStorage.getItem('deckbook-cards') || '[]'),
+  // cards: JSON.parse(localStorage.getItem('deckbook-cards') || '[]'),
+  cards: (() => {
+    // TEMPORARY FIX UNTIL TESTERS UPDATE THEIR CARDS
+    let cards_ = JSON.parse(localStorage.getItem('deckbook-cards') || '[]');
+    cards_.forEach((card: any) => {
+      card.tags = card.tags.reduce((results: any[], tag: any) => {
+        if (tag) {
+          if (typeof tag !== 'string') {
+            if (!tag.isArray) results.push(tag.label);
+          } else {
+            results.push(tag);
+          }
+        }
+        return results;
+      }, []);
+    });
+    return cards_;
+  })(),
   active_card: null,
   addCard: (card) => set((state) => {
     const addCardToCollection = useCollectionStore.getState().addCardToCollection;
@@ -57,6 +70,11 @@ const useCardStore = create<ICardStore>((set) => ({
     localStorage.setItem('deckbook-cards', JSON.stringify(cards_));
     return { cards: cards_ };
   }),
+  deleteCardsInCollection: (collection_id: number) => set((state) => {
+    let cards_ = [...state.cards.filter((c) => c.collection_id !== collection_id)];
+    localStorage.setItem('deckbook-cards', JSON.stringify(cards_));
+    return { cards: cards_ };
+  }),
   deleteAllCards: () => set(() => {
     localStorage.setItem('deckbook-cards', JSON.stringify([]));
     return { cards: [] };
@@ -64,11 +82,10 @@ const useCardStore = create<ICardStore>((set) => ({
   setActiveCard: (id) => set(() => {
     return { active_card: id };
   }),
-
   addTagToCard: (id, tag) => set((state) => {
     let cards_ = [...state.cards];
     const card_index = cards_.findIndex((d) => d.id === id);
-    if (card_index !== -1 && cards_[card_index].tags.findIndex((t) => t.id === tag.id) === -1) {
+    if (card_index !== 1 && !cards_[card_index].tags.includes(tag)) {
       cards_[card_index].tags.push(tag);
     }
     localStorage.setItem('deckbook-cards', JSON.stringify([...cards_]));
@@ -76,16 +93,21 @@ const useCardStore = create<ICardStore>((set) => ({
   }),
   removeTagFromCard: (id, tag) => set((state) => {
     let cards_ = [...state.cards];
-    const card_index = cards_.findIndex((d) => d.id === id);
+    const card_index = cards_.findIndex((c) => c.id === id);
     if (card_index !== -1) {
-      cards_[card_index].tags = [...cards_[card_index].tags.filter((t) => t.id !== tag)];
+      cards_[card_index].tags = [...cards_[card_index].tags.filter((t) => t !== tag)];
+    }
+    const tag_index = cards_.findIndex((c) => c.tags.includes(tag));
+    if (tag_index !== -1) {
+      useDeckStore.getState().removeTagFromAllDecks(tag);
     }
     localStorage.setItem('deckbook-cards', JSON.stringify([...cards_]));
     return { cards: [...cards_] };
   }),
   removeTagFromAllCards: (tag) => set((state) => {
     let cards_ = [...state.cards];
-    cards_.forEach((card) => card.tags = card.tags.filter((t) => t.id !== tag));
+    cards_.forEach((card) => card.tags = card.tags.filter((t) => t !== tag));
+    useDeckStore.getState().removeTagFromAllDecks(tag);
     localStorage.setItem('deckbook-cards', JSON.stringify([...cards_]));
     return { cards: [...cards_] };
   }),
@@ -98,13 +120,14 @@ const useCardStore = create<ICardStore>((set) => ({
     localStorage.setItem('deckbook-cards', JSON.stringify([...cards_]));
     return { cards: [...cards_] };
   }),
-  updateCard: (id, label, description, background) => set((state) => {
+  updateCard: (id, label, description, background, collection) => set((state) => {
     let cards_ = [...state.cards];
     let card_index = cards_.findIndex((c) => c.id === id);
     if (card_index !== -1) {
       cards_[card_index].label = label;
       cards_[card_index].description = description;
       cards_[card_index].background = background;
+      cards_[card_index].collection_id = collection;
     }
     localStorage.setItem('deckbook-cards', JSON.stringify([...cards_]));
     return { cards: [...cards_] };

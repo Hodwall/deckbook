@@ -1,10 +1,17 @@
 .AppBar {
-  font-size: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-  padding: 0em 0.5em 1em 0.5em;
-  border-right: 2px solid hsl(35, 25%, 70%);
+  padding-bottom: 1em;
+  padding-right: 1em;
+  background-color: hsl(0, 45%, 17%);
+}
+
+.AppBar>.bottom-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-top: auto;
 }
 
 .AppBarButton {
@@ -13,48 +20,42 @@
   align-items: center;
   height: 1.5em;
   border: none;
-  border-radius: 0.20em;
-  background: hsl(35, 30%, 72%);
+  background: transparent;
   font-size: 1.5em;
   font-weight: bold;
-  color: var(--book-light);
   cursor: pointer;
+  color: var(--book-light);
 }
 
 .AppBarButton:hover {
-  border-color: var(--book-medium);
-  color: var(--book-medium);
+  color: hsl(35, 30%, 70%);
   transition: all 0.25s;
 }
 
 .AppBarButton.active {
-  background-color: hsl(30, 18%, 42%);
-  color: white;
+  color: hsl(35, 60%, 90%);
   transition: all 0.25s;
 }
 
 .AppBarButton.disabled {
-  border: 2px solid hsl(35, 30%, 70%);
   background-color: transparent;
-  color: hsl(35, 30%, 70%);
+  color: var(--book-dark);
   pointer-events: none;
 }
 
 #appbarbutton-tooltip {
-  padding: 0.25em 0.75em;
+  padding: 0.2em 0.5em;
   z-index: 99999999;
   border-radius: 0.25em;
   background: hsl(30, 20%, 85%);
-  box-shadow: 0px 0px 8px 0px hsla(30, 20%, 50%, 0.2);
-  font-size: 0.7em;
+  box-shadow: 0px 0px 6px 0px hsla(30, 20%, 50%, 0.15);
+  font-family: 'Asul';
+  font-size: 0.6em;
   font-weight: normal;
   color: var(--book-medium);
   text-transform: capitalize;
 }
 
-.AppBar-bottom {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  margin-top: auto;
+.AppBar>hr {
+  color: var(--book-light);
 }
