@@ -3,21 +3,28 @@
     "file": "assets/Placeholder-b22db80c.css",
     "src": "Placeholder.css"
   },
-  "_Placeholder-22c4f8df.js": {
+  "_Placeholder-4f5b86b9.js": {
     "css": [
       "assets/Placeholder-b22db80c.css"
     ],
-    "file": "assets/Placeholder-22c4f8df.js",
+    "file": "assets/Placeholder-4f5b86b9.js",
     "imports": [
       "index.html"
     ]
   },
   "index.css": {
-    "file": "assets/index-0d862000.css",
+    "file": "assets/index-bab13044.css",
     "src": "index.css"
   },
   "index.html": {
     "assets": [
+      "assets/mountains-9aa46c7f.png",
+      "assets/hills-06b82e72.png",
+      "assets/grassyhills-163ddaaa.png",
+      "assets/heavyforest-43cb7dce.png",
+      "assets/lightforest-def27b0b.png",
+      "assets/church-64414cee.png",
+      "assets/teepee-ec88b155.png",
       "assets/mask-b4237e61.png",
       "assets/parchment-6ecc0b71.jpg",
       "assets/parchment-white-darker-2181c363.png",
@@ -27,15 +34,43 @@
       "assets/ui_border_right-4e4ca690.png"
     ],
     "css": [
-      "assets/index-0d862000.css"
+      "assets/index-bab13044.css"
     ],
     "dynamicImports": [
       "src/components/CardTextEditor/nodes/ImageComponent.tsx",
       "src/components/CardTextEditor/nodes/StickyComponent.tsx"
     ],
-    "file": "assets/index-2451f55e.js",
+    "file": "assets/index-f07b6707.js",
     "isEntry": true,
     "src": "index.html"
+  },
+  "src/assets/hex_icons/church.png": {
+    "file": "assets/church-64414cee.png",
+    "src": "src/assets/hex_icons/church.png"
+  },
+  "src/assets/hex_icons/grassyhills.png": {
+    "file": "assets/grassyhills-163ddaaa.png",
+    "src": "src/assets/hex_icons/grassyhills.png"
+  },
+  "src/assets/hex_icons/heavyforest.png": {
+    "file": "assets/heavyforest-43cb7dce.png",
+    "src": "src/assets/hex_icons/heavyforest.png"
+  },
+  "src/assets/hex_icons/hills.png": {
+    "file": "assets/hills-06b82e72.png",
+    "src": "src/assets/hex_icons/hills.png"
+  },
+  "src/assets/hex_icons/lightforest.png": {
+    "file": "assets/lightforest-def27b0b.png",
+    "src": "src/assets/hex_icons/lightforest.png"
+  },
+  "src/assets/hex_icons/mountains.png": {
+    "file": "assets/mountains-9aa46c7f.png",
+    "src": "src/assets/hex_icons/mountains.png"
+  },
+  "src/assets/hex_icons/teepee.png": {
+    "file": "assets/teepee-ec88b155.png",
+    "src": "src/assets/hex_icons/teepee.png"
   },
   "src/assets/img/background_texture.png": {
     "file": "assets/background_texture-270de03c.png",
@@ -73,10 +108,10 @@
     "css": [
       "assets/ImageComponent-4ec196fb.css"
     ],
-    "file": "assets/ImageComponent-7c49cdcf.js",
+    "file": "assets/ImageComponent-5f91c185.js",
     "imports": [
       "index.html",
-      "_Placeholder-22c4f8df.js"
+      "_Placeholder-4f5b86b9.js"
     ],
     "isDynamicEntry": true,
     "src": "src/components/CardTextEditor/nodes/ImageComponent.tsx"
@@ -89,10 +124,10 @@
     "css": [
       "assets/StickyComponent-3135deb4.css"
     ],
-    "file": "assets/StickyComponent-ab7a4019.js",
+    "file": "assets/StickyComponent-b7d03beb.js",
     "imports": [
       "index.html",
-      "_Placeholder-22c4f8df.js"
+      "_Placeholder-4f5b86b9.js"
     ],
     "isDynamicEntry": true,
     "src": "src/components/CardTextEditor/nodes/StickyComponent.tsx"
