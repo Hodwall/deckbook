@@ -3,26 +3,30 @@
     "file": "assets/Placeholder-b22db80c.css",
     "src": "Placeholder.css"
   },
-  "_Placeholder-4f5b86b9.js": {
+  "_Placeholder-df175ab8.js": {
     "css": [
       "assets/Placeholder-b22db80c.css"
     ],
-    "file": "assets/Placeholder-4f5b86b9.js",
+    "file": "assets/Placeholder-df175ab8.js",
     "imports": [
       "index.html"
     ]
   },
   "index.css": {
-    "file": "assets/index-bab13044.css",
+    "file": "assets/index-2ba70436.css",
     "src": "index.css"
   },
   "index.html": {
     "assets": [
+      "assets/mountain-2a53a694.png",
       "assets/mountains-9aa46c7f.png",
       "assets/hills-06b82e72.png",
       "assets/grassyhills-163ddaaa.png",
       "assets/heavyforest-43cb7dce.png",
       "assets/lightforest-def27b0b.png",
+      "assets/forestedhills-2745cc66.png",
+      "assets/forestedmountains-626d5e30.png",
+      "assets/forestedmountain-a7376d6c.png",
       "assets/church-64414cee.png",
       "assets/teepee-ec88b155.png",
       "assets/mask-b4237e61.png",
@@ -34,19 +38,31 @@
       "assets/ui_border_right-4e4ca690.png"
     ],
     "css": [
-      "assets/index-bab13044.css"
+      "assets/index-2ba70436.css"
     ],
     "dynamicImports": [
       "src/components/CardTextEditor/nodes/ImageComponent.tsx",
       "src/components/CardTextEditor/nodes/StickyComponent.tsx"
     ],
-    "file": "assets/index-f07b6707.js",
+    "file": "assets/index-9e409961.js",
     "isEntry": true,
     "src": "index.html"
   },
   "src/assets/hex_icons/church.png": {
     "file": "assets/church-64414cee.png",
     "src": "src/assets/hex_icons/church.png"
+  },
+  "src/assets/hex_icons/forestedhills.png": {
+    "file": "assets/forestedhills-2745cc66.png",
+    "src": "src/assets/hex_icons/forestedhills.png"
+  },
+  "src/assets/hex_icons/forestedmountain.png": {
+    "file": "assets/forestedmountain-a7376d6c.png",
+    "src": "src/assets/hex_icons/forestedmountain.png"
+  },
+  "src/assets/hex_icons/forestedmountains.png": {
+    "file": "assets/forestedmountains-626d5e30.png",
+    "src": "src/assets/hex_icons/forestedmountains.png"
   },
   "src/assets/hex_icons/grassyhills.png": {
     "file": "assets/grassyhills-163ddaaa.png",
@@ -63,6 +79,10 @@
   "src/assets/hex_icons/lightforest.png": {
     "file": "assets/lightforest-def27b0b.png",
     "src": "src/assets/hex_icons/lightforest.png"
+  },
+  "src/assets/hex_icons/mountain.png": {
+    "file": "assets/mountain-2a53a694.png",
+    "src": "src/assets/hex_icons/mountain.png"
   },
   "src/assets/hex_icons/mountains.png": {
     "file": "assets/mountains-9aa46c7f.png",
@@ -108,10 +128,10 @@
     "css": [
       "assets/ImageComponent-4ec196fb.css"
     ],
-    "file": "assets/ImageComponent-5f91c185.js",
+    "file": "assets/ImageComponent-22cf2e5c.js",
     "imports": [
       "index.html",
-      "_Placeholder-4f5b86b9.js"
+      "_Placeholder-df175ab8.js"
     ],
     "isDynamicEntry": true,
     "src": "src/components/CardTextEditor/nodes/ImageComponent.tsx"
@@ -124,10 +144,10 @@
     "css": [
       "assets/StickyComponent-3135deb4.css"
     ],
-    "file": "assets/StickyComponent-b7d03beb.js",
+    "file": "assets/StickyComponent-ee0b4e2d.js",
     "imports": [
       "index.html",
-      "_Placeholder-4f5b86b9.js"
+      "_Placeholder-df175ab8.js"
     ],
     "isDynamicEntry": true,
     "src": "src/components/CardTextEditor/nodes/StickyComponent.tsx"
