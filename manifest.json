@@ -3,17 +3,17 @@
     "file": "assets/Placeholder-b22db80c.css",
     "src": "Placeholder.css"
   },
-  "_Placeholder-a4f14678.js": {
+  "_Placeholder-8ce5dbf1.js": {
     "css": [
       "assets/Placeholder-b22db80c.css"
     ],
-    "file": "assets/Placeholder-a4f14678.js",
+    "file": "assets/Placeholder-8ce5dbf1.js",
     "imports": [
       "index.html"
     ]
   },
   "index.css": {
-    "file": "assets/index-46e9cdf7.css",
+    "file": "assets/index-2adf6d57.css",
     "src": "index.css"
   },
   "index.html": {
@@ -38,13 +38,13 @@
       "assets/ui_border_right-4e4ca690.png"
     ],
     "css": [
-      "assets/index-46e9cdf7.css"
+      "assets/index-2adf6d57.css"
     ],
     "dynamicImports": [
       "src/components/CardTextEditor/nodes/ImageComponent.tsx",
       "src/components/CardTextEditor/nodes/StickyComponent.tsx"
     ],
-    "file": "assets/index-74882d2e.js",
+    "file": "assets/index-582a6ed9.js",
     "isEntry": true,
     "src": "index.html"
   },
@@ -128,10 +128,10 @@
     "css": [
       "assets/ImageComponent-4ec196fb.css"
     ],
-    "file": "assets/ImageComponent-911de956.js",
+    "file": "assets/ImageComponent-4f3ec209.js",
     "imports": [
       "index.html",
-      "_Placeholder-a4f14678.js"
+      "_Placeholder-8ce5dbf1.js"
     ],
     "isDynamicEntry": true,
     "src": "src/components/CardTextEditor/nodes/ImageComponent.tsx"
@@ -144,10 +144,10 @@
     "css": [
       "assets/StickyComponent-3135deb4.css"
     ],
-    "file": "assets/StickyComponent-e1c4730f.js",
+    "file": "assets/StickyComponent-da4713ca.js",
     "imports": [
       "index.html",
-      "_Placeholder-a4f14678.js"
+      "_Placeholder-8ce5dbf1.js"
     ],
     "isDynamicEntry": true,
     "src": "src/components/CardTextEditor/nodes/StickyComponent.tsx"
