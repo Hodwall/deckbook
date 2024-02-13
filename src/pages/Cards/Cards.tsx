@@ -3,29 +3,29 @@ import useCardStore from '../../store/useCardStore';
 import useCollectionStore from '../../store/useCollectionStore';
 import Card from '../../components/Card/Card';
 import CreateCardDialog from '../../components/CreateCardDialog/CreateCardDialog';
-import Toolbar from '../../components/Toolbar/Toolbar';
-
-import ToolbarDrawer from '../../components/ToolbarDrawer/ToolbarDrawer';
-import TagSearch from '../../sections/TagSearch/TagSearch';
+import Selector from '../../components/Selector/Selector';
 import Tag from '../../components/Tag/Tag';
-
+import TagSearch from '../../sections/TagSearch/TagSearch';
+import Toolbar from '../../components/Toolbar/Toolbar';
+import ToolbarDrawer from '../../components/ToolbarDrawer/ToolbarDrawer';
+import { MdSearch } from "react-icons/md";
 import './Cards.css';
 
 
 const Cards = (props: {
   collection_id?: number | null;
 }) => {
+  const [sortingType, setSortingType] = useState<number>(0);
   const [drawerSection, setDrawerSection] = useState('');
   const [tagFilters, setTagFilters] = useState<string[]>([]);
+  const [searchText, setSearchText] = useState<string>('');
   const collections = useCollectionStore((state) => state.collections);
   const collection = props.collection_id ? collections.find((c) => c.id === props.collection_id) : null;
   const cards = useCardStore((state) => state.cards);
+
   const result_cards = props.collection_id ? cards.filter((card) => {
-    console.log(card.collection_id, props.collection_id);
     return card.collection_id === props.collection_id;
   }) : cards;
-
-  console.log(result_cards);
 
   const filtered_cards = useMemo(() => {
     if (tagFilters.length < 1) {
@@ -44,6 +44,28 @@ const Cards = (props: {
     }
   }, [tagFilters, cards, props.collection_id]);
 
+  const searched_cards = useMemo(() => {
+    if (searchText === '') {
+      return filtered_cards;
+    } else {
+      return filtered_cards.reduce((results: any[], card: any) => {
+        if (card.label.includes(searchText)) {
+          results.push(card);
+        }
+        return results;
+      }, []);
+    }
+
+  }, [filtered_cards, searchText]);
+
+  const sorted_cards = useMemo(() => {
+    if (sortingType === 1) {
+      return [...searched_cards.toSorted((a, b) => a.label < b.label ? -1 : 1)];
+    } else {
+      return [...searched_cards];
+    }
+  }, [sortingType, searched_cards]);
+
   const handleAddTag = (tag: string) => {
     let filters = [...tagFilters];
     filters.push(tag);
@@ -52,9 +74,7 @@ const Cards = (props: {
 
   const handleRemovetag = (tag: string) => {
     let filters = [...tagFilters];
-    console.log(filters, tag);
     filters = filters.filter((t) => t !== tag);
-    console.log(filters);
     setTagFilters([...filters]);
   };
 
@@ -72,31 +92,44 @@ const Cards = (props: {
           : 'CARDS'
       }</div>
       <div className="sections"></div>
-
-
       <ToolbarDrawer>
-        <div className="DeckTags">
-          {
-            tagFilters?.map((tag) => (
-              <Tag
-                label={tag}
-                className={`${drawerSection === 'tags' ? 'can-remove' : ''}`}
-                onClick={() => {
-                  if (drawerSection === 'tags') handleRemovetag(tag);
-                }}
-              />
-            ))
-          }
-        </div>
-        {drawerSection === 'tags' && <TagSearch activeTags={tagFilters} addHandler={handleAddTag} />}
+        {
+          drawerSection === 'tags' &&
+          <>
+            <div className="DeckTags">
+              {
+                tagFilters?.map((tag) => (
+                  <Tag
+                    label={tag}
+                    className={`${drawerSection === 'tags' ? 'can-remove' : ''}`}
+                    onClick={() => {
+                      if (drawerSection === 'tags') handleRemovetag(tag);
+                    }}
+                  />
+                ))
+              }
+            </div>
+            <TagSearch activeTags={tagFilters} addHandler={handleAddTag} />
+          </>
+        }
       </ToolbarDrawer>
       <Toolbar>
         {collection && <CreateCardDialog />}
-        <button onClick={() => handleSection('tags')}>FILTER CARDS</button>
+        <button className={drawerSection === 'tags' ? 'active' : ''} onClick={() => handleSection('tags')}>FILTER CARDS</button>
+        <Selector
+          className="selector-sort"
+          defaultValue={0}
+          options={['SORT: Creation Date', 'SORT: Alphabetical']}
+          onSelect={(val) => setSortingType(val)}
+        />
+        <div className={"searchbar"}>
+          <input type="text" onChange={(e) => setSearchText(e.target.value)} />
+          <MdSearch />
+        </div>
       </Toolbar>
       <div className="results">
         {
-          filtered_cards?.map((card) => <Card data={card} />)
+          sorted_cards?.map((card) => <Card data={card} />)
         }
       </div>
     </div>

@@ -1,8 +1,59 @@
 .backup-collections {
   font-size: 1rem;
-  display: flex;
   gap: 0.2em;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
 }
+
+.backup-collections>div {
+  display: grid;
+  grid-template-rows: min-content min-content;
+}
+
+.backup-collections .backup-label {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.25em 0;
+}
+
+.backup-collections .backup-label .separator {
+  height: 2px;
+  align-self: center;
+  background-color: hsl(30, 20%, 60%);
+  flex: 1;
+}
+
+.backup-collections .backup-label .label {
+  font-family: 'Asul';
+  font-size: 0.8em;
+  color: hsl(30, 20%, 50%);
+}
+
+.backup-collections .backup-content {
+  display: inline-flex;
+  gap: 0.2em;
+  width: 100%;
+}
+
+
+.backup-collections .backup-load .backup-content button:first-child {
+  flex-grow: 2;
+}
+
+.backup-collections .backup-load .backup-content button {
+  flex-grow: 0;
+}
+
+.backup-collections .backup-save button {
+  flex: 1;
+}
+
+
+
+
 
 .backup-collections button {
   background-color: hsl(30, 20%, 30%);
@@ -12,7 +63,7 @@
   border: 0.15em solid hsl(30, 20%, 35%);
   border-radius: 0.5em;
   height: 3em;
-  padding: 0 2em;
+  padding: 0 1em;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.25s;

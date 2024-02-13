@@ -1,7 +1,6 @@
 .Cards {
   display: grid;
   grid-template-rows: min-content min-content min-content min-content;
-  /* overflow: hidden; */
   font-size: 1rem;
 }
 

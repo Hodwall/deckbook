@@ -39,7 +39,6 @@ const UpdateCardDialog = (props: {
 
   useEffect(() => {
     if (card) {
-      console.log('updating');
       setLabel(card.label);
       setDescription(card.description);
       setBackground(card.background);
@@ -52,10 +51,10 @@ const UpdateCardDialog = (props: {
 
   return (
     <>
-      <button onClick={() => setShowDialog(true)}>EDIT CARD</button>
+      <button onClick={() => setShowDialog(true)}>EDIT</button>
       <Dialog
         className={'CreateCardDialog'}
-        label={'EDIT CARD'}
+        label={'EDIT'}
         icon={<MdWebStories />}
         display={showDialog}
         setDisplay={setShowDialog}

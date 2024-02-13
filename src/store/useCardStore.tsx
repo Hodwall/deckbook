@@ -5,14 +5,15 @@ import useDeckStore from './useDeckStore';
 
 interface ICard {
   id: number,
-  collection_id: number,
+  collection_id?: number,
   label: string,
   description: string,
   background: string,
   tags: string[],
-  type?: number,
+  type?: string,
   type_data?: { [key: string]: number; } | null,
   content?: any;
+  isPinned?: boolean,
 }
 
 interface ICardStore {
@@ -30,8 +31,9 @@ interface ICardStore {
   addContentToCard: (id: number, content: any) => void,
   updateCard: (id: number, label: string, description: string, background: string, collection: number) => void,
   updateCards: (cards: ICard[]) => void,
-  setCardType: (card_id: number, type: number) => void,
+  setCardType: (card_id: number, type: string) => void,
   setCardTypeData: (card_id: number, data: { [key: string]: number; } | null) => void,
+  togglePinCard: (id: number) => void,
 }
 
 const useCardStore = create<ICardStore>((set) => ({
@@ -50,6 +52,7 @@ const useCardStore = create<ICardStore>((set) => ({
         }
         return results;
       }, []);
+      if (isNaN(card.type)) card.type = null;
     });
     return cards_;
   })(),
@@ -166,6 +169,15 @@ const useCardStore = create<ICardStore>((set) => ({
     }
     localStorage.setItem('deckbook-cards', JSON.stringify([...cards_]));
     return { cards: [...cards_] };
+  }),
+  togglePinCard: (id) => set((state) => {
+    let stored_cards = [...state.cards];
+    const index = stored_cards.findIndex((c) => c.id === id);
+    if (index !== -1) {
+      stored_cards[index].isPinned = !stored_cards[index].isPinned;
+    }
+    localStorage.setItem('deckbook-cards', JSON.stringify([...stored_cards]));
+    return { cards: [...stored_cards] };
   })
 }));
 

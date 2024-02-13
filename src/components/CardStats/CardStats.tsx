@@ -10,19 +10,21 @@ const CardStats = (props: {
   const [cards, setCardType, setCardTypeData] = useCardStore((state) => [state.cards, state.setCardType, state.setCardTypeData]);
   const card = cards.find((c) => c.id === props.cardId);
 
+  const options = ['-', 'item', 'location', 'spell'];
+
   return (
     <div className="CardStats">
       <Selector
-        defaultValue={card?.type}
+        defaultValue={options.findIndex((o) => o === card?.type) || 0}
         label={'Card Type'}
-        options={['-', 'Item', 'Location', 'Spell']}
+        options={options}
         onSelect={(type) => {
-          setCardType(card?.id || -1, type);
+          setCardType(card?.id || -1, options[type]);
           setCardTypeData(card?.id || -1, null);
         }}
       />
       {
-        card?.type === 1 && <CardStatsItem cardId={props.cardId} />
+        card?.type === 'item' && <CardStatsItem cardId={props.cardId} />
       }
     </div>
   );

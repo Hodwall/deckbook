@@ -1,10 +1,12 @@
 .Card {
-  font-size: 0.94rem;
+  font-size: 0.9rem;
   display: grid;
   grid-template-rows: auto 1.5em;
-  padding: 0.5em;
+  /* padding: 0.35em 0.55em; */
+  padding: 0.4em;
+  box-sizing: border-box;
   width: 10em;
-  height: 18em;
+  height: 17em;
   background-size: cover !important;
   background-position: center !important;
   box-shadow: hsl(30deg 50% 15% / 50%) 2px 2px 5px 0px, inset 1px -75px 75px hsla(0, 0%, 0%, 0.5);
@@ -15,22 +17,6 @@
   transition: all 0.25s;
 }
 
-.Card:before {
-  content: '';
-  /* border: 0.15em solid hsl(25deg 40% 70% / 50%); */
-  border: 0.15em solid hsl(30deg 30% 60% / 50%);
-  position: absolute;
-  flex: 1;
-  width: 91%;
-  height: 88%;
-  justify-self: center;
-  align-self: top;
-  margin-top: 0.4em;
-  border-radius: 0.5em;
-  z-index: 9;
-  pointer-events: none;
-}
-
 .Card:hover {
   filter: sepia(0%);
   transform: translateY(-5px);
@@ -38,28 +24,28 @@
 }
 
 .Card .label {
-  padding-bottom: 0.25em;
+  padding-bottom: 0em;
   align-self: end;
   text-align: center;
   font-family: 'IM Fell DW Pica';
   text-shadow: 1px 1px 10px black;
-  line-height: 1.1em;
+  line-height: 1.3em;
 }
 
 .Card .label div:first-child {
   font-family: 'IM Fell DW Pica';
-  font-size: 1.25em;
+  font-size: 1.45em;
   color: hsl(30, 30%, 95%);
-  padding-bottom: 0.25em;
+  padding-bottom: 0.2em;
 }
 
 .Card .label div:last-child {
   font-family: 'Asul';
-  font-size: 0.65em;
+  font-size: 0.75em;
   color: hsl(40, 20%, 70%);
   height: min-content;
   overflow: hidden;
-  line-height: 1em;
+  line-height: 1.1em;
 }
 
 .Card .stats {
@@ -86,6 +72,7 @@
   display: inline-flex;
   overflow: hidden;
   flex-wrap: nowrap;
+  gap: 0.2em;
 }
 
 

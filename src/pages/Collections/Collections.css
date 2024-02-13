@@ -11,3 +11,7 @@
   padding-top: 0.5em;
   overflow-y: auto;
 }
+
+.selector-sort .content {
+  min-width: 12em;
+}

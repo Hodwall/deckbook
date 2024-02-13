@@ -1,29 +1,36 @@
+/* */
 .CardDisplay {
-  position: fixed;
-  z-index: 2;
-  width: 38em;
-  height: calc(100% - 4em);
-  right: 6em;
-  bottom: 2em;
-  border-radius: 0.75em;
-  box-shadow: hsl(30deg 50% 25% / 70%) 5px 5px 20px 5px;
-  box-sizing: border-box;
-  background: linear-gradient(150deg, hsl(0deg 6% 45%) 0%, hsl(0, 0%, 20%) 100%);
   background-position-x: center !important;
   background-repeat: no-repeat !important;
-  background-size: 100% auto !important;
-  background-clip: calc(100% - 4em);
+  background-size: cover !important;
+  border-radius: 0.75em;
+  bottom: 1em;
+  box-shadow: hsla(30, 40%, 25%, 0.95) 5px 5px 20px 5px;
+  box-sizing: border-box;
+  height: calc(100% - 2em);
   overflow: hidden;
-  --card-bg-color: rgba(40, 40, 40, 100%);
-  --card-editor-accent: hsla(32, 20%, 50%, 0.25);
+  position: fixed;
+  right: 6em;
+  width: 40em;
+  z-index: 2;
+  padding: 0 0 3.75em 0;
 }
 
-.CardDisplay .ugly-fix {
+.CardDisplay>div {
+  display: grid;
+  grid-template-rows: min-content min-content auto min-content;
+  overflow: auto;
+  height: 100%;
+}
+
+.CardDisplay:before {
+  content: '';
   position: absolute;
-  bottom: 0;
-  height: 4em;
-  width: inherit;
-  background-color: rgba(40, 40, 40, 100%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: hsla(30, 20%, 20%, 0.75); */
   z-index: -1;
 }
 
@@ -31,176 +38,154 @@
   pointer-events: none;
 }
 
-.CardDisplay:before {
-  content: '';
-  z-index: 9;
+
+/* .CardDisplay .scrollable {
+  overflow: auto;
+  grid-template-rows: min-content min-content min-content;
+  display: grid;
   position: absolute;
-  box-sizing: border-box;
-  margin: 0.75em;
-  width: calc(100% - 1.5em);
-  height: calc(100% - 4em);
-  border: 0.2em solid hsl(30deg 30% 60% / 50%);
-  border-radius: 0.75em;
-  pointer-events: none;
-}
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+} */
 
-.CardDisplay .card-display {
-  overflow-y: auto;
-  height: calc(100% - 4em);
-  width: inherit;
-  display: inline-grid;
-  grid-template-rows: 5.5em 20em min-content max-content;
-  box-shadow: 0 4em 0 var(--card-bg-color);
-}
-
-.CardDisplay .card-display::-webkit-scrollbar {
-  width: 0.30em;
-}
-
-.CardDisplay .card-display::-webkit-scrollbar-track {
-  background: var(--card-bg-color);
-}
-
-.CardDisplay .card-display::-webkit-scrollbar-thumb {
-  background: hsl(35, 20%, 50%, 0.5);
-}
 
 .CardDisplay .card-header {
-  display: flex;
-  flex-direction: column-reverse;
-  padding: 1.75em;
   position: sticky;
   top: 0;
-  z-index: 2;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0.5em;
+  padding: 1em 1em 0.5em 1em;
+  z-index: 99;
 }
 
 .CardDisplay .card-header button {
-  display: flex;
-  align-self: flex-end;
   align-items: center;
-  justify-content: center;
-  width: 1.2em;
-  height: 1.2em;
-  padding: 0.2em;
-  background-color: hsla(0, 0%, 100%, 0.1);
-  box-shadow: hsla(0, 0%, 0%, 0.25) 0px 2px 8px;
+  align-self: flex-end;
+  backdrop-filter: blur(4px);
+  background-color: hsla(30, 25%, 95%, 0.15);
   border-radius: 5em;
   border: none;
-  backdrop-filter: blur(4px);
-  font-size: 1.5em;
-  color: hsl(0, 0%, 75%);
+  box-shadow: hsla(0, 0%, 0%, 0.2) 4px 4px 8px;
+  color: hsl(30, 25%, 90%);
   cursor: pointer;
+  display: flex;
+  font-size: 1.5em;
+  height: 1.2em;
+  justify-content: center;
+  padding: 0.2em;
+  width: 1.2em;
 }
 
 .CardDisplay .card-header button:hover {
-  background-color: hsla(0, 0%, 100%, 0.2);
-  color: hsl(0, 0%, 100%);
+  background-color: hsla(30, 25%, 95%, 0.3);
   transition: all 0.25s;
 }
 
-
-
-
-
-.CardDisplay .card-title,
-.CardDisplay .card-content {
-  position: sticky;
-  top: 2em;
-  background: var(--card-bg-color);
+.CardDisplay .card-header button.active {
+  color: hsl(50, 45%, 50%);
+  transition: all 0.25s;
 }
 
+/* TITLE */
 .CardDisplay .card-title {
-  z-index: 1;
-  box-shadow: 0px -40px 40px 22px var(--card-bg-color)
+  background: linear-gradient(hsla(30, 20%, 20%, 0) 0%, hsla(30, 20%, 20%, 0.75) 100%);
+  /* transition: padding-top 0.5s; */
+  padding: calc(100% - 10em) 1em 0 1em;
 }
 
-.CardDisplay .card-title::after {
-  content: '';
-  position: absolute;
-  margin-left: 1.5em;
-  width: calc(100% - 3em);
-  border-bottom: 3px solid hsl(40, 15%, 25%);
+.CardDisplay .card-title .separator {
+  border-bottom: 3px solid hsla(35, 45%, 75%, 0.25);
 }
 
 .CardDisplay .card-title .card-label {
   font-family: 'IM Fell DW Pica';
-  font-size: 2em;
+  font-size: 2.5em;
   text-align: center;
-  color: hsl(40, 40%, 90%);
-  padding-bottom: 0.1em;
-  clip-path: inset(-120px 0px 0px 0px);
+  color: hsl(35, 35%, 90%);
 }
 
 .CardDisplay .card-title .card-description {
   font-family: 'Asul';
-  font-size: 0.85em;
+  font-size: 1.2em;
   text-align: center;
-  color: hsl(40, 60%, 75%);
-  padding-bottom: 2em;
+  color: hsl(35, 45%, 70%);
+  padding: 0.5em;
 }
 
-.CardDisplay .card-title .card-sections {
-  font-size: 1em;
+/* SECTIONS */
+.CardDisplay .card-sections {
+  font-family: 'Asul';
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: hsl(35, 35%, 75%);
   display: flex;
-  justify-content: space-evenly;
-  padding-bottom: 0.25em;
+  gap: 1em;
+  flex: 1;
 }
 
-.CardDisplay .card-title .card-sections .card-section {
-  font-family: 'IM Fell DW Pica';
-  color: hsl(40, 15%, 35%);
-  user-select: none;
+.CardDisplay .card-sections .card-section {
   cursor: pointer;
 }
 
-.CardDisplay .card-title .card-sections .card-section:hover {
-  color: var(--book-light);
-  color: hsl(40, 15%, 45%);
+.CardDisplay .card-sections .card-section:hover {
+  color: hsl(35, 35%, 95%);
   transition: all 0.25s;
 }
 
+/* CONTENT */
 .CardDisplay .card-content {
   font-family: 'Asul';
-  padding: 0.75em 1.5em 2em 1.5em;
   color: hsl(40, 40%, 90%);
-  z-index: 0;
-  box-shadow: 0em 40em 0em 40em var(--card-bg-color);
+
+  /* overflow: auto; */
+  padding: 0 1em 0 1em;
+  background-color: hsla(30, 20%, 20%, 0.75);
 }
 
+/* TOOLS */
 .CardDisplay .card-tools {
-  position: absolute;
-  bottom: 1em;
-  left: 0.75em;
   display: flex;
-  width: calc(100% - 1.5em);
   gap: 0.5em;
+  padding: 1em;
+  padding-top: 0.75em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: hsla(30, 20%, 20%, 0.75);
+  width: calc(100% - 2em);
+
 }
 
-.CardDisplay .card-tools button {
+.CardDisplay .card-tools>div {
+  display: flex;
+  justify-content: end;
+  gap: 0.5em;
+  flex: 1;
+}
+
+.CardDisplay .card-tools button,
+.CardDisplay .card-tools .popmenu-button {
   background-color: transparent;
-  border: 0.2em solid hsl(35, 20%, 30%);
-  border-radius: 0.5em;
+  border: 0.15em solid hsl(30, 35%, 55%);
+  /* border: unset; */
+  padding: 0.25em 0.5em;
+  border-radius: 0.4em;
   font-family: 'IM Fell DW Pica';
-  font-weight: bold;
   font-size: 1em;
-  color: hsl(35, 20%, 35%);
+  color: hsl(30, 35%, 65%);
   cursor: pointer;
   user-select: none;
   transition: all 0.25s;
 }
 
-.CardDisplay .card-tools button:hover {
-  color: hsl(35, 20%, 45%);
-  border-color: hsl(35, 20%, 40%);
-  transition: all 0.25s;
-}
 
-.CardDisplay .card-tools button.card-collection {
-  border-color: hsl(20, 25%, 35%);
-  color: hsl(20, 25%, 40%);
-  margin-left: auto;
-  cursor: none;
-  pointer-events: none;
+.CardDisplay .card-tools button:hover {
+  border-color: hsl(30, 35%, 75%);
+  color: hsl(30, 35%, 85%);
+  transition: all 0.25s;
 }
 
 .CardDisplay .card-tools button.delete-collection:hover {
@@ -209,31 +194,60 @@
   transition: all 0.25s;
 }
 
-
-.CardDisplay .card-tools select.card-collection {
-  background-color: var(--card-bg-color);
-  border: 0.2em solid hsl(20, 25%, 35%);
-  border-radius: 0.5em;
-  font-family: 'IM Fell DW Pica';
-  font-weight: bold;
-  font-size: 1em;
-  color: hsl(20, 25%, 40%);
-  cursor: pointer;
-  user-select: none;
-  transition: all 0.25s;
-  margin-left: auto;
-  appearance: none;
-  padding: 0 0.25em;
+.CardDisplay .card-tools .selector-card-collection .popmenu-button {
+  border: 0.15em solid hsl(10, 50%, 40%);
+  color: hsl(10, 50%, 45%);
 }
 
-.CardDisplay .card-tools select:focus {
-  outline: none;
+.CardDisplay .card-tools .selector-card-type .popmenu-button {
+  border: 0.15em solid hsl(35, 35%, 40%);
+  color: hsl(35, 35%, 45%);
+  text-transform: capitalize;
 }
 
-.CardDisplay .card-tools select option {
-  font-family: 'Asul' !important;
-  font-size: 0.95em;
+
+
+
+
+.CardDisplay .card-content .toolbar {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  gap: 0.2em;
+  margin-bottom: 1px;
+  vertical-align: middle;
+  height: 2em;
+  position: fixed;
+  margin-top: 38.6em;
+  z-index: 2;
+  flex: 1;
+  padding-bottom: 0.5em;
+  width: calc(100% - 4.4em);
+  margin-left: 2.3em;
+  bottom: 6.5px;
 }
+
+.CardDisplay.display-mode .card-content .toolbar {
+  display: none;
+}
+
+
+/* 
+
+
+
+
+
+
+
+
+
+
+ */
+
+/* 
+
+
 
 
 
@@ -250,7 +264,6 @@
 (max-height: 500px) {
   .CardDisplay {
     width: 100vw;
-    /* height: calc(100% - 4em); */
     height: 100%;
     right: 0;
     bottom: 0;
@@ -264,4 +277,5 @@
     grid-template-rows: 5.5em 20em min-content max-content;
     height: calc(100% - 4em);
   }
-}
+} 
+*/

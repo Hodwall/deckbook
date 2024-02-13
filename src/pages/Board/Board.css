@@ -1,7 +1,13 @@
+/* @media (max-width: 768px) { */
+
+
 .Board {
   display: grid;
-  grid-template-columns: 30em auto;
+  grid-template-columns: min-content auto;
 }
+
+
+
 
 .Board::before {
   content: '';
@@ -19,17 +25,31 @@
 .Board .side-section>div {
   position: absolute;
   width: inherit;
+  height: inherit;
+  overflow: hidden;
+}
+
+.Board .side-section>div>.section {
+  height: inherit;
+  overflow: hidden;
+}
+
+.Board .side-section>div>.section>.content {
+  height: inherit;
+  overflow-y: scroll;
 }
 
 .Board .side-section {
   margin-top: -55px;
   margin-left: -1em;
-  width: 28em;
+  width: 31em;
   height: 100%;
   z-index: 9;
   padding: 2em 1em 2em 1em;
   color: hsl(30, 20%, 80%);
 }
+
+
 
 .Board .side-section .title {
   color: hsl(30, 20%, 80%);
@@ -41,7 +61,9 @@
 }
 
 
-.PinnedDecks {
+.PinnedDecks,
+.PinnedMaps,
+.PinnedCards {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -52,4 +74,27 @@
   transform: translateY(-5px);
   transition: all 0.25s;
   filter: sepia(0);
+}
+
+
+
+@media (max-width: 1078px) {
+  .Board {
+    grid-template-columns: auto;
+    grid-template-rows: 20em auto;
+  }
+
+  .Board .side-section {
+    width: 90%;
+    /* height: 10em; */
+    margin-left: 0;
+    width: unset;
+    overflow: hidden;
+  }
+
+  .Board .side-section>div {
+    position: relative;
+    width: unset;
+    overflow: hidden;
+  }
 }

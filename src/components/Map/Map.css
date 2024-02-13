@@ -2,7 +2,7 @@
   font-size: 1rem;
   display: grid;
   grid-template-rows: min-content auto;
-  width: 14em;
+  width: 12em;
   height: 8em;
   background: url(../../assets/img/parchment.jpg) repeat;
   background-color: linear-gradient(150deg, hsl(0deg 6% 45%) 0%, hsl(0, 0%, 20%) 100%);
@@ -61,36 +61,30 @@
 
 .Map .info {
   display: grid;
-  grid-template-rows: min-content min-content 1em;
-  /* background-color: hsla(0, 0%, 20%, 0.6); */
-  padding: 0.5em 0.5em 0.2em 0.5em;
+  grid-template-rows: auto 1.5em;
+  padding: 0 0.5em;
   border-bottom-left-radius: 0.75em;
   border-bottom-right-radius: 0.75em;
+  align-items: center;
 }
 
 .Map .info .label {
-  align-self: end;
   color: hsl(30, 30%, 30%);
   font-family: 'IM Fell DW Pica';
-  font-size: 1.75em;
+  font-size: 1.5em;
   text-align: center;
   line-height: 1em;
   overflow: hidden;
   padding-bottom: 0.1em;
-  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
-}
-
-.Map .info .description {
-  color: hsl(30, 30%, 75%);
-  font-family: 'Asul';
-  font-size: 0.75em;
-  font-style: italic;
-  padding-bottom: 0.2em;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
 .Map .info .stats {
-  color: hsl(30, 30%, 50%);
+  color: hsl(30, 30%, 30%);
   font-family: 'Asul';
   font-size: 0.75em;
   text-align: end;
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: 0.5em;
 }

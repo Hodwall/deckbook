@@ -1,3 +1,11 @@
 .ToolbarDrawer {
+  z-index: 1;
   font-size: 1rem;
+  padding-bottom: 0.4em;
+  border-top: 3px dotted hsl(30, 25%, 65%);
+}
+
+.ToolbarDrawer:empty {
+  border: unset;
+  padding: unset;
 }

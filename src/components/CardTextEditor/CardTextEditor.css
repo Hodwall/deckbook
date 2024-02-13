@@ -1,6 +1,17 @@
-div.editor {
-  border-bottom: 0.2em dashed var(--card-editor-accent);
+.editor {
+  border-bottom: 3px dotted hsla(35, 45%, 75%, 0.25);
   overflow-x: hidden;
+  min-height: 8em;
+}
+
+
+
+
+
+
+.editor hr {
+  margin-top: 2px;
+  border: 1px solid hsl(40, 40%, 40%);
 }
 
 
@@ -40,9 +51,6 @@ div.editor {
 
 
 
-.editor hr {
-  border: 1px solid hsl(42, 100%, 34%);
-}
 
 
 /* header {
@@ -765,9 +773,10 @@ i.page-break,
   z-index: 100;
   display: block;
   position: fixed;
-  box-shadow: 4px 4px 10px hsla(0, 0%, 0%, 0.25);
+  box-shadow: 4px 4px 10px hsla(30, 30%, 5%, 0.5);
   border-radius: 8px;
   background-color: hsl(30, 10%, 20%);
+  transform: rotateZ(1deg);
 }
 
 .dropdown .item {
@@ -813,7 +822,7 @@ i.page-break,
 
 .dropdown .item:hover {
   color: hsl(30, 10%, 20%);
-  background-color: hsl(30, 20%, 60%);
+  background-color: hsla(30, 20%, 60%, 70%);
   transition: all 0.25s;
 }
 
@@ -868,9 +877,9 @@ i.page-break,
 .PlaygroundEditorTheme__quote {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  border-left-color: hsl(30, 10%, 25%);
+  border-left-color: hsl(30, 15%, 30%);
   padding-left: 10px;
-  color: var(--book-light);
+  color: hsl(30, 20%, 65%);
 }
 
 .PlaygroundEditorTheme__ul,
@@ -882,6 +891,19 @@ i.page-break,
 
 .PlaygroundEditorTheme__listItem {
   margin: 0;
+}
+
+
+.PlaygroundEditorTheme__listItemUnchecked::before {
+  height: 12px;
+  width: 12px;
+  /* border-color: hsl(42, 100%, 34%);
+  background-color: hsl(42, 100%, 34%); */
+}
+
+.PlaygroundEditorTheme__listItemUnchecked::after {
+  top: 4px;
+  left: 5px;
 }
 
 .PlaygroundEditorTheme__listItemChecked::before {
@@ -896,6 +918,12 @@ i.page-break,
   left: 5px;
 }
 
+.PlaygroundEditorTheme__listItemChecked:focus::before,
+.PlaygroundEditorTheme__listItemUnchecked:focus::before {
+  outline: none;
+  box-shadow: none;
+}
+
 
 .PlaygroundEditorTheme__layoutContaner {
   gap: 0;
@@ -908,6 +936,8 @@ i.page-break,
   border-right: 1px solid hsl(30, 10%, 25%);
   padding-left: 0.4em;
   padding-right: 0.4em;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 .PlaygroundEditorTheme__layoutItem:first-child {
@@ -939,6 +969,16 @@ i.page-break,
 
 .image-caption-container .ImageNode__placeholder {
   display: none;
+}
+
+
+
+.editor-shell .editor-image img.focused.draggable {
+  cursor: grab;
+}
+
+.editor-shell .editor-image img.focused.draggable:active {
+  cursor: grabbing;
 }
 
 
@@ -1234,13 +1274,7 @@ i.page-break,
   user-select: none;
 }
 
-.editor-shell .editor-image img.focused.draggable {
-  cursor: grab;
-}
 
-.editor-shell .editor-image img.focused.draggable:active {
-  cursor: grabbing;
-}
 
 .editor-shell .editor-image .image-caption-container .tree-view-output {
   margin: 0;
@@ -1376,14 +1410,6 @@ i.page-break,
 
 .editor-shell .inline-editor-image img.focused {
   outline: 2px solid rgb(60, 132, 244);
-}
-
-.editor-shell .inline-editor-image img.focused.draggable {
-  cursor: grab;
-}
-
-.editor-shell .inline-editor-image img.focused.draggable:active {
-  cursor: grabbing;
 }
 
 .editor-shell .inline-editor-image .image-caption-container .tree-view-output {
@@ -1672,12 +1698,14 @@ button.action-button:disabled {
   margin-bottom: 1px;
   vertical-align: middle;
   /* height: 2em; */
-  position: sticky;
-  top: 9.6em;
+  position: fixed;
+  margin-top: -2.5em;
   z-index: 2;
   flex: 1;
-  background-color: hsl(0, 0%, 15%);
-  box-shadow: 4px -2px 0px 9px hsl(0, 0%, 15%);
+  /* background-color: hsl(0, 0%, 15%);
+  box-shadow: 4px -2px 0px 9px hsl(0, 0%, 15%); */
+  padding-bottom: 0.5em;
+  width: calc(100% - 2em);
 }
 
 .toolbar.disabled button.toolbar-item:not(:last-child) {
@@ -1691,11 +1719,12 @@ button.action-button:disabled {
 }
 
 .toolbar .divider {
-  border-left: 0.15em solid var(--card-editor-accent);
+  border-left: 0.15em solid hsl(30, 10%, 45%);
 }
 
 button.toolbar-item {
-  border: 1px solid var(--card-editor-accent);
+  /* border: 1px solid hsl(30, 15%, 50%); */
+  border: 1px solid hsl(30, 10%, 45%);
   display: flex;
   background: none;
   border-radius: 0.3em;
@@ -1706,9 +1735,10 @@ button.toolbar-item {
   vertical-align: middle;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
-  color: var(--book-medium);
+  justify-content: center;
+  color: hsl(30, 35%, 70%);
   transition: all 0.15s;
+
 }
 
 button.toolbar-item:hover {

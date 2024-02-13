@@ -1,9 +1,11 @@
 .Collection {
-  font-size: 1rem;
+  font-size: 0.9rem;
   display: grid;
   grid-template-rows: auto min-content;
-  width: 10em;
-  height: 16em;
+  /* width: 10em;
+  height: 16em; */
+  width: 9em;
+  height: 20em;
   background-color: linear-gradient(150deg, hsl(0deg 6% 45%) 0%, hsl(0, 0%, 20%) 100%);
   background-size: cover !important;
   background-position: center !important;
@@ -71,7 +73,7 @@
   align-self: end;
   color: hsl(30, 30%, 95%);
   font-family: 'IM Fell DW Pica';
-  font-size: 1.2em;
+  font-size: 1.1em;
   line-height: 1em;
   overflow: hidden;
   padding-bottom: 0.1em;

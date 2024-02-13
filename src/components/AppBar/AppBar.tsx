@@ -8,8 +8,8 @@ import './AppBar.css';
 const AppBar = () => {
   return (
     <div className="AppBar">
-      <AppBarButton section={'libraries'}><MdAutoStories /></AppBarButton>
       <AppBarButton section={'board'}><MdDashboard /></AppBarButton>
+      <AppBarButton section={'libraries'}><MdAutoStories /></AppBarButton>
       <AppBarButton section={'decks'}><MdLayers /></AppBarButton>
       <hr />
       <AppBarButton section={'collections'}><MdCollectionsBookmark /></AppBarButton>

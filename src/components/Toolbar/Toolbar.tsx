@@ -6,9 +6,7 @@ const Toolbar = (props: {
 }) => {
   return (
     <div className="Toolbar">
-      <div className="separator" />
       {props.children}
-      <div className="separator" />
     </div>
   );
 };

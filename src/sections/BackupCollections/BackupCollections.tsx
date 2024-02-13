@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import useCardStore from '../../store/useCardStore';
 import useCollectionStore from '../../store/useCollectionStore';
-import useDeckStore from '../../store/useDeckStore';
 import useTagStore from '../../store/useTagStore';
 import { MdInsertDriveFile, MdOutlineInsertDriveFile } from 'react-icons/md';
 import './BackupCollections.css';
@@ -21,7 +20,6 @@ const BackupCollections = () => {
 
   const [saveFile, setSaveFile] = useState<any>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
-
 
   const exportCollections = (collection_list: number[]) => {
     const data: any = {
@@ -77,18 +75,31 @@ const BackupCollections = () => {
 
   return (
     <div className="backup-collections">
+      <div className="backup-load">
+        <div className="backup-label">
+          <div className="separator"></div><div className="label">LOAD</div><div className="separator"></div>
+        </div>
+        <div className="backup-content">
+          <button onClick={() => inputRef.current?.click()}>
+            {saveFile ? <span><MdInsertDriveFile />{saveFile.name}</span> : <span><MdOutlineInsertDriveFile />Select a file ...</span>}
+          </button>
+          <input type="file" ref={inputRef} onChange={handleFileChange} style={{ display: 'none' }} accept=".json" />
+          <button onClick={importCollections} disabled={!saveFile}>LOAD</button>
+          <button onClick={() => setSaveFile(null)} disabled={!saveFile}>CLEAR</button>
+        </div>
+      </div>
+      <div className="backup-save">
+        <div className="backup-label">
+          <div className="separator"></div><div className="label">SAVE</div><div className="separator"></div>
+        </div>
+        <div className="backup-content">
+          <button onClick={handleExportCollections} disabled={selected_collections.length < 1}>SAVE SELECTED COLLECTIONS</button>
+          <button onClick={handleExportAllCollections}>SAVE ALL COLLECTIONS</button>
+        </div>
+      </div>
 
-      <button onClick={() => inputRef.current?.click()}>
-        {saveFile ? <span><MdInsertDriveFile />{saveFile.name}</span> : <span><MdOutlineInsertDriveFile />Select a file ...</span>}
-      </button>
-      <input type="file" ref={inputRef} onChange={handleFileChange} style={{ display: 'none' }} accept=".json" />
-
-      <button onClick={importCollections} disabled={!saveFile}>LOAD</button>
-      <button onClick={() => setSaveFile(null)} disabled={!saveFile}>CLEAR</button>
-      <button onClick={handleExportCollections} disabled={selected_collections.length < 1}>SAVE SELECTED COLLECTIONS</button>
-      <button onClick={handleExportAllCollections}>SAVE ALL COLLECTIONS</button>
     </div>
   );
 };
 
-export default BackupCollections;
+export default BackupCollections;;

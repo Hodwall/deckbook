@@ -1,12 +1,21 @@
 .HexMap {
   display: grid;
-  grid-template-columns: auto min-content;
+  grid-template-columns: auto 12.5em;
   height: 100%;
-  --map-water: hsl(210, 90%, 55%);
-  --map-deepwater: hsl(210, 90%, 35%);
-  --map-mountains: hsl(25, 100%, 15%);
-  --map-hills: hsl(25, 30%, 50%);
-  --map-forest: hsl(120, 100%, 15%);
+
+  --map-water: hsl(210, 40%, 60%);
+  --map-deepwater: hsl(210, 40%, 50%);
+  --map-peak: hsl(30, 25%, 40%);
+  --map-mountains: hsl(30, 25%, 50%);
+  --map-hills: hsl(30, 30%, 62%);
+  --map-plains: hsl(90, 18%, 70%);
+  --map-forest: hsl(105, 20%, 50%);
+
+  --map-lightforest: hsl(100, 20%, 60%);
+  --map-forestedhills: hsl(60, 20%, 50%);
+  --map-forestedmountains: hsl(55, 20%, 45%);
+  --map-forestedpeak: hsl(50, 20%, 40%);
+
 }
 
 .HexMap .hex-map {
@@ -79,6 +88,7 @@
   grid-column-start: 2;
   grid-row-start: 2;
   border: 0.2em solid hsl(35, 25%, 80%);
+  background-color: hsl(35, 25%, 80%);
   border-radius: 0.75em;
   overflow: scroll;
 }
@@ -90,14 +100,44 @@
   padding-top: 2em;
 }
 
+.HexMap .hex-tools .label {
+  font-family: 'Asul';
+  color: hsl(35, 20%, 60%);
+  font-size: 0.75em;
+  text-align: center;
+  padding-top: 0.75em;
+}
+
+.HexMap .hex-tools .section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.25em;
+}
+
+.HexMap .hex-tools .hexmap-tool-label {
+  font-family: 'Asul';
+  font-size: 0.75em;
+  text-transform: uppercase;
+  word-break: break-all;
+}
+
+.HexMap .hex-tools img {
+  color: tomato;
+  width: 100%;
+  height: 100%;
+}
+
 .HexMap .hex-tools button {
   background-color: transparent;
   border: 0.25em outset hsl(35, 20%, 70%);
   border-radius: 1em;
-  padding: 0 1em;
   cursor: pointer;
   font-family: 'Asul';
-  color: hsl(35, 20%, 20%)
+  color: hsl(35, 20%, 20%);
+
+  width: 3.5em;
+  height: 3.5em;
 }
 
 .HexMap .hex-tools button.active {
@@ -141,6 +181,15 @@
   background-color: var(--map-forest);
 }
 
+.HexMap .hex-tools button.tool-lightforest {
+  border-color: var(--map-lightforest);
+  color: var(--map-lightforest);
+}
+
+.HexMap .hex-tools button.tool-lightforest.active {
+  background-color: var(--map-lightforest);
+}
+
 .HexMap .hex-tools button.tool-hills {
   border-color: var(--map-hills);
   color: var(--map-hills);
@@ -148,6 +197,81 @@
 
 .HexMap .hex-tools button.tool-hills.active {
   background-color: var(--map-hills);
+}
+
+.HexMap .hex-tools button.tool-plains,
+.HexMap .hex-tools button.tool-grassyhills {
+  border-color: var(--map-plains);
+  color: var(--map-plains);
+}
+
+.HexMap .hex-tools button.tool-plains.active,
+.HexMap .hex-tools button.tool-grassyhills.active {
+  background-color: var(--map-plains);
+}
+
+
+.HexMap .hex-tools button.tool-mountain {
+  border-color: var(--map-mountain);
+  color: var(--map-mountain);
+}
+
+.HexMap .hex-tools button.tool-mountain.active {
+  background-color: var(--map-mountain);
+}
+
+.HexMap .hex-tools button.tool-forestedhills {
+  border-color: var(--map-forestedhills);
+  color: var(--map-forestedhills);
+}
+
+.HexMap .hex-tools button.tool-forestedhills.active {
+  background-color: var(--map-forestedhills);
+}
+
+.HexMap .hex-tools button.tool-forestedmountains {
+  border-color: var(--map-forestedmountains);
+  color: var(--map-forestedmountains);
+}
+
+.HexMap .hex-tools button.tool-forestedmountains.active {
+  background-color: var(--map-forestedmountains);
+}
+
+.HexMap .hex-tools button.tool-forestedpeak {
+  border-color: var(--map-forestedpeak);
+  color: var(--map-forestedpeak);
+}
+
+.HexMap .hex-tools button.tool-forestedpeak.active {
+  background-color: var(--map-forestedpeak);
+}
+
+.HexMap .hex-tools button.tool-peak {
+  border-color: var(--map-peak);
+  color: var(--map-peak);
+}
+
+.HexMap .hex-tools button.tool-peak.active {
+  background-color: var(--map-peak);
+}
+
+
+.HexMap .hex-tools button.zoom {
+  border: unset;
+  background: transparent;
+  font-size: 2.5em;
+  padding-top: 0.5em;
+  color: hsl(35, 20%, 40%);
+}
+
+.HexMap .hex-tools button.zoom:hover {
+  color: hsl(35, 20%, 50%);
+  transition: color 0.25s;
+}
+
+.HexMap .hex-tools button.zoom:active {
+  transform: translateY(2px);
 }
 
 
@@ -216,28 +340,60 @@ svg#HexGrid path {
 
 svg#HexGrid g.hexagon-group.water>g {
   fill: var(--map-water);
-  fill-opacity: 0.4;
+  fill-opacity: 1;
 }
 
 svg#HexGrid g.hexagon-group.deepwater>g {
   fill: var(--map-deepwater);
-  fill-opacity: 0.4;
+  fill-opacity: 1;
 }
 
 svg#HexGrid g.hexagon-group.mountains>g {
   fill: var(--map-mountains);
-  fill-opacity: 0.4;
+  fill-opacity: 1;
 }
 
 svg#HexGrid g.hexagon-group.hills>g {
   fill: var(--map-hills);
-  fill-opacity: 0.4;
+  fill-opacity: 1;
 }
 
 svg#HexGrid g.hexagon-group.forest>g {
   fill: var(--map-forest);
-  fill-opacity: 0.4;
+  fill-opacity: 1;
 }
+
+svg#HexGrid g.hexagon-group.lightforest>g {
+  fill: var(--map-lightforest);
+  fill-opacity: 1;
+}
+
+svg#HexGrid g.hexagon-group.plains>g,
+svg#HexGrid g.hexagon-group.grassyhills>g {
+  fill: var(--map-plains);
+  fill-opacity: 1;
+}
+
+svg#HexGrid g.hexagon-group.forestedhills>g {
+  fill: var(--map-forestedhills);
+  fill-opacity: 1;
+}
+
+svg#HexGrid g.hexagon-group.forestedmountains>g {
+  fill: var(--map-forestedmountains);
+  fill-opacity: 1;
+}
+
+svg#HexGrid g.hexagon-group.forestedpeak>g {
+  fill: var(--map-forestedpeak);
+  fill-opacity: 1;
+}
+
+svg#HexGrid g.hexagon-group.peak>g {
+  fill: var(--map-peak);
+  fill-opacity: 1;
+}
+
 
 /* svg#HexGrid g.hexagon-group.plains>g {
   fill: #2e96f2;

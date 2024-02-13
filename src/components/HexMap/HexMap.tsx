@@ -1,15 +1,37 @@
-import { useState, useRef, useEffect } from 'react';
-import { HexGrid, Layout, Hexagon, GridGenerator, Pattern } from 'react-hexgrid';
-import './HexMap.css';
+import { useState, useRef } from 'react';
+import { HexGrid, Layout, Hexagon, GridGenerator, Pattern, HexUtils } from 'react-hexgrid';
 
 import useMapStore from '../../store/useMapStore';
 import { MdOutlineAddCircle, MdOutlineRemoveCircle } from "react-icons/md";
 
+
+
+import peak from '../../assets/hex_icons/mountain.png';
+import mountains from '../../assets/hex_icons/mountains.png';
+import hills from '../../assets/hex_icons/hills.png';
+import grassyhills from '../../assets/hex_icons/grassyhills.png';
+import forest from '../../assets/hex_icons/heavyforest.png';
+import lightforest from '../../assets/hex_icons/lightforest.png';
+import forestedhills from '../../assets/hex_icons/forestedhills.png';
+import forestedmountains from '../../assets/hex_icons/forestedmountains.png';
+import forestedpeak from '../../assets/hex_icons/forestedmountain.png';
+
+import city from '../../assets/hex_icons/castle.png';
+import tower from '../../assets/hex_icons/tower.png';
+import village from '../../assets/hex_icons/village.png';
+import temple from '../../assets/hex_icons/church.png';
+import ruins from '../../assets/hex_icons/landmark.png';
+import tribe from '../../assets/hex_icons/teepee.png';
+import cave from '../../assets/hex_icons/cave.png';
+import dungeon from '../../assets/hex_icons/dungeon.png';
+
+import { ImZoomIn, ImZoomOut } from "react-icons/im";
+import HexMapTool from './HexMapTool';
+
+import './HexMap.css';
+
 interface IHex { terrain?: string, feature?: string; };
 interface IHexData { [key: string]: any; };
-
-
-import { GiWhiteTower, GiMedievalGate, GiLockedChest, GiKnightBanner, GiHouse, GiGoldMine, GiDoorway, GiCastle, GiCastleRuins, GiChessRook, GiChurch, GiColiseum, GiCrossMark } from "react-icons/gi";
 
 
 const HexMap = () => {
@@ -23,20 +45,27 @@ const HexMap = () => {
 
   const hexes = GridGenerator.orientedRectangle(map.width, map.height);
 
-  // const feature_icons: { [key: string]: any; } = {
-  //   'city': <GiMedievalGate className="feature" />,
-  //   'tower': <GiWhiteTower />,
-  //   'town': <GiHouse />,
-  //   'mine': <GiGoldMine />,
-  //   'poi': <GiCrossMark />,
-  //   'dungeon': <GiDoorway />,
-  // };
+  const terrain_icons: { [key: string]: any; } = {
+    'peak': peak,
+    'mountains': mountains,
+    'hills': hills,
+    'grassyhills': grassyhills,
+    'forest': forest,
+    'lightforest': lightforest,
+    'forestedhills': forestedhills,
+    'forestedmountains': forestedmountains,
+    'forestedpeak': forestedpeak,
+  };
 
   const feature_icons: { [key: string]: any; } = {
-    'city': 'c',
-    'town': 't',
-    'poi': 'x',
-    'dungeon': 'd',
+    'city': city,
+    'tower': tower,
+    'village': village,
+    'temple': temple,
+    'ruins': ruins,
+    'tribe': tribe,
+    'cave': cave,
+    'dungeon': dungeon,
   };
 
 
@@ -177,12 +206,18 @@ const HexMap = () => {
                       }
                     }}
                   >
-                    {map.hexes[coords]?.feature &&
-                      <text className="marker" text-anchor="middle" y="0">
-                        {feature_icons[map.hexes[coords].feature]}
-                      </text>
+                    {
+                      (() => {
+                        const terrain = map.hexes[coords]?.terrain;
+                        const feature = map.hexes[coords]?.feature;
+                        if (!feature && terrain && terrain_icons[terrain]) {
+                          return <image xlinkHref={terrain_icons[terrain]} x="-2" y="-2.5" width="4" height="4" />;
+                        } else if (feature && feature_icons[feature]) {
+                          return <image xlinkHref={feature_icons[feature]} x="-2" y="-2.5" width="4" height="4" />;
+                        }
+                      })()
                     }
-                    <text text-anchor="middle" y="2.7">{`${hex.q} ${hex.r} ${hex.s}`}</text>
+                    <text text-anchor="middle" y="2.7">{`${hex.q}/${hex.r}/${hex.s}`}</text>
                   </Hexagon>
                 );
               })}
@@ -191,17 +226,37 @@ const HexMap = () => {
         </div>
       </div>
       <div className="hex-tools">
-        <button className={`tool-water ${tool?.id === 'water' ? 'active' : ''}`} onClick={() => setTool({ id: 'water', type: 'terrain' })}>WATER</button>
-        <button className={`tool-deepwater ${tool?.id === 'deepwater' ? 'active' : ''}`} onClick={() => setTool({ id: 'deepwater', type: 'terrain' })}>DEEP WATER</button>
-        <button className={`tool-mountains ${tool?.id === 'mountains' ? 'active' : ''}`} onClick={() => setTool({ id: 'mountains', type: 'terrain' })}>MOUNTAINS</button>
-        <button className={`tool-hills ${tool?.id === 'hills' ? 'active' : ''}`} onClick={() => setTool({ id: 'hills', type: 'terrain' })}>HILLS</button>
-        <button className={`tool-plains ${tool?.id === 'plains' ? 'active' : ''}`} onClick={() => setTool({ id: 'plains', type: 'terrain' })}>PLAINS</button>
-        <button className={`tool-forest ${tool?.id === 'forest' ? 'active' : ''}`} onClick={() => setTool({ id: 'forest', type: 'terrain' })}>FOREST</button>
-        <button className={`tool-city ${tool?.id === 'city' ? 'active' : ''}`} onClick={() => setTool({ id: 'city', type: 'feature' })}>CITY</button>
-        <button className={`tool-town ${tool?.id === 'town' ? 'active' : ''}`} onClick={() => setTool({ id: 'town', type: 'feature' })}>TOWN</button>
-        <button className={`tool-dungeon ${tool?.id === 'dungeon' ? 'active' : ''}`} onClick={() => setTool({ id: 'dungeon', type: 'feature' })}>DUNGEON</button>
-        <button className={`tool-poi ${tool?.id === 'poi' ? 'active' : ''}`} onClick={() => setTool({ id: 'poi', type: 'feature' })}>POINT OF INTEREST</button>
-        <button onClick={() => setZoom(!zoom)}>ZOOM</button>
+        <div className="label">- TERRAIN -</div>
+        <div className="section">
+          <HexMapTool id={''} type="terrain" icon={null} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="water" type="terrain" icon={terrain_icons['water']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="deepwater" type="terrain" icon={terrain_icons['deepwater']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="peak" type="terrain" icon={terrain_icons['peak']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="mountains" type="terrain" icon={terrain_icons['mountains']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="hills" type="terrain" icon={terrain_icons['hills']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="plains" type="terrain" icon={terrain_icons['plains']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="grassyhills" type="terrain" icon={terrain_icons['grassyhills']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="forest" type="terrain" icon={terrain_icons['forest']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="lightforest" type="terrain" icon={terrain_icons['lightforest']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="forestedhills" type="terrain" icon={terrain_icons['forestedhills']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="forestedmountains" type="terrain" icon={terrain_icons['forestedmountains']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="forestedpeak" type="terrain" icon={terrain_icons['forestedpeak']} tool={tool?.id} setTool={setTool} />
+        </div>
+        <div className="label">- FEATURES -</div>
+        <div className="section">
+          <HexMapTool id="city" type="feature" icon={feature_icons['city']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="tower" type="feature" icon={feature_icons['tower']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="village" type="feature" icon={feature_icons['village']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="temple" type="feature" icon={feature_icons['temple']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="ruins" type="feature" icon={feature_icons['ruins']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="tribe" type="feature" icon={feature_icons['tribe']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="cave" type="feature" icon={feature_icons['cave']} tool={tool?.id} setTool={setTool} />
+          <HexMapTool id="dungeon" type="feature" icon={feature_icons['dungeon']} tool={tool?.id} setTool={setTool} />
+
+          <button className={'zoom'} onClick={() => setZoom(!zoom)}>{
+            zoom ? <ImZoomOut /> : <ImZoomIn />
+          }</button>
+        </div>
       </div>
     </div>
   );

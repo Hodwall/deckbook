@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import useDeckStore from './useDeckStore';
+import useCardStore from './useCardStore';
 
 
 interface ICollection {
@@ -42,6 +42,7 @@ const useCollectionStore = create<ICollectionStore>((set) => ({
     let active_collection = state.active_collection === id ? null : state.active_collection;
     localStorage.setItem('deckbook-collections', JSON.stringify(collections));
     localStorage.setItem('deckbook-collections-active', JSON.stringify(active_collection));
+    useCardStore.getState().deleteCardsInCollection(id);
     return {
       collections: collections,
       active_collection: active_collection
@@ -79,7 +80,7 @@ const useCollectionStore = create<ICollectionStore>((set) => ({
       collections_[collection_index].label = label;
       collections_[collection_index].background = background;
     }
-    localStorage.setItem('deckbook-collection', JSON.stringify([...collections_]));
+    localStorage.setItem('deckbook-collections', JSON.stringify([...collections_]));
     return { collections: [...collections_] };
   }),
   updateCollections: (collections) => set((state) => {

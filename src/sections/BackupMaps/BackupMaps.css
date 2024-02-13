@@ -1,0 +1,85 @@
+.backup-maps {
+  font-size: 1rem;
+  gap: 0.2em;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+}
+
+.backup-maps>div {
+  display: grid;
+  grid-template-rows: min-content min-content;
+}
+
+.backup-maps .backup-label {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.25em 0;
+}
+
+.backup-maps .backup-label .separator {
+  height: 2px;
+  align-self: center;
+  background-color: hsl(30, 20%, 60%);
+  flex: 1;
+}
+
+.backup-maps .backup-label .label {
+  font-family: 'Asul';
+  font-size: 0.8em;
+  color: hsl(30, 20%, 50%);
+}
+
+.backup-maps .backup-content {
+  display: inline-flex;
+  gap: 0.2em;
+  width: 100%;
+}
+
+
+.backup-maps .backup-load .backup-content button:first-child {
+  flex-grow: 2;
+}
+
+.backup-maps .backup-load .backup-content button {
+  flex-grow: 0;
+}
+
+.backup-maps .backup-save button {
+  flex: 1;
+}
+
+
+
+
+
+.backup-maps button {
+  background-color: hsl(30, 20%, 30%);
+  color: hsl(30, 30%, 88%);
+  font-size: 0.95em;
+  font-family: 'IM Fell DW Pica';
+  border: 0.15em solid hsl(30, 20%, 35%);
+  border-radius: 0.5em;
+  height: 3em;
+  padding: 0 1em;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.backup-maps button:hover {
+  background-color: hsl(30, 20%, 34%);
+  transition: all 0.25s;
+}
+
+.backup-maps button:active {
+  transform: translateY(2px);
+}
+
+.backup-maps button:disabled {
+  background-color: transparent;
+  color: hsl(30, 15%, 50%);
+  border-color: hsl(30, 15%, 60%);
+}

@@ -1,32 +1,28 @@
 .Toolbar {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: start;
   gap: 0.5em;
-  padding: 1em 0;
-  z-index: 1;
+  padding-top: 0.2em;
+  padding-bottom: 1em;
+  border-top: 4px solid hsl(30, 15%, 45%);
 }
 
-.Toolbar .separator {
-  height: 3px;
-  align-self: center;
-  background-color: hsl(30, 18%, 48%);
-  flex: 1;
-}
-
-.Toolbar button {
+.Toolbar button,
+.Toolbar .Selector .popmenu-button {
   background-color: hsl(30, 18%, 42%);
   color: hsl(30, 25%, 90%);
   border: none;
-  border-radius: 0.5em;
-  padding: 0 0.75em;
-  line-height: 1.7em;
+  border-radius: 0.25em;
+  padding: 0.2em 0.7em;
   font-family: 'Asul';
   font-size: 0.9em;
   cursor: pointer;
   transition: background-color 0.25s;
 }
 
-.Toolbar button:hover {
+.Toolbar button:hover,
+.Toolbar .Selector .popmenu-button:hover {
   background-color: hsl(30, 18%, 36%);
   transition: background-color 0.25s;
 }
@@ -42,7 +38,6 @@
 .Toolbar button.active {
   background-color: hsl(38, 30%, 50%);
   transition: background-color 0.25s;
-
 }
 
 .Toolbar button:disabled {
@@ -51,4 +46,36 @@
   cursor: none;
   pointer-events: none;
   transition: all 0.25s;
+}
+
+.Toolbar .searchbar {
+  right: 0;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: auto min-content;
+  gap: 0.25em;
+  width: 30%;
+}
+
+.Toolbar .searchbar input {
+  background: hsla(38, 30%, 40%, 0.2);
+  border: none;
+  border-radius: 5px;
+  text-align: end;
+  padding: 0 1em;
+  font-family: 'IM Fell DW Pica';
+  color: hsl(40, 20%, 35%);
+  font-size: 1em;
+}
+
+.Toolbar .searchbar input:focus {
+  border: none;
+  outline: none;
+}
+
+.Toolbar .searchbar svg {
+  font-size: 1.5em;
+  color: hsla(38, 15%, 40%);
+  padding: 0;
+  margin: 0;
 }
