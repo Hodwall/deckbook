@@ -1,0 +1,46 @@
+.options_list {
+  background-color: var(--color-theme-dark);
+  color: var(--font-color-clear-highlight);
+  font-family: var(--font-default);
+  padding: 0.25em 0.5em;
+  border-radius: var(--default-border-radius);
+}
+
+.options_list>div {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.options_list>div:hover {
+  color: white;
+}
+
+/* 
+.Selector>.popmenu-button {
+  border: 2px solid hsl(30, 15%, 30%);
+  border-radius: 0.25em;
+  padding: 0.2em;
+  cursor: pointer;
+}
+
+.Selector>.label {
+  padding-bottom: 0.5em;
+  user-select: none;
+  pointer-events: none;
+}
+
+.popmenu-selector .content {
+  display: flex;
+  flex-direction: column;
+}
+
+.popmenu-selector .content .selector-option {
+  padding: 0.3em 0.5em;
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+.popmenu-selector .content .selector-option:hover {
+  background-color: hsl(30, 15%, 40%);
+} 
+*/

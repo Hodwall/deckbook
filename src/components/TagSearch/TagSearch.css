@@ -1,0 +1,32 @@
+.TagSearch {
+  display: grid;
+  grid-template-rows: auto min-content;
+  height: 100%;
+}
+
+.TagSearch .tag-search-results {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.25em;
+  height: min-content;
+  min-height: 1.75em;
+  padding-bottom: 0.5em;
+}
+
+.TagSearch input {
+  display: flex;
+  font-size: 1.2em;
+  background: hsla(40, 10%, 0%, 0.35);
+  box-shadow: inset 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  border: unset;
+  border-radius: 0.25em;
+  font-family: 'IM Fell DW Pica';
+  color: hsl(40, 20%, 35%);
+  padding: 0.15em 0.5em;
+}
+
+.TagSearch input:focus {
+  border: unset;
+  outline: unset;
+}

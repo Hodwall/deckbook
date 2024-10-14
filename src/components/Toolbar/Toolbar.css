@@ -1,0 +1,45 @@
+.Toolbar {
+  box-shadow: 0 6px 6px 0 var(--color-background);
+  display: grid;
+  grid-template-columns: auto min-content;
+  padding-bottom: 10px;
+  /* position: sticky; */
+  top: 0px;
+  z-index: 2;
+}
+
+.Toolbar>* {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+
+.Toolbar button,
+.Toolbar .Selector .popmenu-button {
+  align-items: top;
+  background-color: hsla(50, 5%, 50%, 0.6);
+  border-radius: 5px;
+  border: none;
+  color: hsl(55, 10%, 85%);
+  cursor: pointer;
+  display: flex;
+  font-family: 'Grenze';
+  font-size: 1.1rem;
+  height: 1.6em;
+  padding: 0 1em;
+  transition: background-color 0.3s;
+}
+
+.Toolbar button:hover,
+.Toolbar .Selector .popmenu-button:hover {
+  background-color: hsla(50, 5%, 45%, 0.85);
+}
+
+.Toolbar .toolbar-drawer {
+  padding-top: 0.5em;
+}
+
+.Toolbar .toolbar-drawer.hidden {
+  padding: 0;
+  pointer-events: none;
+}

@@ -1,0 +1,125 @@
+.Generators {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.Generators .toolbar {
+  display: flex;
+  gap: 0.25em;
+}
+
+.Generators .results {
+  display: flex;
+  gap: .5em;
+  flex-wrap: wrap;
+}
+
+.Territory,
+.Treasure {
+  background-color: hsla(30, 10%, 30%, 0.25);
+  color: hsl(55, 5%, 30%);
+  font-family: 'Grenze';
+  border-radius: 4px;
+  width: 20em;
+  box-shadow: 2px 2px 6px 0 hsla(32, 8%, 40%, 0.25)
+}
+
+.Territory .name,
+.Treasure .name {
+  background-color: hsla(30, 10%, 30%, 0.75);
+  padding: 0 0.5em;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  color: hsl(55, 5%, 95%);
+}
+
+.Territory .name button,
+.Treasure .name button {
+  float: right;
+  background-color: transparent;
+  border: none;
+  color: rgb(147, 137, 127);
+  margin-right: -5px;
+  cursor: pointer;
+}
+
+
+.Territory .locations,
+.Territory .lairs {
+  display: flex;
+  flex-direction: column;
+  line-height: 1em;
+  text-align: justify;
+  padding: 0em 0.5em 0em 0.5em;
+}
+
+.Territory .lairs>div {
+  display: grid;
+  grid-template-columns: auto min-content;
+  text-transform: uppercase;
+  font-size: 0.75em;
+}
+
+.Territory .locations .location div:first-child {
+  padding: 0.1em 0;
+  border-bottom: 2px dotted hsl(35, 4%, 55%);
+  display: grid;
+  grid-template-columns: auto min-content;
+}
+
+.Territory .locations .location div:first-child span:last-child {
+  color: hsl(10, 25%, 45%);
+}
+
+.Territory .locations .location div:first-child span:last-child.landmark {
+  color: hsl(150, 15%, 40%);
+}
+
+.Territory .locations .location div:last-child {
+  color: hsl(55, 5%, 45%);
+}
+
+.Territory .lairs>div>span:last-child {
+  color: hsl(10, 20%, 55%);
+}
+
+.Territory .lairs>div>span:last-child.landmark {
+  color: hsl(150, 10%, 50%);
+}
+
+.Territory .lairs {
+  color: hsl(20, 10%, 60%);
+  background-color: hsla(30, 10%, 30%, 0.75);
+}
+
+.Territory>div>div {
+  padding: 0.25em 0;
+}
+
+.Territory .landmark>span,
+.Territory .lairs>span {
+  background-color: hsla(30, 10%, 30%, 0.25);
+  font-size: 0.7em;
+  line-height: .1em;
+  margin-top: -.4em;
+  padding-bottom: .2em;
+}
+
+.Territory .locations>span {
+  background-color: hsl(36, 7.6%, 38.6%);
+  font-size: 0.75em;
+  line-height: 0.27em;
+  margin-top: -0.45em;
+  padding-bottom: .2em;
+  color: #adaba2;
+}
+
+.Treasure .items {
+  padding: .5em;
+}
+
+.Treasure .items>div {
+  display: flex;
+  flex-direction: column;
+}

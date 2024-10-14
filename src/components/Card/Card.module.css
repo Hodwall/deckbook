@@ -1,0 +1,97 @@
+.Card {
+  background: var(--color-theme-dark);
+  border-radius: 0.75em;
+  box-shadow: 2px 2px 4px hsla(30, 50%, 15%, 0.5);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  filter: sepia(70%) grayscale(40%);
+  font-size: 0.85rem;
+  height: 17em;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.25s;
+  user-select: none;
+  width: 10em;
+  transition: all 0.25s;
+}
+
+.Card__wide {
+  width: 20.6em;
+}
+
+.Card:hover {
+  filter: sepia(0%) grayscale(0%);
+  transform: translateY(-4px);
+}
+
+.content {
+  color: var(--color-accent);
+  display: grid;
+  flex: 1;
+  font-family: var(--font-default);
+  gap: 0.25em;
+  grid-template-rows: auto min-content;
+  margin: 0.75em;
+  margin-bottom: 1.25em;
+  text-align: center;
+  text-wrap-style: balance;
+}
+
+.label {
+  align-self: end;
+  color: var(--font-color-clear-highlight);
+  font-family: var(--font-title);
+  font-size: 1em;
+  line-height: 1em;
+  text-align: center;
+  text-shadow: 1px 1px 5px black, 1px 1px 10px black;
+  text-transform: uppercase;
+}
+
+.label::first-letter {
+  font-size: 1.5em;
+}
+
+.description {
+  font-size: 0.85em;
+  line-height: 1em;
+  text-shadow: 1px 1px 5px black, 1px 1px 10px black;
+}
+
+.bgImage {
+  -webkit-mask-image: url(/src/assets/img/mask_bg_a.png);
+  -webkit-mask-mode: alpha;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 108% 110%;
+  background-color: var(--color-theme-dark);
+  background-position: center;
+  background-size: cover;
+  /* box-shadow: hsla(30, 50%, 15%, 0.5) 2px 2px 5px, inset hsla(0, 0%, 5%, 0.35) 2px 2px 5px; */
+  box-shadow: hsla(30, 50%, 15%, 0.5) 2px 2px 5px, inset hsl(30deg 10% 15% / 80%) 0px -90px 30px -10px;
+  display: flex;
+  height: inherit;
+  mask-image: url(/src/assets/img/mask_bg_a.png);
+  mask-mode: alpha;
+  mask-position: -13px -41px;
+  mask-repeat: no-repeat;
+  mask-size: 114% 121%;
+  pointer-events: none;
+  position: absolute;
+  width: inherit;
+  z-index: -1;
+}
+
+.bgImage:before {
+  border-radius: 8px;
+  border: 2px solid hsla(30, 10%, 60%, 0.4);
+  content: '';
+  flex: 1;
+  margin: 5px;
+}
+
+@media (max-width: 1500px) {
+  .Card {
+    font-size: 0.74rem;
+  }
+}

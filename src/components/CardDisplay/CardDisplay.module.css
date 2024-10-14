@@ -1,0 +1,32 @@
+.CardDisplay {
+  background-color: var(--color-theme-dark);
+  border-radius: var(--default-border-radius);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  font-size: 0.9rem;
+  height: 45em;
+  overflow: hidden;
+  position: absolute;
+  width: 30em;
+}
+
+.bgImage {
+  -webkit-mask-image: url(/src/assets/img/mask_bg_a.png);
+  -webkit-mask-mode: alpha;
+  -webkit-mask-position: -91px -147px;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 125% 120%;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  mask-image: url(/src/assets/img/mask_bg_a.png);
+  mask-mode: alpha;
+  mask-position: -91px -147px;
+  mask-repeat: no-repeat;
+  mask-size: 125% 120%;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}

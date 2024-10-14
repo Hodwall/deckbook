@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=IM+Fell+English+SC&family=IM+Fell+Great+Primer+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grenze&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --font-default: 'Grenze';
+  --font-title: 'IM Fell DW Pica';
+
+  --font-color-clear: hsl(30, 10%, 75%);
+  --font-color-clear-faint: hsl(30, 15%, 50%);
+  --font-color-clear-fainter: hsl(30, 15%, 40%);
+  --font-color-clear-highlight: hsl(30, 50%, 85%);
+  --font-color-clear-contrast: hsl(40, 5%, 30%);
+
+  --color-theme-clear: hsl(55, 10%, 75%);
+  --color-theme-clear-overlay: hsla(55, 5%, 75%, 0.85);
+  --color-theme-dark: hsl(30, 5%, 15%);
+  --color-theme-dark-overlay: hsla(30, 5%, 15%, 0.9);
+
+  --color-accent: hsl(40, 35%, 45%);
+  --color-accent-border: hsl(40, 35%, 40%);
+  --color-accent-highlight: hsl(40, 60%, 60%);
+  --color-accent-border-highlight: hsl(40, 60%, 55%);
+  --color-accent-disabled: hsl(40, 10%, 35%);
+  --color-accent-disabled-border: hsl(40, 10%, 25%);
+
+  --default-padding: 15px;
+  --default-card-padding: 0.75em;
+  --default-margin: 15px;
+  --default-border-radius: 8px;
+}
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  margin: 0px;
+  overflow: hidden;
+  width: 100%;
+}
+
+body {
+  background: #f9f9f9 url(./assets/img/ui_parchment_bg.png) repeat;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: auto 30px min-content;
+}
+
+.App .app-content {
+  border-radius: 2px;
+  border: 6px double hsla(15, 5%, 15%, 0.15);
+  margin-right: 0;
+  margin: var(--default-margin);
+  overflow: hidden;
+  padding: 0 var(--default-padding);
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.App .app-section {
+  overflow-y: scroll;
+  height: 100%;
+  margin-top: 10px;
+}
+
+.App .app-border {
+  background-image: url(./assets/img/ui_border.png);
+  background-position-x: right;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.App .app-section>* {
+  display: flex;
+  flex-direction: column;
+}
+
+/* COMMON ELEMENTS */
+.section-separator {
+  height: 15px;
+  background: url(./assets/img/divider.png);
+  opacity: 0.25;
+}
+
+.section-title {
+  color: var(--font-color-clear-contrast);
+  font-family: 'IM Fell DW Pica';
+  font-size: 4rem;
+  font-weight: bold;
+  padding: 25vh 0;
+  text-align: center;
+  text-shadow: 0px 0px 25px hsl(40, 10%, 75%), 0px 0px 5px hsl(40, 10%, 75%);
+}
+
+.section-title.small {
+  padding: 5vh 0;
+}
+
+.section-title span {
+  color: var(--font-color-header-clear);
+  font-style: italic;
+}
+
+.transparent-button {
+  align-items: center;
+  backdrop-filter: blur(4px);
+  background-color: var(--color-transparency);
+  border-radius: 100%;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: hsl(0, 0%, 75%);
+  cursor: pointer;
+  display: flex;
+  font-size: 1.5em;
+  height: 1.1em;
+  justify-content: center;
+  padding: 0.15em;
+  width: 1.1em;
+  transition: all 0.25s;
+}
+
+/* TRANSPARENT HEADER BUTTONS */
+.transparent-button:hover {
+  color: hsl(30, 10%, 95%);
+  background-color: var(--color-transparency-highlight);
+}
+
+.transparent-button.active {
+  color: var(--color-accent-highlight);
+}
+
+.transparent-button.red.active {
+  color: tomato;
+}
+
+.transparent-button.red:hover {
+  color: hsl(9, 60%, 60%);
+  transition: all 0.25s;
+}
+
+/* CARD MENTIONS */
+.card-mention {
+  cursor: pointer;
+
+  color: var(--color-accent);
+  display: inline-block;
+  margin-left: 22px;
+  transition: text-shadow .3s;
+}
+
+.card-mention:hover {
+  color: var(--color-accent-highlight);
+}
+
+.card-mention:before {
+  content: '';
+  background-size: cover;
+  position: absolute;
+  width: 20px;
+  height: 22px;
+  margin-top: 0;
+  margin-left: -22px;
+  background-image: url(./assets/img/card_icon.png);
+}
+
+div[data-tippy-root] {
+  z-index: 9999999999999999999999 !important;
+}
+
+.react-transform-wrapper {
+  /* width: 100% !important; */
+  width: auto !important;
+  height: 100% !important;
+}
+
+/* SCROLL BARS */
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+  background: hsla(0, 0%, 0%, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  width: 2px;
+  background: gray;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+  background: #00000000;
+}
+
+
+.ck3-overlay {
+  position: absolute;
+  height: 100%;
+  z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
+  pointer-events: none;
+  opacity: 0;
+  right: 0;
+  /* opacity: 0.5; */
+}

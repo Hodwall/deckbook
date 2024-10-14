@@ -1,0 +1,378 @@
+{
+  "feature_types": {
+    "length": 20,
+    "items": [
+      [ 4, "geologic" ],
+      [ 8, "structure" ],
+      [ 12, "resource" ],
+      [ 13, "hazard" ],
+      [ 14, "sign" ],
+      [ 15, "dungeon" ],
+      [ 17, "terrain" ],
+      [ 18, "settlement" ],
+      [ 19, "water" ],
+      [ 20, "magic" ]
+    ]
+  },
+  "geologic_features": [
+    "caves",
+    "elevation",
+    "rocks",
+    "soil",
+    "water",
+    "terrain"
+  ],
+  "cave_ecosystems": {
+    "length": 6,
+    "items": [
+      [ 2, "Dry" ],
+      [ 4, "Wet" ],
+      [ 5, "Mixed" ],
+      [ 6, "Unique" ]
+    ]
+  },
+  "cave_entrance_types": {
+    "length": 100,
+    "items": [
+      [ 35, "regular" ],
+      [ 70, "sinkhole" ],
+      [ 85, "concealed" ],
+      [ 100, "constructed" ]
+    ]
+  },
+  "cave_sizes": {
+    "length": 100,
+    "items": [
+      [ 40, "Diminute" ],
+      [ 60, "Small" ],
+      [ 80, "Average" ],
+      [ 95, "Big" ],
+      [ 100, "Sprawling" ]
+    ]
+  },
+  "elevation_origins": {
+    "length": 100,
+    "items": [
+      [ 75, "natural" ],
+      [ 90, "out of place" ],
+      [ 96, "man-made" ],
+      [ 100, "caused by magic" ]
+    ]
+  },
+  "elevation_directions": [ "rise", "decline" ],
+  "elevation_rates": {
+    "length": 100,
+    "items": [
+      [ 50, "slight" ],
+      [ 75, "steep" ],
+      [ 100, "sharp" ]
+    ]
+  },
+  "elevation_sizes": {
+    "length": 100,
+    "items": [
+      [ 35, "small" ],
+      [ 70, "medium" ],
+      [ 85, "big" ],
+      [ 98, "large" ],
+      [ 100, "sprawling" ]
+    ]
+  },
+  "rocks_types": {
+    "length": 100,
+    "items": [
+      [ 35, "area of small rocks" ],
+      [ 70, "spread of large rocks" ],
+      [ 100, "outcropping of rock" ]
+    ]
+  },
+  "rocks_sizes": {
+    "length": 100,
+    "items": [
+      [ 25, "discrete" ],
+      [ 50, "medium" ],
+      [ 75, "large" ],
+      [ 100, "sprawling" ]
+    ]
+  },
+  "rocks_origins": [
+    "natural",
+    "unusual",
+    "placed by someone",
+    "to have been caused by some event"
+  ],
+  "rocks_features": {
+    "length": 6,
+    "items": [
+      [ 3, "writing" ],
+      [ 5, "arranged" ],
+      [ 6, "magical" ]
+    ]
+  },
+  "structure_types": [
+    "burial grounds",
+    "monument",
+    "dwelling",
+    "fortification",
+    "infrastructure",
+    "barrier",
+    "dungeon"
+  ],
+  "burial_ground_ages": [
+    "Ancient",
+    "Old",
+    "Weathered",
+    "New"
+  ],
+  "burial_ground_sizes": [
+    "tiny",
+    "small",
+    "average",
+    "large",
+    "sprawling"
+  ],
+  "monument_type": {
+    "length": 100,
+    "items": [
+      [ 25, "statue" ],
+      [ 50, "obelisk" ],
+      [ 75, "megalith" ],
+      [ 85, "arch" ],
+      [ 90, "temple" ],
+      [ 95, "fountain" ],
+      [ 100, "magic" ]
+    ]
+  },
+  "monument_ages": [
+    "Ancient",
+    "Old",
+    "Weathered",
+    "New"
+  ],
+  "monument_sizes": [
+    "small",
+    "medium",
+    "large",
+    "giant-sized",
+    "enormous"
+  ],
+  "monument_materials": {
+    "length": 100,
+    "items": [
+      [ 20, "wood, bone or brick" ],
+      [ 45, "metal" ],
+      [ 95, "stone" ],
+      [ 100, "exotic materials" ]
+    ]
+  },
+  "monument_purposes": {
+    "length": 100,
+    "items": [
+      [ 25, " to honor the dead." ],
+      [ 50, " to honor an event." ],
+      [ 75, " to honor an individual." ],
+      [ 85, " to honor a concept (such as law or chaos)." ],
+      [ 95, " to honor a deity." ],
+      [ 100, " to house an artifact, a relic or a distinguished person." ]
+    ]
+  },
+  "monument_interior_entrances": [
+    "visible, but locked",
+    "concealed, but unlocked",
+    "concealed, and locked"
+  ],
+  "monument_statues_depiction": {
+    "length": 100,
+    "items": [
+      [ 40, "human" ],
+      [ 75, "demi-human" ],
+      [ 90, "humanoid" ],
+      [ 98, "animal" ],
+      [ 100, "abstract concept" ]
+    ]
+  },
+  "monument_temple_styles": [
+    "An imponent building, in the style of the local gods.",
+    "A terraced, pyramidal structure, exotic and strange.",
+    "A humble earthen mound.",
+    "A discrete arrangement of stone buildings."
+  ],
+  "dwelling_inhabitants": {
+    "length": 100,
+    "items": [
+      [ 25, "monsters" ],
+      [ 60, "uninhabited" ],
+      [ 100, "inhabited" ]
+    ]
+  },
+  "dwelling_ages": {
+    "length": 100,
+    "items": [
+      [ 10, "brand new" ],
+      [ 60, "not too old" ],
+      [ 99, "old" ],
+      [ 100, "ancient" ]
+    ]
+  },
+  "dwelling_conditions": {
+    "length": 100,
+    "items": [
+      [ 15, "crumbling and falling apart" ],
+      [ 50, "in need of some repair" ],
+      [ 85, "in relatively decent shape" ],
+      [ 100, "inmaculately mantained" ]
+    ]
+  },
+  "dwelling_sizes": {
+    "length": 100,
+    "items": [
+      [ 10, "tiny" ],
+      [ 30, "small" ],
+      [ 75, "medium" ],
+      [ 95, "large" ],
+      [ 98, "very large" ],
+      [ 100, "palatial" ]
+    ]
+  },
+
+  "fortification_types": {
+    "length": 100,
+    "items": [
+      [ 20, "wall" ],
+      [ 40, "fort" ],
+      [ 55, "berm" ],
+      [ 75, "trench" ],
+      [ 85, "tower" ],
+      [ 95, "keep" ],
+      [ 100, "castle" ]
+    ]
+  },
+  "fortification_ages": {
+    "length": 100,
+    "items": [
+      [ 10, "brand new" ],
+      [ 60, "not too old" ],
+      [ 99, "old" ],
+      [ 100, "ancient" ]
+    ]
+  },
+  "fortification_conditions": {
+    "length": 100,
+    "items": [
+      [ 15, "crumbling and falling apart" ],
+      [ 50, "in need of some repair" ],
+      [ 85, "in relatively decent shape" ],
+      [ 100, "inmaculately mantained" ]
+    ]
+  },
+  "fortification_materials": {
+    "length": 100,
+    "items": [
+      [ 40, "earth and mud" ],
+      [ 70, "wood and logs" ],
+      [ 90, "stone" ],
+      [ 98, "exotic materials" ],
+      [ 100, "arcane means" ]
+    ]
+  },
+  "fortification_wall_directions": [
+    "north",
+    "northeast",
+    "east",
+    "southeast",
+    "south",
+    "southwest",
+    "west",
+    "northwest"
+  ],
+  "fortification_wall_angle": {
+    "length": 6,
+    "items": [
+      [ 3, "straight" ],
+      [ 5, "curved" ],
+      [ 6, "sharply angled" ]
+    ]
+  },
+  "fortification_wall_length": {
+    "length": 100,
+    "items": [
+      [ 10, "a solitary small section of wall standing alone" ],
+      [ 25, "short" ],
+      [ 65, "about the size of a short street" ],
+      [ 75, "about the size of a long avenue" ],
+      [ 85, "very long" ],
+      [ 96, "really long, a feature of the landscape" ]
+    ]
+  },
+  "fortification_wall_height": {
+    "length": 6,
+    "items": [
+      [ 2, "short" ],
+      [ 4, "medium" ],
+      [ 5, "tall" ],
+      [ 6, "very tall" ]
+    ]
+  },
+  "infrastructure_types": {
+    "length": 20,
+    "items": [
+      [ 8, "road" ],
+      [ 15, "water" ],
+      [ 20, "commercial" ]
+    ]
+  },
+  "infrastructure_water_types": {
+    "length": 100,
+    "items": [
+      [ 5, "aqueduct" ],
+      [ 40, "bridge" ],
+      [ 45, "canal" ],
+      [ 55, "fountain" ],
+      [ 65, "pond" ],
+      [ 100, "well" ]
+    ]
+  },
+  "infrastructure_commercial_types": {
+    "length": 100,
+    "items": [
+      [ 5, "camp" ],
+      [ 15, "farm" ],
+      [ 17, "ferry" ],
+      [ 20, "ford" ],
+      [ 25, "hunting lodge" ],
+      [ 30, "inn" ],
+      [ 31, "lighthouse" ],
+      [ 35, "logging camp" ],
+      [ 38, "military garrison" ],
+      [ 48, "mill" ],
+      [ 55, "mine" ],
+      [ 56, "monastery" ],
+      [ 65, "orchard" ],
+      [ 70, "other" ],
+      [ 75, "quarry" ],
+      [ 85, "ranch" ],
+      [ 95, "shrine" ],
+      [ 100, "temple" ]
+    ]
+  },
+  "resource_types": {
+    "length": 20,
+    "items": [
+      [ 3, "animal, game" ],
+      [ 6, "animal, livestock" ],
+      [ 8, "mineral, quarried" ],
+      [ 10, "mineral, mined" ],
+      [ 15, "vegetable, agricultural" ],
+      [ 20, "vegetable, industrial" ]
+    ]
+  },
+  "hazard_types": {
+    "length": 10,
+    "items": [
+      [ 3, "geological" ],
+      [ 6, "plant-based" ],
+      [ 9, "climate" ],
+      [ 10, "unusual" ]
+    ]
+  }
+}

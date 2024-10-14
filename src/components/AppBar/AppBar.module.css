@@ -1,0 +1,310 @@
+.AppBar {
+  background-image: url(../../assets/img/ui_bg_appbar.jpg);
+  background-position: center;
+  display: grid;
+  font-family: 'Grenze';
+  font-size: 1rem;
+  grid-template-columns: auto min-content;
+  overflow: hidden;
+
+  --appbar-color: hsl(30, 10%, 50%);
+  --appbar-color-faint: hsl(30, 10%, 35%);
+  --appbar-color-disabled: hsl(30, 10%, 25%);
+  --appbar-color-highlight: hsl(30, 10%, 65%);
+  --appbar-color-shadow: hsla(0, 0%, 0%, 0.35);
+}
+
+.content {
+  border-right: 2px dashed hsl(30, 10%, 20%);
+  color: var(--appbar-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  overflow: hidden;
+  padding: var(--default-padding);
+}
+
+.content:global(.hidden) {
+  padding: 0;
+}
+
+.logo {
+  font-family: 'Pirata One';
+  font-size: 2em;
+  line-height: 1.5em;
+  text-align: center;
+  user-select: none;
+}
+
+.global_search {
+  display: grid;
+  grid-template-columns: min-content auto min-content;
+  gap: 0.5em;
+  font-family: var(--font-default);
+}
+
+.global_search>svg {
+  font-size: 1.5rem;
+  color: var(--font-color-clear-fainter);
+}
+
+.global_search>input {
+  background-color: hsla(0, 0%, 0%, 0.25);
+  border: none;
+  border-radius: 2px;
+  color: var(--font-color-clear);
+  font-family: var(--font-default);
+  font-size: 1rem;
+  padding: 0 0.5em;
+}
+
+.global_search>input:focus {
+  border: none;
+  outline: none;
+}
+
+.global_search>input::placeholder {
+  color: var(--font-color-clear-fainter);
+}
+
+.global_search>span {
+  font-family: var(--font-default);
+  color: var(--font-color-clear-faint);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.global_search>span:hover {
+  color: var(--font-color-clear);
+}
+
+.contentNav {
+  background-color: var(--appbar-color-shadow);
+  border-radius: 0.25em;
+  display: flex;
+  gap: 0.25em;
+  justify-content: center;
+  padding: 0.25em;
+}
+
+.contentNav>div {
+  align-content: start;
+  background-color: hsl(30, 5%, 9%);
+  border-bottom: none;
+  border-top-left-radius: 0.15em;
+  border-top-right-radius: 0.15em;
+  border: 1px solid hsl(30, 5%, 9%);
+  color: hsl(30, 10%, 32%);
+  cursor: pointer;
+  flex: 1;
+  font-family: 'IM Fell DW Pica';
+  font-size: 0.9em;
+  font-size: var(-font-default);
+  line-height: 1.25em;
+  padding-top: 0.15em;
+  text-align: center;
+  transition: all .3s;
+  user-select: none;
+}
+
+.contentNav>div:hover {
+  background-color: hsl(30, 10%, 12%);
+  color: hsl(30, 10%, 50%);
+}
+
+.contentNav:global(>div.active) {
+  background-color: hsl(30, 10%, 11%);
+  border-bottom: none;
+  border-color: hsl(30, 10%, 15%);
+  color: var(--color-accent);
+  cursor: default;
+  margin-bottom: -0.25em;
+}
+
+.AppBar__button {
+  color: var(--appbar-color);
+  background-color: hsla(30, 10%, 50%, 0.1);
+  border-radius: 4px;
+  width: 100%;
+  flex: 1;
+  font-family: 'Grenze';
+  font-size: 1.05em;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.AppBar__button:hover {
+  color: var(--appbar-color-highlight);
+  background-color: hsla(30, 15%, 50%, 0.25);
+}
+
+.AppBar__button:disabled {
+  color: var(--appbar-color-disabled);
+  background-color: hsla(30, 10%, 50%, 0.05);
+  cursor: unset;
+  pointer-events: none;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+.panelHeader {
+  -webkit-mask-image: url(../../assets/img/mask_block.png);
+  -webkit-mask-mode: alpha;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 200% 100%;
+  align-items: center;
+  background-color: var(--appbar-color-shadow);
+  border-radius: 2px;
+  color: var(--appbar-color-faint);
+  display: inline-flex;
+  font-family: 'Grenze';
+  gap: 0.25em;
+  margin-bottom: 0.25em;
+  mask-image: url(../../assets/img/mask_block.png);
+  mask-mode: alpha;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: 200% 100%;
+  padding: 0 0.25em;
+  user-select: none;
+}
+
+.panelHeader_end {
+  display: inline-flex;
+  margin-left: auto;
+}
+
+.panelHeader button {
+  background: transparent;
+  border: none;
+  color: var(--appbar-color);
+  cursor: pointer;
+  display: flex;
+  font-size: 1.15em;
+  transition: color 0.3s;
+}
+
+.panelHeader button:hover {
+  color: var(--color-highlight);
+}
+
+.panelHeader button:disabled {
+  color: var(--appbar-color-disabled);
+  pointer-events: none;
+}
+
+.panelHeader button.locked {
+  color: hsl(10, 60%, 40%);
+}
+
+/* PANELS */
+.TagsPanel_dialog {
+  padding: var(--default-padding);
+  height: 100%;
+}
+
+.TagsPanel_list {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  gap: 0.25em;
+}
+
+.PinnedCardsPanel_list,
+.PinnedDecksPanel_list {
+  display: flex;
+  flex-direction: column;
+}
+
+.PinnedCardsPanel_list div:global(.card-link) {
+  color: var(--color-accent);
+  cursor: pointer;
+  transition: color .3s;
+}
+
+.PinnedCardsPanel_list div:global(.card-link):hover {
+  color: var(--color-accent-highlight);
+}
+
+.DeckPanel {
+  display: flex;
+  justify-content: center;
+}
+
+.DeckPanel div:global(.Deck) {
+  box-shadow: 6px 6px 6px 0px var(--appbar-color-shadow);
+  filter: sepia(50%) grayscale(40%);
+}
+
+.DeckPanel div:global(.Deck):hover {
+  filter: sepia(20%) grayscale(0%);
+  transform: scale(1.03);
+}
+
+.PinnedDecksPanel_list div:global(.deck-link) {
+  color: hsl(15, 45%, 50%);
+  cursor: pointer;
+  transition: color .3s;
+}
+
+.PinnedDecksPanel_list div:global(.deck-link):hover {
+  color: hsl(15, 60%, 60%);
+}
+
+/* NAVIGATION */
+.navigation {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: var(--default-padding);
+  text-align: center;
+  width: 2em;
+}
+
+.navigation hr {
+  color: var(--appbar-color);
+  user-select: none;
+}
+
+.navigation a:global(.active) svg {
+  color: var(--color-accent);
+}
+
+.navigation svg {
+  color: var(--appbar-color);
+  cursor: pointer;
+  font-size: 1.5em;
+  transition: color 0.3s;
+}
+
+.navigation svg:hover {
+  color: var(--appbar-color-highlight);
+}
+
+.navigation button {
+  background: transparent;
+  border: none;
+  font-size: inherit;
+  padding: 0;
+}
+
+.navigation_end {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: auto;
+}
+
+@media (max-width: 1500px) {
+  .AppBar {
+    font-size: 0.9rem;
+  }
+}

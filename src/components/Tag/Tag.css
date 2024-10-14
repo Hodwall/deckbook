@@ -1,0 +1,57 @@
+.Tag {
+  font-size: 0.9rem;
+  font-family: 'Grenze';
+  background-color: hsl(10, 30%, 25%);
+  border: 1px solid hsl(10, 30%, 30%);
+  color: hsl(10, 20%, 70%);
+  border-radius: 3px;
+  padding: 0 0.3em;
+  user-select: none;
+  display: flex;
+  box-shadow: inset 0 0 10px hsl(10, 30%, 23%);
+  text-wrap-style: balance;
+  text-align: center;
+  transition: background-color .3s;
+}
+
+.Tag.can-remove:hover {
+  /* border-color: hsl(10, 60%, 60%); */
+  background-color: hsl(10, 40%, 30%);
+  color: hsl(10, 20%, 75%);
+  cursor: pointer;
+}
+
+.Tag.tag-result {
+  background-color: hsl(30, 15%, 50%);
+  border-color: hsl(30, 15%, 50%);
+  /* background-color: var(--color-theme-dark); */
+  /* border-color: var(--color-theme-dark); */
+  color: hsl(30, 40%, 88%);
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.Tag.can-remove:active,
+.Tag.tag-result:active {
+  transform: translateY(2px) !important;
+}
+
+.Tag button {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  width: 0.65em;
+  height: 0.65em;
+  padding: 0.65em;
+  margin-left: 0.4em;
+  background-color: hsla(0, 0%, 10%, 0.25);
+  box-shadow: hsla(0, 0%, 0%, 0.25) 0px 2px 8px;
+  border-radius: 5em;
+  border: none;
+  backdrop-filter: blur(4px);
+  font-size: 0.9em;
+  font-weight: bold;
+  color: hsl(0, 20%, 75%);
+  cursor: pointer;
+}
