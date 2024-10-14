@@ -91,6 +91,7 @@
   font-family: var(--font-default);
   font-size: 1rem;
   padding: 0 1em 1em 1em;
+  z-index: 0;
 }
 
 .footer {
@@ -155,6 +156,31 @@
   line-height: 1em;
   color: var(--card-font-color-default);
 
+
+  p:global(.treasure) {
+    background-color: hsla(80, 75%, 25%, 0.15);
+    border-radius: 4px;
+    padding: 0.35em;
+    position: relative;
+  }
+
+  p:global(.treasure)::before {
+    background-image: url(../../assets/img/node_bg.png);
+    background-blend-mode: color-dodge;
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: -0.35em;
+    z-index: -1;
+    opacity: 0.4;
+  }
+
+  p:global(.treasure) h3 {
+    color: hsl(55, 20%, 40%);
+  }
+
+
   p {
     margin: 0.35em 0;
   }
@@ -173,7 +199,7 @@
   }
 
   hr {
-    margin-top: 0.75em;
+    /* margin-top: 0.75em; */
     border: 1px solid hsla(35, 85%, 75%, 0.25);
   }
 
@@ -183,10 +209,11 @@
   }
 
   blockquote {
-    margin: 0.5em 0.25em;
+    margin: 0.25em 0;
+    /* margin: 0.5em 0.25em; */
     padding: 0.25em 0.5em;
     background-color: hsla(30, 5%, 50%, 0.1);
-    border-radius: 5px;
+    border-radius: 4px;
     color: var(--font-color-clear-faint);
     font-style: italic;
     border: unset;
@@ -219,6 +246,10 @@
 
   li::marker {
     color: var(--font-color-clear-fainter);
+  }
+
+  li p {
+    margin: 0.15em;
   }
 
   /* Task list specific styles */

@@ -137,15 +137,15 @@ const CardContent = (props: {
 
 
   const Treasure = Paragraph.extend({
-    name: 'customParagraph',
+    name: 'treasure',
     group: 'block',
     content: 'block+',
-    // content: 'text*, heading*',
+    draggable: true,
     parseHTML() {
-      return [{ tag: 'p.custom-paragraph' }];
+      return [{ tag: 'p.treasure' }];
     },
     renderHTML({ HTMLAttributes }) {
-      return ['p', mergeAttributes(HTMLAttributes, { class: 'supertest' }), 0];
+      return ['p', mergeAttributes(HTMLAttributes, { class: 'treasure' }), 0];
     },
     addAttributes() {
       return {
