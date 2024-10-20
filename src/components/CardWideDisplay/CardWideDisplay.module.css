@@ -34,16 +34,23 @@
 }
 
 .bgImage {
-  -webkit-mask-image: url(../../assets/img/mask_bg_a.png);
+  -webkit-mask:
+    url(../../assets/img/mask_vertical_wide.png) center/contain no-repeat,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: exclude;
   -webkit-mask-mode: alpha;
-  -webkit-mask-position: 98% 50%;
+  -webkit-mask-position: 99% 0%;
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 200% 150%;
-  mask-image: url(../../assets/img/mask_bg_a.png);
+  -webkit-mask-size: 1900px 100%;
+  mask:
+    url(../../assets/img/mask_vertical_wide.png) center/contain no-repeat,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
   mask-mode: alpha;
-  mask-position: 98% 50%;
+  mask-position: 99% 0%;
   mask-repeat: no-repeat;
-  mask-size: 200% 150%;
+  mask-size: 1900px 100%;
+
   z-index: -1;
   overflow: hidden;
 }
