@@ -2,6 +2,8 @@ import { TbCardsFilled } from "react-icons/tb";
 import useCardStore from "../../../store/useCardStore";
 import useDeckStore from "../../../store/useDeckStore";
 import { useNavigate } from "react-router-dom";
+import styles from '../AppBar.module.css';
+
 
 const GlobalSearchResults = (props: {
   searchText: string,
@@ -38,9 +40,9 @@ const GlobalSearchResults = (props: {
   }
 
   return (
-    <div>
+    <div className={styles.global_search__results}>
       {
-        results.map((item: any) => item.type === 'card'
+        results.toSorted((a: any, b: any) => a.label < b.label ? -1 : 1).map((item: any) => item.type === 'card'
           ? <div className="card-link" onClick={() => item.is_wide ? setActiveWideCard(item.id) : setActiveCard(item.id)}> <TbCardsFilled />{item.label} </div>
           : <div className="deck-link" onClick={() => navigate(`/deckbook/cards?deck=${item.id}`)} > <TbCardsFilled />{item.label} </div>
         )
