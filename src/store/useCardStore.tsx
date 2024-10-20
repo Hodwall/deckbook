@@ -118,7 +118,9 @@ const useCardStore = create<ICardStore>((set) => ({
     return { active_cards: [] };
   }),
   setActiveWideCard: (id) => set((state) => {
-    return { active_wide_card: id, hand_cards: [...state.hand_cards.filter((c) => c !== id)] };
+    let hand_cards_ = [...state.hand_cards.filter((c) => c !== id)];
+    if (state.active_wide_card) hand_cards_.push(state.active_wide_card);
+    return { active_wide_card: id, hand_cards: hand_cards_ };
   }),
   addTagToCard: (id, tag) => set((state) => {
     let cards_ = [...state.cards];
