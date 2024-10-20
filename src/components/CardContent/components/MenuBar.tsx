@@ -5,6 +5,7 @@ import rollTreasure from "../../../pages/Generators/rollTreasure";
 import PopMenu from "../../PopMenu/PopMenu";
 import Selector from "../../Selector/Selector";
 import styles from '../CardContent.module.css';
+import GeneratorsMenu from "./GeneratorsMenu";
 
 
 const MenuBar = (props: {
@@ -21,8 +22,16 @@ const MenuBar = (props: {
   const handleGenerateList = (header: string, items: string[]) => {
     const parsed_items = items.map((t) => {
       return {
-        "type": "listItem",
-        "content": [{ "type": "paragraph", "content": [{ "type": "text", "text": t }] }]
+        "type": "taskItem",
+        "attrs": { "checked": false },
+        "content": [{
+          "type": "paragraph",
+          "attrs": { "textAlign": "left" },
+          "content": [{
+            "type": "text",
+            "text": t
+          }]
+        }]
       };
     });
     return (
@@ -31,12 +40,12 @@ const MenuBar = (props: {
         content: [
           {
             "type": "heading",
-            "attrs": { "textAlign": "left", "level": 3 },
+            "attrs": { "textAlign": "left", "level": 5 },
             "content": [{ "type": "text", "text": header }]
           },
           { "type": "horizontalRule" },
           {
-            "type": "bulletList",
+            "type": "taskList",
             "content": parsed_items,
           },
         ]
@@ -264,18 +273,35 @@ const MenuBar = (props: {
             content={
               <div className={styles.MenuBar__selector}>
 
-                <button onClick={() => {
+                <GeneratorsMenu handleGenerateList={handleGenerateList} />
+
+                {/* <button onClick={() => {
                   const treasure = rollTreasure(0);
                   return handleGenerateList(treasure.status, treasure.items);
                 }}>
                   Hovel (brass)
+                  Coins, basic items, equipment and clothes.
                 </button>
                 <button onClick={() => {
                   const treasure = rollTreasure(1);
                   return handleGenerateList(treasure.status, treasure.items || []);
                 }}>
                   House (silver)
+                  Coins, basic items, gems and jewelry, art, equipment and clothes, magic scroll, random item.
                 </button>
+                <button onClick={() => {
+                  const treasure = rollTreasure(7);
+                  return handleGenerateList(treasure.status, treasure.items || []);
+                }}>
+                  Chest - Open (silver)
+                </button>
+                <button onClick={() => {
+                  const treasure = rollTreasure(8);
+                  return handleGenerateList(treasure.status, treasure.items || []);
+                }}>
+                  Chest - Secure (gold)
+                </button> */}
+
               </div>
             }
           />
