@@ -13,10 +13,8 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 const CardWideDisplay = () => {
   const [cards, active_wide_card] = useCardStore((state) => [state.cards, state.active_wide_card]);
   const card = useMemo(() => cards.find((card) => card.id === active_wide_card), [cards, active_wide_card]);
-  // const style = card?.background ? { backgroundImage: `url(${card?.background})` } : {};
   const [isShowcaseMode, setIsShowcaseMode] = useState(false);
   const [isAltDisplay, setIsAltDisplay] = useState(false);
-
   const bgImage_ref = useRef(null);
 
   useEffect(() => {
@@ -24,10 +22,13 @@ const CardWideDisplay = () => {
     setIsShowcaseMode(false);
   }, [card]);
 
+  let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  let card_default_columns_template = vw < 1500 ? '1fr 3fr' : '1fr 2fr';
+
   const animation = useSpring({
     y: active_wide_card ? 0 : -20,
     opacity: active_wide_card ? 1 : 0,
-    gridTemplateColumns: isShowcaseMode ? '2fr 1fr' : '1fr 2fr',
+    gridTemplateColumns: isShowcaseMode ? '2fr 1fr' : card_default_columns_template,
     config: { mass: 15, friction: 500, tension: 4000 }
   });
 

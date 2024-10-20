@@ -67,13 +67,6 @@
   overflow: auto;
 }
 
-/* 
-.CardWideDisplay .card-title {
-  padding-top: 4em;
-}
-*/
-
-
 .bgImageHeader {
   position: absolute;
   top: 1em;
@@ -82,26 +75,12 @@
   gap: 0.5em;
 }
 
-
 @media (max-width: 1500px) {
-  .CardWideDisplay {
-    font-size: 0.75rem
-  }
-
   .card {
     border-radius: 0;
     flex: 1;
     height: 100vh;
     position: sticky;
     width: unset;
-  }
-
-  .CardWideDisplay .TableOfContents {
-    font-size: 0.75rem;
-    overflow: hidden;
-    word-wrap: break-word;
-    padding: 1em;
-    border: 2px solid tomato;
-    width: 20em;
   }
 }
