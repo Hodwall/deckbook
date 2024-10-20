@@ -5,7 +5,7 @@ import styles from '../AppBar.module.css';
 
 const PinnedCardsPanel = () => {
   const [cards, setActiveWideCard, setActiveCard] = useCardStore((state) => [state.cards, state.setActiveWideCard, state.setActiveCard]);
-  const pinned_cards = cards.filter((card) => card.isPinned);
+  const pinned_cards = cards.filter((card) => card.isPinned).toSorted((a, b) => a.label < b.label ? -1 : 1);
 
   return (
     <div className={styles.panel}>

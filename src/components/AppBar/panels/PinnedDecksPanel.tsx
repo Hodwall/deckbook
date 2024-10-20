@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const PinnedDecksPanel = () => {
   const decks = useDeckStore((state) => state.decks);
   const addAllCardsToHand = useCardStore((state) => state.addAllCardsToHand);
-  const pinned_decks = decks.filter((deck) => deck.isPinned);
+  const pinned_decks = decks.filter((deck) => deck.isPinned).toSorted((a, b) => a.label < b.label ? -1 : 1);
   const navigate = useNavigate();
 
   return (
