@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const PinnedDecksPanel = () => {
   const decks = useDeckStore((state) => state.decks);
+  const addAllCardsToHand = useCardStore((state) => state.addAllCardsToHand);
   const pinned_decks = decks.filter((deck) => deck.isPinned);
   const navigate = useNavigate();
 
@@ -20,7 +21,10 @@ const PinnedDecksPanel = () => {
           pinned_decks.map((deck) =>
             <div
               className="deck-link"
-              onClick={() => navigate(`/deckbook/cards?deck=${deck.id}`)}
+              onClick={() => {
+                addAllCardsToHand();
+                navigate(`/deckbook/cards?deck=${deck.id}`);
+              }}
             >
               <TbCardsFilled />{deck.label}
             </div>
