@@ -34,16 +34,23 @@
 }
 
 .bgImage {
-  -webkit-mask-image: url(../../assets/img/mask_bg_a.png);
+  -webkit-mask:
+    url(../../assets/img/mask_vertical_wide.png) center/contain no-repeat,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: exclude;
   -webkit-mask-mode: alpha;
-  -webkit-mask-position: 98% 50%;
+  -webkit-mask-position: 99% 0%;
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 200% 150%;
-  mask-image: url(../../assets/img/mask_bg_a.png);
+  -webkit-mask-size: 1900px 100%;
+  mask:
+    url(../../assets/img/mask_vertical_wide.png) center/contain no-repeat,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
   mask-mode: alpha;
-  mask-position: 98% 50%;
+  mask-position: 99% 0%;
   mask-repeat: no-repeat;
-  mask-size: 200% 150%;
+  mask-size: 1900px 100%;
+
   z-index: -1;
   overflow: hidden;
 }
@@ -67,13 +74,6 @@
   overflow: auto;
 }
 
-/* 
-.CardWideDisplay .card-title {
-  padding-top: 4em;
-}
-*/
-
-
 .bgImageHeader {
   position: absolute;
   top: 1em;
@@ -82,26 +82,12 @@
   gap: 0.5em;
 }
 
-
 @media (max-width: 1500px) {
-  .CardWideDisplay {
-    font-size: 0.75rem
-  }
-
   .card {
     border-radius: 0;
     flex: 1;
     height: 100vh;
     position: sticky;
     width: unset;
-  }
-
-  .CardWideDisplay .TableOfContents {
-    font-size: 0.75rem;
-    overflow: hidden;
-    word-wrap: break-word;
-    padding: 1em;
-    border: 2px solid tomato;
-    width: 20em;
   }
 }

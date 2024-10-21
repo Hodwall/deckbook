@@ -78,6 +78,10 @@
   color: var(--font-color-clear);
 }
 
+.global_search__results {
+  font-size: 1rem;
+}
+
 .contentNav {
   background-color: var(--appbar-color-shadow);
   border-radius: 0.25em;
@@ -151,6 +155,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.25em;
+  font-size: 1rem;
 }
 
 .panelHeader {
