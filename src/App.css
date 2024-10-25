@@ -202,5 +202,5 @@ div[data-tippy-root] {
   pointer-events: none;
   opacity: 0;
   right: 0;
-  /* opacity: 0.5; */
+  /* opacity: 0.05; */
 }

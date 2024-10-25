@@ -1,5 +1,5 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
-import ck3_ui_example from '../src/assets/img/ck3_ui_example.png';
+import ck3_ui_example from '../src/assets/img/ck3_ui_example_b.png';
 import './App.css';
 import AppBar from './components/AppBar/AppBar';
 import BackgroundImage from './components/BackgroundImage/BackgroundImage';
