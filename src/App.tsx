@@ -15,6 +15,7 @@ function App() {
   const location = useLocation();
   return (
     <div className="App">
+      <div className="app-left-border" />
       <div className="app-content">
         <BackgroundImage />
         <div className="app-section">
@@ -28,7 +29,7 @@ function App() {
           </Routes>
         </div>
       </div>
-      <div className="app-border" />
+      <div className="app-right-border" />
       <AppBar />
       <CardDisplay />
       <CardWideDisplay />

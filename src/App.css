@@ -57,27 +57,35 @@ body {
 
 .App {
   display: grid;
-  grid-template-columns: auto 46px min-content;
+  grid-template-columns: 24px auto 40px min-content;
 }
 
 .App .app-content {
   border-radius: 2px;
   overflow: hidden;
   position: relative;
-  grid-column: 1;
+  grid-column: 2;
   grid-row: 1;
 }
 
 .App .app-section {
   overflow-y: scroll;
   height: 100%;
-  padding-left: var(--default-padding);
 }
 
-.App .app-border {
+.App .app-left-border {
+  background-image: url(./assets/img/ui_border.png);
+  background-position-x: right;
+  grid-column: 1;
+  grid-row: 1;
+  transform: scaleX(-1);
+}
+
+
+.App .app-right-border {
   background-image: url(./assets/img/ui_border_new.png);
   background-position-x: right;
-  grid-column: 2;
+  grid-column: 3;
   grid-row: 1;
 }
 
