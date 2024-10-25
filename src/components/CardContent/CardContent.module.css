@@ -601,6 +601,40 @@ img.ProseMirror-separator {
   text-decoration: none;
   text-shadow: 0px 0px 10px rgb(0, 0, 0);
   transition: color .3s;
+  line-height: 1em;
+}
+
+.TableOfContents a:global(.header-1) {
+  color: hsl(30, 15%, 70%);
+  font-size: 1.75em;
+}
+
+.TableOfContents a:global(.header-2) {
+  color: hsl(30, 15%, 70%);
+  font-size: 1.75em;
+  font-style: italic;
+}
+
+.TableOfContents a:global(.header-3) {
+  color: hsl(30, 15%, 60%);
+  font-size: 1.5em;
+}
+
+.TableOfContents a:global(.header-4) {
+  color: hsl(30, 15%, 60%);
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+.TableOfContents a:global(.header-5) {
+  color: hsl(30, 15%, 50%);
+  font-size: 1.25em;
+}
+
+.TableOfContents a:global(.header-6) {
+  color: hsl(30, 15%, 50%);
+  font-size: 1.25em;
+  font-style: italic;
 }
 
 .TableOfContents a:hover {

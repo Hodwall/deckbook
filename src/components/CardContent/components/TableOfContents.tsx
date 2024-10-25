@@ -4,11 +4,19 @@ import styles from '../CardContent.module.css';
 
 
 export const ToCItem = ({ item, onItemClick }) => {
+  console.log(item);
   return (
     <div className={`${item.isActive && !item.isScrolledOver ? 'is-active' : ''} ${item.isScrolledOver ? 'is-scrolled-over' : ''}`} style={{
       '--level': item.level,
     }}>
-      <a href={`#${item.id}`} onClick={e => onItemClick(e, item.id)} data-item-index={item.itemIndex}>{item.textContent}</a>
+      <a
+        href={`#${item.id}`}
+        onClick={e => onItemClick(e, item.id)}
+        data-item-index={item.itemIndex}
+        className={`header-${item.node.attrs.level}`}
+      >
+        {item.textContent}
+      </a>
     </div>
   );
 };
