@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FaDiceD20, FaHighlighter, FaTable } from "react-icons/fa";
 import { MdFormatBold, MdFormatItalic, MdFormatListBulleted, MdFormatListNumbered, MdFormatQuote, MdFormatStrikethrough, MdHorizontalRule, MdImage, MdKeyboardReturn, MdMoreHoriz, MdOutlineFormatAlignCenter, MdOutlineFormatAlignJustify, MdOutlineFormatAlignLeft, MdOutlineFormatAlignRight, MdRedo, MdUndo } from "react-icons/md";
 import rollTreasure from "../../../pages/Generators/rollTreasure";
@@ -52,6 +52,21 @@ const MenuBar = (props: {
       })
     );
   };
+
+  const handleSetLink = useCallback(() => {
+    if (editor) {
+      const previousUrl = editor.getAttributes('link').href;
+      const url = window.prompt('URL', previousUrl);
+      if (url === null) { // cancelled
+        return;
+      } else if (url === '') { // empty
+        editor.chain().focus().extendMarkRange('link').unsetLink().run();
+        return;
+      } else { // update link
+        editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+      }
+    }
+  }, [editor]);
 
 
   if (!editor) {
@@ -131,6 +146,15 @@ const MenuBar = (props: {
                 </button>
                 <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
                   <MdHorizontalRule /> Add horizontal rule
+                </button>
+                <button onClick={handleSetLink} className={editor.isActive('link') ? 'is-active' : ''}>
+                  Set link
+                </button>
+                <button
+                  onClick={() => editor.chain().focus().unsetLink().run()}
+                  disabled={!editor.isActive('link')}
+                >
+                  Unset link
                 </button>
               </div>
             }

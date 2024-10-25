@@ -158,6 +158,11 @@
   line-height: 1.2em;
   color: var(--card-font-color-default);
 
+  a {
+    color: hsl(224, 50%, 50%);
+    text-decoration: none;
+    font-style: italic;
+  }
 
   p:global(.treasure) {
     background-color: hsla(80, 75%, 25%, 0.15);
@@ -272,6 +277,7 @@
   table td {
     padding: 2px;
     border: 2px solid hsl(20, 5%, 20%);
+    vertical-align: baseline;
   }
 
   table tr:last-child td {
