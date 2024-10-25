@@ -5,6 +5,7 @@ import Dropcursor from '@tiptap/extension-dropcursor';
 import Gapcursor from '@tiptap/extension-gapcursor';
 import Highlight from '@tiptap/extension-highlight';
 import Image from '@tiptap/extension-image';
+import Link from '@tiptap/extension-link';
 import ListItem from '@tiptap/extension-list-item';
 import Mention from '@tiptap/extension-mention';
 import Paragraph from '@tiptap/extension-paragraph';
@@ -12,27 +13,27 @@ import Table from '@tiptap/extension-table';
 import TableCell from '@tiptap/extension-table-cell';
 import TableHeader from '@tiptap/extension-table-header';
 import TableRow from '@tiptap/extension-table-row';
+import TaskItem from '@tiptap/extension-task-item';
+import TaskList from '@tiptap/extension-task-list';
 import TextAlign from '@tiptap/extension-text-align';
 import TextStyle from '@tiptap/extension-text-style';
-import { EditorContent, mergeAttributes, useEditor, Node } from '@tiptap/react';
+import { EditorContent, mergeAttributes, Node, ReactNodeViewRenderer, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { BsFillPinAngleFill } from 'react-icons/bs';
 import { MdArrowDownward, MdArticle, MdAutoStories, MdChromeReaderMode, MdClose, MdDelete, MdDescription, MdFileCopy, MdLabel } from 'react-icons/md';
 import { PiPencilSimpleLineFill, PiPencilSimpleSlashFill } from "react-icons/pi";
 import ImageResize from 'tiptap-extension-resize-image';
-import TagSearch from '../TagSearch/TagSearch';
 import useCardStore, { ICard } from '../../store/useCardStore';
 import useSetStore from '../../store/useSetStore';
 import Selector from '../Selector/Selector';
 import Tag from '../Tag/Tag';
+import TagSearch from '../TagSearch/TagSearch';
 import styles from './CardContent.module.css';
 import cardMentionsMenu from './components/cardMentionsMenu';
 import MenuBar from './components/MenuBar';
 import { TableOfContents as ToC } from './components/TableOfContents';
 import UpdateCardDialog from './UpdateCardDialog';
-import TaskItem from '@tiptap/extension-task-item';
-import TaskList from '@tiptap/extension-task-list';
 
 
 const MemorizedToC = memo(ToC);
@@ -134,18 +135,22 @@ const CardContent = (props: {
   };
 
 
-
+  const TestNode = Node.create({
+    addNodeView() {
+      return ReactNodeViewRenderer(<div>A CUSTOM NODE HERE!</div>);
+    }
+  });
 
   const Treasure = Paragraph.extend({
-    name: 'customParagraph',
+    name: 'treasure',
     group: 'block',
     content: 'block+',
-    // content: 'text*, heading*',
+    draggable: true,
     parseHTML() {
-      return [{ tag: 'p.custom-paragraph' }];
+      return [{ tag: 'p.treasure' }];
     },
     renderHTML({ HTMLAttributes }) {
-      return ['p', mergeAttributes(HTMLAttributes, { class: 'supertest' }), 0];
+      return ['p', mergeAttributes(HTMLAttributes, { class: 'treasure' }), 0];
     },
     addAttributes() {
       return {
@@ -155,12 +160,6 @@ const CardContent = (props: {
       };
     },
   });
-
-
-
-
-
-
 
 
   /* TEXT EDITOR (TIPTAP) */
@@ -181,11 +180,15 @@ const CardContent = (props: {
       suggestion: cardMentionsChoices,
       renderHTML({ options, node }) {
         return [
-          'div',
+          'span',
           mergeAttributes({ class: 'card-mention' }, options.HTMLAttributes),
           `${node.attrs.label ?? node.attrs.id}`,
         ];
       },
+    }),
+    Link.configure({
+      autolink: true,
+      defaultProtocol: 'https',
     }),
     Paragraph,
     Table.configure({

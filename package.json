@@ -19,6 +19,7 @@
     "@tiptap/extension-gapcursor": "^2.7.2",
     "@tiptap/extension-highlight": "^2.6.6",
     "@tiptap/extension-image": "^2.5.7",
+    "@tiptap/extension-link": "^2.9.1",
     "@tiptap/extension-list-item": "^2.5.7",
     "@tiptap/extension-mention": "^2.6.6",
     "@tiptap/extension-paragraph": "^2.5.7",
