@@ -3,6 +3,7 @@ import useCardStore from "../../../store/useCardStore";
 import useDeckStore from "../../../store/useDeckStore";
 import { useNavigate } from "react-router-dom";
 import styles from '../AppBar.module.css';
+import { MdLayers } from "react-icons/md";
 
 
 const GlobalSearchResults = (props: {
@@ -44,7 +45,7 @@ const GlobalSearchResults = (props: {
       {
         results.toSorted((a: any, b: any) => a.label < b.label ? -1 : 1).map((item: any) => item.type === 'card'
           ? <div className="card-link" onClick={() => item.is_wide ? setActiveWideCard(item.id) : setActiveCard(item.id)}> <TbCardsFilled />{item.label} </div>
-          : <div className="deck-link" onClick={() => navigate(`/deckbook/cards?deck=${item.id}`)} > <TbCardsFilled />{item.label} </div>
+          : <div className="deck-link" onClick={() => navigate(`/deckbook/cards?deck=${item.id}`)} > <MdLayers />{item.label} </div>
         )
       }
     </div>

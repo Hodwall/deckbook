@@ -228,16 +228,6 @@
   flex-direction: column;
 }
 
-.PinnedCardsPanel_list div:global(.card-link) {
-  color: var(--color-accent);
-  cursor: pointer;
-  transition: color .3s;
-}
-
-.PinnedCardsPanel_list div:global(.card-link):hover {
-  color: var(--color-accent-highlight);
-}
-
 .DeckPanel {
   display: flex;
   justify-content: center;
@@ -251,16 +241,6 @@
 .DeckPanel div:global(.Deck):hover {
   filter: sepia(20%) grayscale(0%);
   transform: scale(1.03);
-}
-
-.PinnedDecksPanel_list div:global(.deck-link) {
-  color: hsl(15, 45%, 50%);
-  cursor: pointer;
-  transition: color .3s;
-}
-
-.PinnedDecksPanel_list div:global(.deck-link):hover {
-  color: hsl(15, 60%, 60%);
 }
 
 /* NAVIGATION */
@@ -306,6 +286,38 @@
   flex-direction: column;
   gap: 1em;
   margin-top: auto;
+}
+
+/* COMMON */
+.AppBar div:global(.card-link) svg,
+.AppBar div:global(.deck-link) svg {
+  font-size: 1.2em;
+}
+
+.AppBar div:global(.card-link) {
+  color: var(--color-accent);
+  cursor: pointer;
+  transition: color .3s;
+  display: flex;
+  align-items: center;
+  line-height: 1.4em;
+}
+
+.AppBar div:global(.card-link):hover {
+  color: var(--color-accent-highlight);
+}
+
+.AppBar div:global(.deck-link) {
+  color: hsl(15, 45%, 50%);
+  cursor: pointer;
+  transition: color .3s;
+  display: flex;
+  align-items: center;
+  line-height: 1.4em;
+}
+
+.AppBar div:global(.deck-link):hover {
+  color: hsl(15, 60%, 60%);
 }
 
 @media (max-width: 1500px) {
