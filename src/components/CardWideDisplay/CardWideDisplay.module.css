@@ -4,7 +4,7 @@
   justify-content: center;
   z-index: 99;
   grid-column-start: 1;
-  grid-column-end: span 2;
+  grid-column-end: span 3;
   grid-row: 1;
   display: flex;
 }
