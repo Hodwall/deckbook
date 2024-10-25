@@ -109,6 +109,7 @@ body {
   padding: 25vh 0;
   text-align: center;
   text-shadow: 0px 0px 25px hsl(40, 10%, 75%), 0px 0px 5px hsl(40, 10%, 75%);
+  user-select: none;
 }
 
 .section-title.small {
@@ -116,7 +117,8 @@ body {
 }
 
 .section-title span {
-  color: var(--font-color-header-clear);
+  color: var(--font-color-clear-fainter);
+  color: hsl(30, 5%, 40%);
   font-style: italic;
 }
 
