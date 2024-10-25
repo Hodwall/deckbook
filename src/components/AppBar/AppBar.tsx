@@ -94,10 +94,9 @@ const AppBar = () => {
       <div className={styles.navigation}>
         <button onClick={() => setIsPanelHidden(!isPanelHidden)}><MdMenu /></button>
         <hr />
-        <NavLink to="/deckbook/decks" className={({ isActive }) => isActive ? 'active' : ''}><MdLayers /></NavLink>
-        <hr />
         <NavLink to="/deckbook/sets" className={({ isActive }) => isActive ? 'active' : ''}><MdAutoStories /></NavLink>
         <NavLink to="/deckbook/cards" className={({ isActive }) => isActive ? 'active' : ''}><MdWebStories /></NavLink>
+        <NavLink to="/deckbook/decks" className={({ isActive }) => isActive ? 'active' : ''}><MdLayers /></NavLink>
         <hr />
         <NavLink to="/deckbook/maps" className={({ isActive }) => isActive ? 'active' : ''}><FaMap /></NavLink>
         <hr />
