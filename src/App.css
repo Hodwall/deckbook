@@ -4,6 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grenze&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
@@ -42,6 +44,11 @@ body,
   margin: 0px;
   overflow: hidden;
   width: 100%;
+  font-weight: 300;
+}
+
+strong {
+  font-weight: 500;
 }
 
 body {
@@ -50,16 +57,12 @@ body {
 
 .App {
   display: grid;
-  grid-template-columns: auto 30px min-content;
+  grid-template-columns: auto 46px min-content;
 }
 
 .App .app-content {
   border-radius: 2px;
-  border: 6px double hsla(15, 5%, 15%, 0.15);
-  margin-right: 0;
-  margin: var(--default-margin);
   overflow: hidden;
-  padding: 0 var(--default-padding);
   position: relative;
   grid-column: 1;
   grid-row: 1;
@@ -68,11 +71,11 @@ body {
 .App .app-section {
   overflow-y: scroll;
   height: 100%;
-  margin-top: 10px;
+  padding-left: var(--default-padding);
 }
 
 .App .app-border {
-  background-image: url(./assets/img/ui_border.png);
+  background-image: url(./assets/img/ui_border_new.png);
   background-position-x: right;
   grid-column: 2;
   grid-row: 1;
@@ -149,11 +152,10 @@ body {
 /* CARD MENTIONS */
 .card-mention {
   cursor: pointer;
-
   color: var(--color-accent);
   display: inline-block;
-  margin-left: 22px;
-  transition: text-shadow .3s;
+  margin-left: 20px;
+  transition: all .3s;
 }
 
 .card-mention:hover {
@@ -165,9 +167,9 @@ body {
   background-size: cover;
   position: absolute;
   width: 20px;
-  height: 22px;
+  height: 20px;
   margin-top: 0;
-  margin-left: -22px;
+  margin-left: -20px;
   background-image: url(./assets/img/card_icon.png);
 }
 
@@ -206,5 +208,5 @@ div[data-tippy-root] {
   pointer-events: none;
   opacity: 0;
   right: 0;
-  /* opacity: 0.5; */
+  /* opacity: 0.05; */
 }

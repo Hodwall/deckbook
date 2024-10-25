@@ -20,8 +20,6 @@ const CardToolbar = (props: {
     state.emptyHand
   ]);
 
-  console.log(active_cards);
-
   const animation = useSpring({
     opacity: hand_cards.length > 0 ? 1 : 0,
     config: { mass: 50, friction: 600, tension: 4000 }

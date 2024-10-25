@@ -1,8 +1,8 @@
 .Deck {
   display: grid;
   grid-template-rows: auto min-content;
-  width: 11em;
-  height: 12em;
+  width: 20em;
+  height: 10em;
   border-radius: var(--default-border-radius);
   box-shadow: rgba(0, 0, 0, 0.19) 0px 4px 8px, rgba(0, 0, 0, 0.23) 0px 3px 3px;
   filter: sepia(70%) grayscale(50%);

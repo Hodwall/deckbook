@@ -14,7 +14,7 @@ import TableHeader from '@tiptap/extension-table-header';
 import TableRow from '@tiptap/extension-table-row';
 import TextAlign from '@tiptap/extension-text-align';
 import TextStyle from '@tiptap/extension-text-style';
-import { EditorContent, mergeAttributes, useEditor, Node } from '@tiptap/react';
+import { EditorContent, mergeAttributes, useEditor, Node, ReactNodeViewRenderer } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { BsFillPinAngleFill } from 'react-icons/bs';
@@ -134,18 +134,22 @@ const CardContent = (props: {
   };
 
 
-
+  const TestNode = Node.create({
+    addNodeView() {
+      return ReactNodeViewRenderer(<div>A CUSTOM NODE HERE!</div>);
+    }
+  });
 
   const Treasure = Paragraph.extend({
-    name: 'customParagraph',
+    name: 'treasure',
     group: 'block',
     content: 'block+',
-    // content: 'text*, heading*',
+    draggable: true,
     parseHTML() {
-      return [{ tag: 'p.custom-paragraph' }];
+      return [{ tag: 'p.treasure' }];
     },
     renderHTML({ HTMLAttributes }) {
-      return ['p', mergeAttributes(HTMLAttributes, { class: 'supertest' }), 0];
+      return ['p', mergeAttributes(HTMLAttributes, { class: 'treasure' }), 0];
     },
     addAttributes() {
       return {
@@ -155,12 +159,6 @@ const CardContent = (props: {
       };
     },
   });
-
-
-
-
-
-
 
 
   /* TEXT EDITOR (TIPTAP) */
@@ -181,7 +179,7 @@ const CardContent = (props: {
       suggestion: cardMentionsChoices,
       renderHTML({ options, node }) {
         return [
-          'div',
+          'span',
           mergeAttributes({ class: 'card-mention' }, options.HTMLAttributes),
           `${node.attrs.label ?? node.attrs.id}`,
         ];

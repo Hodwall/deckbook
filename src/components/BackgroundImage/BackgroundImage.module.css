@@ -1,8 +1,8 @@
 img.BackgroundImage {
-  /* -webkit-mask-image: url(../../assets/img/mask_bg_a.png);
+  -webkit-mask-image: url(../../assets/img/mask_bg_a_inverted.png);
   -webkit-mask-mode: alpha;
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 100%; */
+  -webkit-mask-size: 100%;
   filter: sepia(70%) grayscale(20%);
   mask-image: url(../../assets/img/mask_bg_a_inverted.png);
   mask-mode: alpha;

@@ -3,14 +3,17 @@
   border-radius: var(--default-border-radius);
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   font-size: 0.9rem;
-  height: 45em;
   overflow: hidden;
   position: absolute;
-  width: 30em;
+  /* height: 45em;
+  width: 30em; */
+
+  height: 50em;
+  width: 32em;
 }
 
 .bgImage {
-  -webkit-mask-image: url(/src/assets/img/mask_bg_a.png);
+  -webkit-mask-image: url(../../assets/img/mask_bg_a.png);
   -webkit-mask-mode: alpha;
   -webkit-mask-position: -91px -147px;
   -webkit-mask-repeat: no-repeat;
@@ -19,7 +22,7 @@
   background-size: cover;
   height: 100%;
   left: 0;
-  mask-image: url(/src/assets/img/mask_bg_a.png);
+  mask-image: url(../../assets/img/mask_bg_a.png);
   mask-mode: alpha;
   mask-position: -91px -147px;
   mask-repeat: no-repeat;

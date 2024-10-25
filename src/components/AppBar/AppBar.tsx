@@ -24,7 +24,8 @@ const AppBar = () => {
   const [globalSearchText, setGlobalSearchText] = useState('');
 
   let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-  let panel_open_width = vw < 1500 ? 290 : 430;
+  // let panel_open_width = vw < 1500 ? 325 : 465;
+  let panel_open_width = 325;
 
   const animation = useSpring({
     width: isPanelHidden ? 0 : panel_open_width,
